@@ -1,0 +1,21 @@
+[v-cloak] {display: none;}
+html, body { position: relative; height: 100%;}
+body { background: #F0F0F0;; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#000; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body,ul,li,p,span,div,a,img,section{ margin: 0; padding: 0; box-sizing: border-box; border:0; outline:0;}
+ul,li{ list-style: none;} 
+a{ text-decoration: none; }
+p{ text-indent:0;}
+.fl{float: left;}
+.fr{float: right;}
+/*清除浮动代码*/
+.clearfix:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfix{zoom:1}   
+   
+.wait {width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10; background-color: #fff; z-index: 99999 background-color: #eee; transition:opacity .3s linear;}
+.wait img {display: block; margin: 60% auto; width: 20%; height: auto;}
+
+.toastmsg{ position: fixed; bottom: 6.08rem; width: 100%;}
+.toastmsg .toasttext{ margin: 0 auto; width: 5.26rem;line-height: 0.8rem; background: rgba(0,0,0,0.75); color: #fff; z-index: 30; text-align: center; border-radius: 0.08rem;font-size: 0.3rem;height: 0.8rem;}
+.slide-up-fade-enter-active { transition: all .3s ease; }
+.slide-up-fade-leave-active { transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0); }
+.slide-up-fade-enter , .slide-up-fade-leave-to { transform: translateY(100px); opacity: 0; }

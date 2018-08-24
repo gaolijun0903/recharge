@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>充值结果</title>
+    <style>
+        * { padding:0; margin:0;}
+        HTML ,body { font-size:12px;height:100%;width:100%; font-family: "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;}
+        a { color:#fff; text-decoration:none; outline:none;}
+        a:hover{ outline:none;}
+        li { list-style-type:none;}
+        h1 , h2 { font-weight:normal;}
+        font {}
+        input[type="button"], input[type="submit"], input[type="reset"] {-webkit-appearance: none;}
+        .yellow-text{
+            color:#F8C372;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        .white-text{
+            color:#F6BAAD;
+            font-weight: 600;
+            font-size:0.4rem;
+        }
+        .result-area{
+            position: relative;
+            width: 100%;
+            height: 70%;
+            background: url(<{asset:media/g2/M01/07/15/rBEBP1esR7eIVNfXAAAg5o08ROEAAC3GAP7DhQAACD-871.jpg}>) no-repeat;
+            background-size: 100% 100%;
+        }
+        .result-area .amount{
+            position: relative;
+            height: 4rem;
+            line-height: 4rem;
+            font-size: 0.9rem;
+            text-align: center;
+            color:white;
+        }
+        .result-area .total-amount{
+            position: relative;
+            top:-1rem;
+            height: 35%;
+            width: 90%;
+            margin: 0 auto;
+            background: url(<{asset:media/g2/M02/07/19/rBEBP1etOv2IYPqQAAAoTPm3LzoAAC4ygMlw5kAAChk266.png}>) no-repeat;
+            background-size: 100%;
+            color:#E9573F;
+            font-size: 0.8rem;
+        }
+        .result-area .total-amount .title{
+            position: absolute;
+            top: 45%;
+            width: 100%;
+            text-align: center;
+        }
+        .result-area .total-amount .content{
+            position: absolute;
+            top:60%;
+            width: 100%;
+            left:10px;
+            text-align: center;
+        }
+        .result-area .total-amount .content .number{
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-align: center;
+        }
+        .result-area .other-rewards{
+            margin-top: -1rem;
+            position: relative;
+            width: 70%;
+            height: auto;
+            margin-left:15%;
+        }
+        .result-area .other-rewards .title{
+            position: relative;
+            height: 2rem;
+        }
+        .lr-line-width{
+            width: 42%;
+        }
+        .result-area .other-rewards .title .left-line{
+            float: left;
+            height:1px;
+            margin-top: 1rem;
+            background: #F96565;
+        }
+        .result-area .other-rewards .title .right-line{
+            float: right;
+            height:1px;
+            margin-top: 1rem;
+            background: #F96565;
+        }
+        .result-area .other-rewards .title .center{
+            float: left;
+            height: 2rem;
+            line-height: 2rem;
+            width: 16%;
+            text-align: center;
+            color:#FFC0C0;
+            font-size: 0.7rem;
+        }
+        .result-area .other-rewards ul{
+            width: 100%;
+            color: #FEF8F8;
+        }
+        .result-area .other-rewards ul li{
+            width: 100%;
+            font-size: 0.8rem;
+            font-weight: 200;
+            text-align: center;
+        }
+        .result-area .other-rewards .footer{
+            height: 1rem;
+            line-height: 1rem;
+            width: 100%;
+        }
+        .result-area .other-rewards .footer .line{
+            width: 100%;
+            margin-top: 1rem;
+            height: 1px;
+            background: #F96565;
+        }
+        .result-area .my-rewards-info{
+            position: relative;
+            width: 100%;
+            height: 1rem;
+            font-size: 0.7rem;
+            line-height: 1rem;
+            color:#F8DCCA;
+            text-align: center;
+        }
+        .info-area{
+            position: relative;
+            width: 100%;
+            height: 30%;
+        }
+        .top-divide-area{
+            height: 10%;
+            width: 100%;
+        }
+        .btn{
+            width: 80%;
+            margin-left: 10%;
+            height: 3rem;
+            border-radius: 1.5rem;
+        }
+        .info-area .invite-friend{
+            position: absolute;
+            bottom: 15%;
+            background:#FD4C48;
+            color:#FFFFFF;
+            -webkit-box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+            box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+        }
+        .info-area .invite-friend .big-text{
+            padding-top: 0.5rem;
+            font-size: 0.8rem;
+            height: 3rem;
+            line-height: 3rem;
+            text-align: center;
+        }
+        .info-area .invite-friend .small-text{
+            font-size: 0.8rem;
+            line-height: 1rem;
+            height: 1rem;
+            text-align: center;
+        }
+        .info-area .re-rebate{
+            position: absolute;
+            top:10%;
+            background:#FD4C48;
+            border: 1px solid #FD4C48;
+            -webkit-box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+            box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+        }
+        .info-area .re-rebate .big-text{
+            /*padding-top: 1rem;*/
+            font-size: 0.9rem;
+            height: 3rem;
+            line-height: 3rem;
+            text-align: center;
+            color:#FFFFFF;
+        }
+        .pop-box {
+            position: fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background-color:rgba(25,25,25,0.7);
+            display: none;
+        }
+        .pop-box img{
+            position: absolute;
+            width: 100%;
+            top:0;
+            left: 0;
+            right:0;
+            bottom: 0;
+            margin: auto;
+        }
+        .pop-box .invite-area{
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            bottom: 0;
+        }
+        .invite-area .invite-friend{
+            position: absolute;
+            top:10%;
+            background:#FD4C48;
+            color:#FFFFFF;
+            -webkit-box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+            box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+        }
+        .invite-area .invite-friend .big-text{
+            padding-top: 0.5rem;
+            font-size: 1.2rem;
+            height: 1.2rem;
+            line-height: 1.2rem;
+            text-align: center;
+        }
+        .invite-area .invite-friend .small-text{
+            font-size: 0.8rem;
+            line-height: 1rem;
+            height: 1rem;
+            text-align: center;
+        }
+        .invite-area .re-rebate{
+            position: absolute;
+            bottom: 15%;
+            border: 1px solid #FD4C48;
+            -webkit-box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+            box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+            background-color:#ffffff;
+            color:#FD4C48;
+        }
+        .invite-area .re-rebate .big-text{
+            padding-top: 0.5rem;
+            font-size: 1.2rem;
+            height: 1.2rem;
+            line-height: 1.2rem;
+            text-align: center;
+        }
+        .invite-area .re-rebate .small-text{
+            font-size: 0.8rem;
+            line-height: 1rem;
+            height: 1rem;
+            text-align: center;
+        }
+        @media screen and(max-width: 320px) {
+            html{
+                font-size:16px;
+            }
+        }
+        @media screen and (min-width: 321px) and (max-width: 360px){
+            html{
+                font-size: 18px;
+            }
+        }
+        @media screen and (min-width:361px ){
+            html{
+                font-size: 20px;
+            }
+        }
+        .loading{width: 100%;height: 100%;background-color: #f0f0f0;position: fixed;left: 0;top: 0;bottom:0;right:0;z-index: 9999;color: #888;font-size: 20px;text-align: center;margin:auto;}
+        .loading img{display: block;height:50px;width:50px;position: absolute;left: 50%;top: 50%;margin-left:-25px;margin-top:-25px;}
+        .loading p{display: block;height:50px;width:100%;position: absolute;top: 60%;}
+        .recharge_unknow,.recharge_fail{position: fixed;left: 0;top: 0;bottom:0;right:0;z-index: 9999;width: 100%;height: 100%;background-color: #f0f0f0;}
+        .recharge_unknow img,.recharge_fail img{display: block;margin: 20% auto 0;}
+        .recharge_unknow p,.recharge_fail p{text-align: center;color: #888;font-size: 20px;margin-top: 30px;}
+        .recharge_unknow p a,.recharge_fail p a{color: #1e82e6;}
+        .recharge_unknow a.rebate_again,.recharge_fail a.rebate_again{font-size: 20px;text-align: center;color: #ec4949;height: 90px;line-height: 90px;border: 1px solid #ec4949;-webkit-box-sizing: border-box;box-sizing: border-box;background: #fff;width: 90%;display: block;position: absolute;bottom: 30px;margin:0 5%;}
+    </style>
+</head>
+<body>
+<div class="result-area">
+    <div class="amount" id="amount">成功充了0元</div>
+    <div class="total-amount">
+        <div class="title">共入账</div>
+        <div class="content"><span class="number">0</span>元</div>
+    </div>
+    <div class="other-rewards">
+        <div class="title">
+            <div class="left-line lr-line-width"></div>
+            <div class="center"><span class="white-text">◆</span></div>
+            <div class="right-line lr-line-width"></div>
+        </div>
+        <ul>
+            <li id="reminder">多充多送，乐享不停</li>
+        </ul>
+        <div class="footer">
+            <div class="line"></div>
+        </div>
+    </div>
+    <div class="my-rewards-info"  id="enter-info">提示：查看奖品请到充值页面点击“我的奖品”</div>
+</div>
+<div class="info-area">
+    <!--<div class="btn invite-friend" id="shareToOthers">-->
+        <!--<div class="big-text">分享给更多好友</div>-->
+        <!--<div class="small-text">TA得70%返现，我得5%奖励</div>-->
+    <!--</div>-->
+    <div class="btn re-rebate"  onclick="toIncentive()">
+        <div class="big-text">下载易到马上用车</div>
+    </div>
+</div>
+<div class="pop-box" id="popBox">
+    <img src="<{asset:media/g2/M01/11/3A/rBEBP1hsYw6Iav2TAABuNVfgpUgAAG-sQGABJkAAG5N395.png}>">
+    <div class="invite-area">
+        <div class="btn re-rebate"  id="shareToMyFriend2">
+            <div class="big-text">邀请好友</div>
+            <div class="small-text">好友充值，你可获得5%的车费</div>
+        </div>
+        <div class="btn invite-friend" id="shareToMyFriend">
+            <div class="big-text">分享</div>
+            <div class="small-text">分享后查看出行券礼包</div>
+        </div>
+    </div>
+</div>
+<!-- 通信异常 -->
+<div class="section recharge_unknow">
+    <img src="<{asset:media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png}>" alt="">
+    <p>网络通信异常</p>
+    <a class="rebate_again" href="/touch/Weixinrecharge/index">返回重试</a>
+</div>
+<!-- 充值失败 -->
+<div class="section recharge_fail">
+    <img src="<{asset:media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png}>" alt="">
+    <p>充值未完成</p>
+    <a class="rebate_again" href="/touch/Weixinrecharge/index">返回重试</a>
+</div>
+<div class="loading" id="loading" style="display:block;">
+    <img src="<{asset:media/g1/M01/06/16/rBEARFY8Xy2ID24xAABHEtelIYMAACiQAMX9E8AAEcq787.gif}>" alt="">
+    <p>交易处理中...</p>
+</div>
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js "></script>
+<script>
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = decodeURIComponent(url.substr(1));
+
+            var strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = strs[i].split("=")[1];
+            }
+        }
+        return theRequest;
+    }
+    function toIncentive()
+    {
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return { //移动终端浏览器版本信息
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1 //是否iPad
+                };
+            }()
+        };
+        var url='//www.yongche.com/download/yongche.php?source=3g';
+        function is_weixin(){
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if(is_weixin()) {
+            url = "//www.yongche.com/download/yongche.php?source=3g";
+        }
+        else if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+            url = "http://itunes.apple.com/cn/app/id427555239?mt=8";
+        }
+        window.location.href=url;
+        ga('send', 'event', 'to_other', 'click', '结果页跳转下载页面');
+    }
+    var request = new Object();
+    request = GetRequest();
+    var transaction_id = request['transaction_id'];
+    var project_id = request['project_id'];
+    var total_money=request['total_money'];
+    var other_rewards=request['other_rewards'];
+    var activity_id=request['activity_id'];
+    var time;
+    var getTimes = 0;
+    var failTitle="充值失败";
+    time = setInterval(getRechargeResult,2000);
+
+    var chargeMoney=0;
+    var totalMoney=total_money;
+    var otherRewards=other_rewards;
+    var rewardList=[];
+    if(!!otherRewards){
+        rewardList=otherRewards.split('/');
+    }
+
+    resultPage={
+        amount:$('.amount'),
+        totalNumber:$('.number'),
+        rewardsTitle:$('.other-rewards .center'),
+        rewards:$('.other-rewards ul'),
+        lrLine:$('.lr-line-width'),
+        sections:$('.section'),
+        loading:$('#loading'),
+        rechargeFail:{
+            that:$('.recharge_fail'),
+            p:$('.recharge_fail p')
+        },
+        rechargeUnknow:$('.recharge_unknow'),
+        popBox:$('#popBox'),
+        reminder:$('#reminder'),
+        enterInfo:$('#enter-info')
+    };
+
+    function initChargeNumber(){
+        if(chargeMoney){
+            resultPage.amount.text('成功充了'+chargeMoney+'元');
+        }
+    }
+    function initRewards(){
+        var length=rewardList.length;
+        if(otherRewards&&length>0){
+            var rewards='';
+            for(var i=0;i<length;i++){
+                rewards+='<li><span class="yellow-text">·</span>'+rewardList[i]+'</li>';
+            }
+            resultPage.lrLine.width('35%');
+            resultPage.rewardsTitle.width('30%');
+            resultPage.rewardsTitle.text('同时得到');
+            resultPage.rewards.html(rewards);
+        }
+    }
+    function initTotalNumber(){
+        if(totalMoney){
+            resultPage.totalNumber.text(totalMoney);
+        }
+    }
+    function init(){
+        initChargeNumber();
+        initTotalNumber();
+        initRewards();
+//        resultPage.popBox.show();
+//        setTimeout(function(){
+//            resultPage.popBox.hide();
+//        },10000);
+    }
+
+    function getRechargeResult() {
+        $.ajax({
+            url: '/ajax/Rechargerebate/complete',
+            type: 'POST',
+            data: {transaction_id: transaction_id, is_joined: 0, activity_id: activity_id,project_id:project_id}
+        }).done(function (data) {
+            getTimes++;
+            if (getTimes > 3) {
+                clearInterval(time);
+                resultPage.loading.hide();
+            }
+            //var $data = $.parseJSON(data);
+            var $data = data;
+            var code = $data.code;
+            var result = $data.result;
+            if (code == "617") {
+                document.title=failTitle;
+                alert("您尚未登录，请登录后再充值");
+                window.location.href = "yongche://login";
+            } else if (code == "200") {
+                //交易成功
+                clearInterval(time);
+                resultPage.sections.hide();
+                resultPage.loading.hide();
+                chargeMoney=result.recharge_amount.toFixed(2);
+                //alert('用户充值'+result.recharge_amount+'，获得奖励金'+result.gljul_amount+'，共得奖励金'+result.glju_total_amount);
+                if(Number(result.glju_total_amount)>0){
+                    resultPage.reminder.html('本次获得'+result.gljul_amount+'元<br/>奖励金现已累积'+result.glju_total_amount+'元<br/>将在'+result.glj_sendtime+'存入您的易到余额账户');
+                    resultPage.enterInfo.text('提示：查看奖励金请到个人中心点击【充返奖励金】');
+                }
+                init();
+            } else if (code == "618") {
+                //交易失败活交易中
+                if (getTimes > 1) {
+                    clearInterval(time);
+                    resultPage.loading.hide();
+                }
+                resultPage.sections.hide();
+                resultPage.rechargeFail.that.show();
+
+            } else if (code == "619") {
+                document.title=failTitle;
+                //交易失败
+                clearInterval(time);
+                resultPage.sections.hide();
+                resultPage.rechargeFail.p.text("充值未完成-" + data.msg);
+                resultPage.rechargeFail.that.show();
+                resultPage.loading.hide();
+
+            } else {
+                document.title=failTitle;
+                //其他异常
+                clearInterval(time);
+                resultPage.sections.hide();
+                resultPage.rechargeUnknow.show();
+                resultPage.loading.hide();
+            }
+        }).fail(function () {
+            document.title=failTitle;
+            console.log("error");
+        }).always(function () {
+            console.log("complete");
+        });
+    }
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-18761483-4', 'auto');  ga('send', 'pageview');
+</script>
+<script>
+    $.ajax({
+        url:"//weixin.yongche.com/wechat/jssdk/config?url="+encodeURIComponent(window.location.href),
+        method:'get',
+        dataType:'jsonp'
+    }).done(function(data){
+        console.log(data);
+        if(data.code==200){
+            wx_share(data.result);
+        }
+    }).fail(function(error){
+        console.log(error)
+    });
+    function wx_share(jsData) {
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: jsData.appId, // 必填，公众号的唯一标识
+            timestamp: jsData.timestamp, // 必填，生成签名的时间戳
+            nonceStr: jsData.nonceStr, // 必填，生成签名的随机串
+            signature: jsData.signature,// 必填，签名，见附录1
+            jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline','onMenuShareQQ','onMenuShareWeibo'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+        wx.ready(function(){
+            var shareData =
+            {
+                link:"//h5.yongche.com/touch/Weixinrecharge/index",
+                imgUrl:"http://i2.yongche.naMe/media/g2/M04/16/2F/rBEBJVkQR6WIPRSIAAA6Flk8vncAAI2ZgL2u4wAADou165.jpg",
+                title:"易到获得北京首张C2C网约车牌照！我们领证啦！",
+                desc:"乘坐易到专车，每单至少66折！",
+                type: '', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            };
+            wx.onMenuShareAppMessage(shareData);
+            wx.onMenuShareTimeline(shareData);
+            wx.onMenuShareQQ(shareData);
+            //alert('ok');
+        });
+    }
+</script>
+</body>
+</html>

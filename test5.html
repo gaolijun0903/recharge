@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>购买出行卡</title>
+    <link href="//i3-testing.yongche.org/js/app/swiper/swiper3.07.min.css?1457087125" rel="stylesheet">
+    <style>
+        * { padding:0; margin:0;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+        HTML ,body { font-size:12px;height:100%;width:100%; font-family: "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;}
+        a { color:#fff; text-decoration:none; outline:none;}
+        a:hover{ outline:none;}
+        li { list-style-type:none;}
+        h1 , h2 { font-weight:normal;}
+        font {}
+        input, input[type="button"], input[type="submit"], input[type="reset"] {-webkit-appearance: none;}
+        .tags{
+            width: 100%;
+            height: 55%;
+            position: relative;
+            background-size:cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+        .tag{
+            position: relative;
+            overflow: hidden;
+            color:#292929;
+        }
+        .new-user-privilege{
+            visibility: visible;
+            background-repeat: no-repeat;
+            background-position:top right;
+            background-size: auto 100%;
+            height:25%;
+            width:100%;
+            position: absolute;
+            top:0;
+            right:0;
+            z-index: 10;
+        }
+        .bg-blue{
+            background:blue;
+        }
+        .bg-red{
+            background:red;
+        }
+        .bg-green{
+            background: green;
+        }
+        .bg-white{
+            background: white;
+        }
+        .tag .content{
+            position: absolute;
+            background-size: 100% 100%;
+            width: 100%;
+            background-repeat: no-repeat;
+            -webkit-transform:translateZ(0);
+            transform:translateZ(0);
+            -webkit-box-shadow:  0 0 4px 4px rgba(194,194,194,0.7);
+            box-shadow:  0 0 4px 4px rgba(194,194,194,0.7);
+        }
+        .tag .selected-content{
+            border-radius: 0.3rem;
+            -webkit-transform:translateZ(0);
+            transform:translateZ(0);
+            -webkit-box-shadow:  0 0 4px 4px rgba(194,194,194,0.7);
+            box-shadow:  0 0 4px 4px rgba(194,194,194,0.7);
+        }
+        .bg-noRewards, .bg-hasRewards {
+            background: transparent;
+        }
+        .input-tag{
+        }
+        .tag .content .bg-img{
+            position:absolute;
+            bottom: -3%;
+            width: 93%;
+            margin-left:2%;
+        }
+        .bg-noRewards .amount,.bg-hasRewards .amount,.amount2{
+            width:100%;
+            padding: 35px 10px 0;
+            position: relative;
+            height: 30%;
+            font-size: 0.7rem;
+        }
+        .amount2{
+            padding-top: 0;
+        }
+        .bg-noRewards .info,.bg-hasRewards .info{
+            position: relative;
+            height: 12%;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .bg-noRewards .text-area,.bg-hasRewards .text-area,.text-area2{
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            bottom: 0%;
+        }
+        .bg-noRewards .text-area .money,.bg-hasRewards .text-area .money{
+            /*font-size: 1.8rem;*/
+            /*font-weight: 900;*/
+        }
+        .bg-noRewards .text-area,.bg-hasRewards .text-area,.text-area2{
+            width:auto;
+            float: left;
+            position: static;
+            width: 25%;
+        }
+        .bg-noRewards .text-area.signal_area,.bg-hasRewards .text-area.signal_area,.text-area2.signal_area{
+            width:10%;
+        }
+        .text-area2.signal_area{
+            width:6%;
+        }
+        .bg-noRewards .text-area .t_title,.bg-hasRewards .text-area .t_title,.text-area2 .t_title{
+            height:1.1rem;
+            display:block;
+            font-size: 0.8rem;
+            color:#aaaaaa;
+        }
+        .bg-noRewards .text-area .money,.bg-hasRewards .text-area .money,.text-area2 .money{
+            color:#323232;
+            font-size:1.2rem;
+            display: block;
+            text-shadow: 1px 2px 4px #ccc;
+            font-weight: bold;
+            line-height: 1.4rem;
+        }
+        .text-area2 .money{
+            font-size:1.2rem;
+        }
+        .bg-noRewards .text-area .money.result,.bg-hasRewards .text-area .money.result,.text-area2 .money.result{
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        .bg-noRewards .text-area .signal,.bg-hasRewards .text-area .signal,.text-area2 .signal{
+            font-size:1.8rem;
+            line-height: 1.4rem;
+            display:block;
+        }
+        .bg-hasRewards .amount,.amount2{
+            position: relative;
+            width: 100%;
+            height: 28%;
+            margin-bottom: 0%;
+            font-size: 0.7rem;
+        }
+        .bg-hasRewards .info{
+            position: relative;
+            width: 100%;
+            height: 10%;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .bg-hasRewards .divide-line,.input-tag .divide-line{
+            width: 100%;
+            height: 1px;
+            margin: 5px 0;
+            background: #E4E5E5;
+        }
+        .bg-hasRewards .new-user{
+            position:relative;
+            height:0.9rem;
+            line-height: 0.9rem;
+            font-size: 0.7rem;
+            background: #FC4B47;
+            width:5rem;
+            margin: 0 auto;
+            margin-top: 0.7rem;
+            border-radius: 0.5rem;
+            -webkit-border-radius: 0.5rem;
+            color:white;
+            text-align: center;
+        }
+        .bg-hasRewards .other-rewards,.other-rewards2{
+            position: relative;
+            height: 0.9rem;
+            line-height: 0.9rem;
+            width: 100%;
+            z-index: 1;
+        }
+        .other-rewards2{
+            clear:both;
+        }
+        .bg-hasRewards .other-rewards .text-area,.other-rewards2 .text-area{
+            position: absolute;
+            color:#323232;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            bottom: 0;
+            width: 100%;
+        }
+        .input-tag .title{
+            color:#323232;
+            position: relative;
+            font-size: 1rem;
+            height: 40%;
+            width: 100%;
+            font-weight: bold;
+        }
+        .input-tag .title.title_exra{
+            height: 30%;
+        }
+        .input-tag .title .text-area{
+            top:50%;
+            margin-top: -0.5rem;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+        }
+        .input-tag .input-area{
+            position: absolute;
+            color: #323232;
+            height: 25%;
+            width: 60%;
+            bottom: 16%;
+            right: 11%;
+        }
+        .input-tag .input-area input{
+            background: rgb(168,43,42); 
+            font-weight: bold;
+            position: relative;
+            height: 100%;
+            text-align: right;
+            line-height: normal;
+            width: 70%;
+            font-size: 45px;
+            border-radius: 6px;
+            border:none;
+            outline:none;
+            color: #fff;
+            padding-top: 5px;
+            margin-left: 5%;
+        }
+        .input-tag .input-area input::-webkit-input-placeholder{
+            font-weight: normal;
+            font-size: 25px;
+            color: #cc9897;
+            padding-top: 0;
+        }
+        .input-tag .info-area{
+            position: relative;
+            height: 30%;
+            width: 100%;
+            font-size: 0.8rem;
+        }
+        .input-tag .info-area .text-area{
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 10px;
+            font-weight: normal;
+        }
+        .pagination{
+            position: absolute;
+            bottom: 0;
+            height: 1.5rem;
+            margin: 0 0;
+        }
+        .swiper-pagination-bullet{
+            width: 0.4rem;
+            height: 0.4rem;
+            display: inline-block;
+            border-radius: 1.2rem;
+            background: #909090;
+            opacity: .2;
+        }
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #949494;
+        }
+        .other{
+            position: relative;
+            width: 100%;
+        }
+        .other .charge-area{
+            display: block;
+            width: 100%;
+            height: 3rem;
+            padding-top: 3%;
+        }
+        .other .apple-area{
+            display: none;
+            width: 100%;
+            height: 3rem;
+            padding-top: 5%;
+        }
+        .other .charge-area .normal-charge{
+            width: 86%;
+            height: 2.4rem;
+            line-height: 2.4rem;
+            margin-left: 7%;
+            text-align: center;
+            background:#FC4B47;
+            color:white;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 1.2rem;
+            -webkit-box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+            box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+        }
+        .other .apple-area .normal-charge{
+            float:left;
+            width: 40%;
+            height: 2.4rem;
+            line-height: 2.4rem;
+            margin-left:6%;
+            background:#FC4B47;
+            text-align: center;
+            color:white;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        .other .apple-area .apple-pay-charge{
+            float: right;
+            width: 40%;
+            margin-right:6.5%;
+            flex-grow:1;
+            height: 2.3rem;
+            line-height:2.3rem;
+            text-align: center;
+            border-radius:8px;
+            border: 1px #000000 solid;
+            color:#000000;
+            background: url(//i2-testing.yongche.org/media/g2/M04/08/04/rBEBJVe1HtiIQ9vXAAAP_4yh0LQAADJcwDTrFwAABAX865.png);
+            background-size:100% 100%;
+        }
+        .other .protocol{
+            position: relative;
+            width: 100%;
+            text-align: center;
+            line-height: 0.8rem;
+            font-size: 0.6rem;
+            color:#8F8F8F;
+        }
+        .other .protocol .activity-btn{
+            color:#1F1F1F;
+        }
+        .other .to-input{
+            width: 100%;
+            height: 15%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            line-height:  15%;
+            font-size: 0.9rem;
+            text-align: center;
+            color:#D4D4D4;
+            text-decoration:underline;
+        }
+        .other .info-area{
+            position: relative;
+            width: 90%;
+            margin:0.5rem 5% 0.2rem 5%;
+            height: 2rem;
+        }
+        .other .info-area .divide-line{
+            float: left;
+            height:0.9rem;
+            width: 1px;
+            background:#D4D4D4;
+            margin-top: 0.5rem;
+        }
+        .other .info-area .item{
+            float: left;
+            width: 49%;
+            height: 2rem;
+            line-height: 2rem;
+            font-size: 0.7rem;
+            color:#1F1F1F;
+            box-sizing: border-box;
+        }
+        #rule{ padding-right: 8%; text-align: right; }
+        #reward-list-css{ text-align: left; padding-left: 8%; }
+        .other .info-area .item a{
+            width: 100%;
+            text-align: center;
+            color:#1F1F1F;
+            text-decoration: underline;
+        }
+        .rebate-info{
+            display: none;
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 9999;
+            width: 100%;
+            height:100%;
+            background:rgba(0,0,0,0.75);
+        }
+        .rebate-info .pop-box{
+            position: absolute;
+            top:15%;
+            bottom:15%;
+            left:2rem;
+            right:2rem;
+            background:white;
+            border-radius:5px;
+        }
+        .rebate-info .pop-box .header{
+            width: 100%;
+            height: 3.5rem;
+            line-height: 3.5rem;
+            text-align: center;
+            color:#FC4B47;
+            font-size: 1rem;
+            font-weight:bold;
+        }
+        .rebate-info .pop-box .divide-line{
+            width: 100%;
+            height: 1px;
+            background:#D4D4D4;
+        }
+        .rebate-info .pop-box .content{
+            position: absolute;
+            top:3.5rem;
+            bottom: 4.5rem;
+            padding: 1rem;
+            padding-top: 1.5rem;
+            color:#646464;
+            font-size: 0.6rem;
+            overflow-y: auto;
+        }
+        .rebate-info .shadow{
+            position: absolute;
+            bottom: 4.5rem;
+            margin-bottom: -1px;
+            height: 1rem;
+            width: 90%;
+            left:5%;
+            background: linear-gradient(top,rgba(255,255,255,0),rgba(255,255,255,1));
+            background: -webkit-linear-gradient(top,rgba(255,255,255,0),rgba(255,255,255,1));
+        }
+        pre{
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        .rebate-info .pop-box .footer{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 4rem;
+        }
+        .rebate-info .pop-box .footer .i-know{
+            width: auto;
+            position: absolute;
+            left: 0rem;
+            right:2rem;
+            margin-top: 0.5rem;
+            background: #FC4B47;
+            color:white;
+            -webkit-box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+            box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+            font-weight: bold;
+        }
+        .norebate-info{
+            display: none;
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 9999;
+            width: 100%;
+            height:100%;
+            background:rgba(0,0,0,0.75);
+        }
+        .norebate-info .pop-box{
+            position: absolute;
+            top:7rem;
+            left:2rem;
+            right: 2rem;
+            height: 16rem;
+            background: white;
+            border-radius: 5px;
+        }
+        .norebate-info .pop-box .header{
+            width: 100%;
+            height: 4rem;
+            line-height: 4rem;
+            text-align: center;
+            color:#FC4B47;
+            font-size: 1.2rem;
+            font-weight:bold;
+        }
+        .norebate-info .pop-box .divide-line{
+            width: 100%;
+            height: 1px;
+            background:#D4D4D4;
+        }
+        .norebate-info .pop-box .content{
+            height: 2.4rem;
+            line-height: 1.2rem;
+            padding-top: 0.5rem;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color:#646464;
+        }
+        .norebate-info .pop-box .back-btn{
+            margin-top: 0rem;
+            background: #FC4B47;
+            color:white;
+            -webkit-box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+            box-shadow:  1px 0px 1px 0px #FF9596,
+            -1px 0px 1px 0px #FF9596,
+            0px 2px 2px 0px #FF9596;
+        }
+        .norebate-info .pop-box .go-btn{
+            margin-top: 0.8rem;
+            border:1px #D2D2D2 solid;
+            color:#646464;
+        }
+        .normal-btn{
+            width: 80%;
+            height: 2.2rem;
+            border-radius: 1.1rem;
+            line-height: 2.2rem;
+            font-size: 0.8rem;
+            margin-left: 10%;
+            text-align: center;
+        }
+        .top-align{
+            padding-bottom: 0rem;
+        }
+        .bottom-align{
+            padding-top: 1.3rem;
+        }
+        .red-text{
+            color:#FC4B47;
+        }
+        #rebate-rule{
+            display: none;
+        }
+        #rebate-protocol{
+            display: none;
+        }
+        .float-area{
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 9999;
+            width: 100%;
+            height:100%;
+            background:rgba(240,240,240,1);
+        }
+        .float-area .header{
+            height: 3.6rem;
+            line-height: 3.6rem;
+            font-size: 1.2rem;
+            width: 100%;
+            text-align: center;
+            font-weight:bold;
+        }
+        .float-area .content{
+            position: absolute;
+            padding: 0% 5%;
+            color:#7E7E7E;
+            left:0;
+            right:0;
+            top:3.6rem;
+            bottom: 4rem;
+            overflow-y: auto;
+        }
+        .float-area .shadow{
+            position: absolute;
+            bottom: 4rem;
+            margin-bottom: -1px;
+            height: 3rem;
+            width: 90%;
+            left:5%;
+            background: linear-gradient(top,rgba(240,240,240,0),rgba(240,240,240,1));
+            background: -webkit-linear-gradient(top,rgba(240,240,240,0),rgba(240,240,240,1));
+        }
+        .float-area .exit{
+            position: absolute;
+            bottom:1rem;
+            background: url(//i2-testing.yongche.org/media/g2/M01/07/11/rBEBP1er3niIXR6KAAAHqq9WERAAAC1igP_9CEAAAfC486.png) no-repeat;
+            background-size: 100% 100%;
+            left:50%;
+            margin-left: -1rem;
+            height:2rem;
+            width: 2rem;
+        }
+        #is-black{
+            display: none;
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 9999;
+            width: 100%;
+            height:100%;
+            background:rgba(0,0,0,0.6);
+        }
+        #is-black .pop-box{
+            position:fixed;
+            top:1rem;
+            bottom: 3rem;
+            left:1rem;
+            right:1rem;
+            background-color:white;
+            border-radius:0.5rem;
+            -webkit-border-radius: 0.5rem;
+        }
+        #is-black .pop-box .header{
+            position: relative;
+            display: block;
+            height: 200px;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius:0.5rem;
+            background:#B4BFB6;
+        }
+        #is-black .pop-box .header img{
+            position: absolute;
+            height:100px;
+            width: 100px;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            margin: auto;
+        }
+        .nav-area{
+            width: 90%;
+            height:auto;
+            overflow-y: auto;
+            margin: 15px 6% 0 4%;
+            font-size: 0.9rem;
+        }
+        .nav-item{
+            position: relative;
+            float:left;
+            height:2.2rem;
+            width:29%;
+            margin:3px 1.35%;
+            text-align: center;
+            border-radius:8px;
+            -webkit-border-radius: 8px;
+            line-height:2.2rem;
+            border:2px solid #E2E2E2;
+        }
+        .selected-nav-item{
+            color:#FF5252;
+            border:2px solid #FF5252;
+            font-weight:bold;
+        }
+        .selected-flag{
+            position: absolute;
+            bottom: 0;
+            right:0;
+            height:1rem;
+            margin-bottom: -1px;
+            width:auto;
+            visibility: hidden;
+        }
+        .selected-flag-visible{
+            visibility: visible;
+        }
+        .to-link{
+            display: none;
+            width: 100%;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            color:#FF4E4E;
+            text-decoration: underline;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        .to-link .advertise{
+            font-size: 0.6rem;
+            text-decoration: underline;
+            bottom: 0;
+            color:#C4C4C4;
+        }
+        .p-p{ font-size: 45px; bottom: 13%;}
+        .input_tips{ position: absolute; bottom: 0%; right: 27%; font-size: 25px; color: #cc9897; z-index: 9;}
+        @media screen and (max-width: 320px) {
+            html{
+                font-size:16px;
+            }
+        }
+        @media screen and (min-width: 321px) and (max-width: 360px){
+            html{
+                font-size: 18px;
+            }
+            .p-p{ font-size: 55px; bottom: 12%;}
+            .input_tips{ position: absolute; bottom: 0%; right: 27%; font-size: 25px; color: #cc9897;}
+            .input-tag .input-area{ bottom: 17%; }
+            .input-tag .input-area input{ font-size: 55px; padding-top: 0;}
+        }
+        @media screen and (min-width:361px ){
+            html{
+                font-size: 20px;
+            }
+            .p-p{ font-size: 55px; bottom: 15%;}
+            .input_tips{ position: absolute; bottom: 0%; right: 27%; font-size: 30px; color: #cc9897;}
+            .input-tag .input-area input{ font-size: 55px; padding-top: 5px;}
+        }
+        .alertContHeader { width:90%; padding-left:5%;padding-right: 5% ;margin-top:10px}
+        .alertCont { height:75%; width:90%; padding-left:5%;padding-right: 5%;margin-top:10px;overflow:auto; overflow-x:hidden;}
+        .alertCont p { height:1rem;font-size:.5rem; line-height:1rem; padding-bottom:10px; color:#666; word-break:break-all;}
+        .alertCont p a { color:#C00;}
+        .alertCont p b { color:#f19eb6; font-size:10.7rem; font-weight:normal;}
+        .loading{display: block;width: 100%;height: 100%;background-color: #f0f0f0;opacity:1;position: fixed;left: 0;top: 0;bottom:0;right:0;z-index: 9999;color: #888;font-size: 20px;text-align: center;margin:auto;}
+        .loading img{display: block;height:50px;width:50px;opacity:0.7;position: absolute;left: 50%;top: 50%;margin-left:-25px;margin-top:-25px;}
+        .loading p{display: block;height:50px;width:100%;position: absolute;top: 60%;}
+                  #tan_mask {position: fixed;left: 0;top: 0;width: 100%; height: 100%;background:black;opacity: 0.8;z-index: 999999998;}
+          #tanchuang{position: fixed;left: 0;top: 0;width: 80%;z-index: 999999999;left:50%;border-radius:15px;overflow:hidden;top: 50%; -webkit-transform:translate(-50%,-50%);}
+          #tan_header{height:50px; background: #f7f7f7 url("//i1-testing.yongche.org/media/g2/M02/1A/03/rBEBP1oNNROIDExJAAAgdVymM8wAAKImAFwB8IAACCN389.png") no-repeat center;position: relative;background-size: 25%;}
+          #tan_content{background-color: white;padding:22px 15px;text-align: center;font-size: 16px;line-height: 25px;}
+          #tan_footer{border:none;border-top: solid #c9c9c9 1px;background-color: white; line-height: 50px;text-align: center;font-size: 16px;color: red;display: block; width: 100%;border-radius: 0;}
+        .clear{ clear:both;}
+        .clearfix:after{display:block; clear:both; content:"."; visibility:hidden; height:0px; font-size:0;}
+        .clearfix{*zoom:1}
+        .fl{float:left;}
+        .fr{float:right;}
+        .headInfo{ margin:0 auto; width: 100%; height: 15px; position: relative; z-index: 9;}
+        .hi{ position: absolute; left: 50%; top: 15px; width: 85%; -webkit-transform:translateX(-50%);}
+        .hAmount{ font-size: 0.7rem; color: #323232; font-weight: bold;}
+        .seeList{ display: block; color: #888; font-size: 0.7rem; margin-right: 10px; font-size: 0.6rem;}
+        .seeList span{ color: rgb(156,156,156); }
+    </style>
+</head>
+<body>
+<div class="headInfo">
+    <div class="hi">
+        <p class="hAmount fl">余额 <span id="balance"></span> 元</p>
+        <!-- <a href="https://pay.yongche.com/touch/balance/balancelist" class="seeList fr">账户明细 <span>></span></a> -->
+        <a href="https://pay.yongche.Org/touch/balance/balancelist" class="seeList fr">账户明细 <span>></span></a>
+    </div>
+</div>
+<!-- 弹窗模板 -->
+<div id="tan" style="display: none;">
+  <div id="tan_mask"></div>
+  <div id="tanchuang">
+    <div id="tan_header"></div>
+    <ul id="tan_content">
+      <li>恭喜您领取成功</li>
+      <li>您已领取红包，请到账户中查询</li>
+      <li><a href="https://www.yongche.com/cms/page/passengerdownloads.html">下载易到app，登录账户</a></li>
+    </ul>
+    <div id="tan_footer">确定</div>
+  </div>
+</div>
+<div class="swiper-container tags">
+    <div class="new-user-privilege" ></div>
+    <div class="swiper-wrapper">
+    </div>
+    <!--<div class="swiper-pagination pagination" id="pagination"></div>-->
+</div>
+<div class="nav-area">
+
+</div>
+<div class="other">
+    <div class="charge-area">
+        <div class="normal-charge" >购卡并绑定</div>
+    </div>
+    <div class="apple-area">
+        <div class="normal-charge" >购卡并绑定</div>
+        <div class="apple-pay-charge" ></div>
+    </div>
+    <div class="protocol">
+        点击购卡并绑定，即表示您已经同意易到<span class="activity-btn" id="protocol">《出行卡购买协议》</span>
+    </div>
+    <div class="info-area">
+<!--         <div class="item">余额<span id="balance"></span>元</div>
+        <div class="divide-line"></div> -->
+        <div class="item" id="rule"><a>活动规则</a></div>
+        <div class="divide-line"></div>
+        <div class="item" id="reward-list-css"><a id="reward-list" href="">我的奖品</a></div>
+    </div>
+    <a class="to-link" href="https://www.yongche.com/cms/page/2017/01/04143526.html">
+        闲置资金钱生钱，银行存管的活期理财  <span class="advertise">广告</span>
+    </a>
+</div>
+<div class="rebate-info">
+    <div class="pop-box">
+        <div class="header" id="popup-title"></div>
+        <div class="divide-line"></div>
+        <div class="content" id="popup-value">
+        </div>
+        <div class="shadow"></div>
+        <div class="footer">
+            <div class="i-know normal-btn">我知道了</div>
+        </div>
+    </div>
+</div>
+<div class="norebate-info">
+    <div class="pop-box">
+        <div class="header">温馨提示</div>
+        <div class="divide-line"></div>
+        <div class="content bottom-align ">
+            充<span class="red-text" id="min-rebate-charge">300</span>元以上才能享受充返福利哦
+            <!--<span>只有选择固定档位标签充值</span><br/>-->
+            <!--<span>才可享受充返福利</span>-->
+        </div>
+        <div class="content top-align">
+            确定不要充返福利吗
+        </div>
+        <div class="back-btn normal-btn">我要充返福利</div>
+        <div class="go-btn normal-btn">不要充返福利，继续充值</div>
+    </div>
+</div>
+<div class="float-area" id="rebate-rule">
+    <div class="header red-text" id="rule-title"></div>
+    <div class="content" id="rule-value">
+
+    </div>
+    <div class="shadow"></div>
+    <div class="exit"></div>
+</div>
+<div class="float-area" id="rebate-protocol">
+    <div class="header red-text" id="protocol-title"></div>
+    <div class="content" id="protocol-value">
+
+    </div>
+    <div class="shadow"></div>
+    <div class="exit"></div>
+</div>
+<div id="is-black">
+    <div class="pop-box">
+        <div class="header"><img src="//i1.yongche.name/media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png"></div>
+        <p class="alertContHeader"><font>抱歉，您的账户不具备购买条件，<br/>可能原因如下：</font></p>
+        <div class="alertCont">
+            <p>1.身份信息与其他用户重合</p>
+            <p>2.信用存在风险</p>
+            <p>3.历史订单中存在风控订单</p>
+            <p>4.账户信息与部分被风控司机一致</p>
+            <p>5.其他风险原因</p>
+        </div>
+    </div>
+</div>
+<div class="loading" id="loading" style="display:block;">
+    <img src="//i2-testing.yongche.org/media/g1/M01/06/16/rBEARFY8Xy2ID24xAABHEtelIYMAACiQAMX9E8AAEcq787.gif" alt="">
+    <p>数据请求中...</p>
+</div>
+<script src="//i3-testing.yongche.org/js/jquery.js?1457087125"></script>
+<script src="//i2-testing.yongche.org/js/app/swiper/swiper3.07.min.js?1457087125"></script>
+<script src="//i1-testing.yongche.org/js/jquery.plugins/jquery.lazyLoad/jquery.lazyload.1.9.3.js?1457087125"></script>
+<!-- GA: -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-18761483-4', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<script>
+    window.alert = function(msg){
+        $("#tan_content").html(msg);
+        $("#tan").show();
+      }
+    $("#tan_footer").on("click",function(){
+        $("#tan").hide();
+      })
+    //选择类型的类
+    function PrivilegeType(activityId,names, num, privilege, info, presentation, imgVisible, imgPath) {
+        this.isSelected = false;
+        this.activityId=activityId||1053;
+        this.number = num||0;
+        this.privilege = privilege||'';
+        this.info = info||'';
+        this.presentation = presentation||'';
+        this.names = names||['', ''];
+        this.imgVisible = imgVisible||'hidden';
+        this.imgPath = imgPath||'';
+        this.selectedImgVisibility = 'hidden';
+        this.isJoinRebate=true;
+        this.percent=0;
+        this.tagId=0;
+        this.otherRewards='';
+        this.isInput=false;
+        this.tagOrder=0;
+        this.index=0;
+    }
+    PrivilegeType.prototype = {
+        selectItem: function () {
+            this.isSelected = true;
+        },
+        unSelectItem: function () {
+            this.isSelected = false;
+        },
+        setNumber: function (num,percent,otherRewards,rewardPresentation) {
+            //alert(JSON.stringify(this))
+            this.number = Number(num);
+            if(!percent){
+                percent=0;
+            }
+            this.percent=percent;
+            if(num<rebate.minRebateCharge||(this.percent==0&&!otherRewards)){
+                //this.presentation='不返现';
+                if(!!!otherRewards){
+                    this.presentation=rebate.defaultInputDocument+'<br/>';
+                }
+            }else{
+                if(otherRewards){
+                    this.presentation=rewardPresentation;
+                }else{
+                    this.presentation="";
+                }
+            }
+            this.otherRewards=otherRewards;
+        }
+    };
+</script>
+<script>
+    $('.lazy').lazyload({
+        event:'sporty',
+        effect : "fadeIn",
+    });
+    setTimeout(function() { $("img.lazy").trigger("sporty") }, 100);
+    window.isLogin=$.Deferred();
+    $.ajax({
+        method:'get',
+        url:'/ajax/Rechargerebate/getRebateIndex?time='+new Date().toUTCString()
+    }).success(function(data){
+        //alert(JSON.stringify(data));
+        //var temp=JSON.parse(data);
+        var temp=data;
+        window.isLogin.resolve(temp);
+    }).error(function(e){
+        window.isLogin.reject();
+        alert('服务器异常，请稍后重试');
+    });
+
+    window.isLogin.then(
+            function(data){
+                if(data.code==200){
+                    afterLogin(data.result);
+                }
+                else{
+                    var link = 'yongche://login?done=' + encodeURIComponent(window.location.href);
+                    window.location.href = link;
+                }
+            },
+            function(){
+
+            });
+    var rebatePage={
+        balance:$('#balance'),
+        loading:$('#loading'),
+        tags:$('.tags'),
+        tag:$('.tags .tag'),
+        contents:$('.swiper-slide .content'),
+        swiperWrapper:$('.swiper-wrapper'),
+        inputNumber:$('.input-number'),
+        inputPresentation:$('.input-tag .info-area .text-area'),
+        normalCharge:$('.normal-charge'),
+        appleCharge:$('.apple-pay-charge'),
+        normalArea:$('.charge-area'),
+        appleArea:$('.apple-area'),
+        navArea:$('.nav-area'),
+        navItem:$('.nav-item'),
+        rebateInfo:{
+            that:$('.rebate-info'),
+            iKnow:$('.rebate-info .i-know')
+        },
+        noRebateInfo:{
+            that:$('.norebate-info'),
+            goBtn:$('.norebate-info .go-btn'),
+            backBtn:$('.norebate-info .back-btn')
+        },
+        rebateRule:{
+            that:$('#rebate-rule'),
+            exit:$('#rebate-rule .exit')
+        },
+        rebateProtocol:{
+            that:$('#rebate-protocol'),
+            exit:$('#rebate-protocol .exit')
+        },
+        rule:$('#rule'),
+        protocol:$('#protocol'),
+        other:$('.other'),
+        isBlank:{
+            that:$('#is-black'),
+            alertCont:$('#is-black .alertCont'),
+        },
+        newUserPrivilege:$('.new-user-privilege'),
+        rewardList:$('#reward-list'),
+        popupTitle:$('#popup-title'),
+        popupValue:$('#popup-value'),
+        protocolTitle:$('#protocol-title'),
+        protocolValue:$('#protocol-value'),
+        ruleTitle:$('#rule-title'),
+        ruleValue:$('#rule-value'),
+        minRebateCharge:$('#min-rebate-charge')
+    };
+    rebatePage.loading.show();
+    var rebate={
+        projectId:86,
+        length:4,
+        privilegeTypes:null,
+        selectedPrivilegeType:null,
+        data:null,
+        specialActivity:[],
+        minRebateCharge:300,
+        inputNumber:0,
+        isApplePay:false,
+        inputIndex:0,
+        currentIndex:0,
+        document:{},
+        isWhite:false,
+        minRecharge:1,
+        defaultInputDocument:''
+    };
+    var userAttribution={};
+    function afterLogin(result){
+        var version_show_subdesc = result.version_show_subdesc,
+                webHost = result.webHost;
+        userAttribution={
+            versionShowSubdesc:version_show_subdesc,
+            isBlank:false,
+            activityToken:0,
+            activityId:1053,
+            callbackUrl:result.callback_url,
+            risk:1
+        };
+
+        rebate.tags={
+            noRewardsTag:function(privilegeType){
+                // var tag='<div class="swiper-slide tag  swiper-no-swiping">'+
+                //         '<div class="content bg-noRewards">'+
+                //         '<div class="amount">'+
+                //         '<span class="text-area">'+
+                //         '<span class="t_title">充值</span>'+
+                //         '<span class="money">'+privilegeType.number+'</span>'+
+                //         '</span>'+
+                //         '<span class="text-area signal_area">'+
+                //         '<span class="t_title"></span>'+
+                //         '<span class="signal">+</span>'+
+                //         '</span>'+
+                //         '<span class="text-area">'+
+                //         '<span class="t_title">赠送</span>'+
+                //         '<span class="money">'+privilegeType.number*privilegeType.percent/100+'</span>'+
+                //         '</span>'+
+                //         '<span class="text-area signal_area">'+
+                //         '<span class="t_title"></span>'+
+                //         '<span class="signal">=</span>'+
+                //         '</span>'+
+                //         '<span class="text-area">'+
+                //         '<span class="t_title">入账</span>'+
+                //         '<span class="money result">'+(privilegeType.number+privilegeType.number*privilegeType.percent/100)+'</span>'+
+                //         '</span>'+
+                //         '</div>'+
+                //         '<div class="other-rewards"><span class="text-area">'+privilegeType.presentation+'</span></div>'+
+                //         '<img class="bg-img lazy" src="//i3-testing.yongche.org/media/g2/M01/0C/34/rBEBJVf59s6Ibx3HAAAD701pnpkAAE_6gP_--0AAAQT668.png"/>'+
+                //         '</div>'+
+                //         '</div>';
+                var tag = '<div class="swiper-slide tag  swiper-no-swiping">'+
+                        '<div class="content bg-noRewards">'+
+                        '<div class="amount" style="text-align:center;font-size:30px;padding-top:40px;">'+
+                        '</div>'+
+                        //'<div class="other-rewards"><span class="text-area">'+privilegeType.presentation+'</span></div>'+
+                        //'<img class="bg-img lazy" src="//i1-testing.yongche.org/media/g2/M04/1C/26/rBEBJVqRDiGIYsXkAAL0R_xcy9wAALH_QKGHhUAAvRf250.png"/>'+
+                        //'<img class="bg-img lazy" src="'+privilegeType.arrImg[privilegeType.number]+'"/>'+
+                        '<img class="bg-img lazy" src="'+privilegeType.info+'"/>'+
+                        // '<p class="p-p" style="color:#fff;position:absolute;right:16%; font-weight:bold;">'+privilegeType.number+'<span style="font-size:25px; font-weight:normal;opacity:0;"> 元</span></p>'+
+                        '</div>'+
+                        '</div>';
+                return tag;
+            },
+            hasRewardsTag:function(privilegeType){
+                // var tag='<div class="swiper-slide tag  swiper-no-swiping">'+
+                //         '<div class="content bg-hasRewards">'+
+                //         '<div class="amount">'+
+                //         '<span class="text-area">'+
+                //         '<span class="t_title">充值</span>'+
+                //         '<span class="money">'+privilegeType.number+'</span>'+
+                //         '</span>'+
+                //         '<span class="text-area signal_area">'+
+                //         '<span class="t_title"></span>'+
+                //         '<span class="signal">+</span>'+
+                //         '</span>'+
+                //         '<span class="text-area">'+
+                //         '<span class="t_title">赠送</span>'+
+                //         '<span class="money">'+privilegeType.number*privilegeType.percent/100+'</span>'+
+                //         '</span>'+
+                //         '<span class="text-area signal_area">'+
+                //         '<span class="t_title"></span>'+
+                //         '<span class="signal">=</span>'+
+                //         '</span>'+
+                //         '<span class="text-area">'+
+                //         '<span class="t_title">入账</span>'+
+                //         '<span class="money result">'+(privilegeType.number+privilegeType.number*privilegeType.percent/100)+'</span>'+
+                //         '</span>'+
+                //         '</div>'+
+                //         '<div class="other-rewards"><span class="text-area">'+privilegeType.presentation+'</span></div>'+
+                //         '<img class="bg-img lazy" src="//i3-testing.yongche.org/media/g2/M01/0C/34/rBEBJVf59s6Ibx3HAAAD701pnpkAAE_6gP_--0AAAQT668.png"/>'+
+                //         '</div>'+
+                //         '</div>';
+                var tag = '<div class="swiper-slide tag  swiper-no-swiping">'+
+                        '<div class="content bg-noRewards">'+
+                        '<div class="amount" style="text-align:center;font-size:30px;padding-top:40px;">'+
+                        '</div>'+
+                        //'<div class="other-rewards"><span class="text-area">'+privilegeType.presentation+'</span></div>'+
+                        //'<img class="bg-img lazy" src="//i1-testing.yongche.org/media/g2/M04/1C/26/rBEBJVqRDiGIYsXkAAL0R_xcy9wAALH_QKGHhUAAvRf250.png"/>'+
+                        //'<img class="bg-img lazy" src="'+privilegeType.arrImg[privilegeType.number]+'"/>'+
+                        '<img class="bg-img lazy" src="'+privilegeType.info+'"/>'+
+                        // '<p class="p-p" style="color:#fff;position:absolute;right:16%;font-weight:bold;">'+privilegeType.number+'<span style="font-size:25px; font-weight:normal;opacity:0;"> 元</span></p>'+
+                        '</div>'+
+                        '</div>';
+                return tag;
+            },
+            inputTag:function(privilegeType){
+//                 var tag='<div class="swiper-slide tag  swiper-no-swiping">'+
+//                         '<div class="content input-tag">'+
+//                         '<div class="title title_exra" ><span class="text-area">其它金额</span></div>'+
+// //                        '<div class="divide-line"></div>'+
+//                         '<div class="input-area"><input class="input-number" oninput="rebate.watchInputNumber()" onpropertychange="rebate.watchInputNumber()" onclick="rebate.watchInputNumber()" type="tel" flex-box="1" maxlength="6" placeholder="请输入充值金额"/></div>'+
+//                         '<div class="info-area">'+
+//                         '<div class="amount2">'+
+//                         '<span class="text-area2">'+
+//                         '<span class="t_title">充值</span>'+
+//                         '<span class="money text-area_input_money">'+privilegeType.number+'</span>'+
+//                         '</span>'+
+//                         '<span class="text-area2 signal_area">'+
+//                         '<span class="t_title"></span>'+
+//                         '<span class="signal">+</span>'+
+//                         '</span>'+
+//                         '<span class="text-area2">'+
+//                         '<span class="t_title">赠送</span>'+
+//                         '<span class="money text-area_input_send">'+privilegeType.number*privilegeType.percent+'</span>'+
+//                         '</span>'+
+//                         '<span class="text-area2 signal_area">'+
+//                         '<span class="t_title"></span>'+
+//                         '<span class="signal">=</span>'+
+//                         '</span>'+
+//                         '<span class="text-area2">'+
+//                         '<span class="t_title">入账</span>'+
+//                         '<span class="money result text-area_input_result">'+(privilegeType.number+privilegeType.number*privilegeType.percent)+'</span>'+
+//                         '</span>'+
+//                         '</div>'+
+//                         '<div class="other-rewards2"><span class="text-area"></span></div>'+
+//                         '</div>'+
+//                         '</div>'+
+//                         '</div>';
+                var tag='<div class="swiper-slide tag  swiper-no-swiping">'+
+                        '<div class="content input-tag">'+
+                        '<img class="bg-img lazy" src="'+privilegeType.info+'"/>'+
+//                        '<div class="divide-line"></div>'+
+                        '<div class="input-area"><p class="input_tips" onclick="rebate.tips()">请输入面值</p><input class="input-number" oninput="rebate.watchInputNumber()" onpropertychange="rebate.watchInputNumber()" onclick="rebate.watchInputNumber()" type="tel" flex-box="1" maxlength="5" placeholder=""/><span style="font-size:25px;color:#fff;margin-left:10%;opacity:1;">元</span></div>'+
+                        '<div class="info-area">'+
+                        '</div>'+
+                        '</div>'+
+                        '</div>';
+                return tag;
+            },
+            navItem:function(privilegeType){
+                var navName=privilegeType.number;
+                var tag='';
+                if(navName==0){
+                    navName='其它金额';
+                    tag='<div class="nav-item input-flag" onclick="rebate.toItemIndex('+privilegeType.index+')">'+navName+
+                            '<img data-original="//i3-testing.yongche.org/media/g2/M01/0B/00/rBEBJVfXq2GIWfNLAAAFuwniE4cAAESpADva9QAAAXT299.png" src="//i3-testing.yongche.org/media/g2/M01/0C/34/rBEBJVf59s6Ibx3HAAAD701pnpkAAE_6gP_--0AAAQT668.png" class="selected-flag lazy"/>'+
+                            '</div>';
+                }
+                else{
+                    navName='￥'+navName;
+                    tag='<div class="nav-item" onclick="rebate.toItemIndex('+privilegeType.index+')">'+navName+
+                            '<img data-original="//i3-testing.yongche.org/media/g2/M01/0B/00/rBEBJVfXq2GIWfNLAAAFuwniE4cAAESpADva9QAAAXT299.png" src="//i3-testing.yongche.org/media/g2/M01/0C/34/rBEBJVf59s6Ibx3HAAAD701pnpkAAE_6gP_--0AAAQT668.png" class="selected-flag lazy"/>'+
+                            '</div>'
+                }
+
+                return tag;
+            }
+        };
+        //检测是否是apple设备
+        function checkIsApple() {
+            var browser = {
+                versions: function () {
+                    var u = navigator.userAgent, app = navigator.appVersion;
+                    return { //移动终端浏览器版本信息
+                        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                        iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                        iPad: u.indexOf('iPad') > -1 //是否iPad
+                    };
+                }()
+            };
+
+            if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+                window.location.href = "yongche://checkapplepay?callback=rebate.appPay_callback";
+            }
+        }
+
+        //验证是否支持apple pay的回调函数
+        rebate.appPay_callback=function (status) {
+            var isApple = false;
+            if (status == 1) {
+                isApple = true;
+            }
+            setPayType(isApple);
+        }
+
+        //是否支持apple pay
+        function setPayType(isApple) {
+            var normalArea=rebatePage.normalArea;
+            var appleArea=rebatePage.appleArea;
+            if (isApple) {
+                normalArea.hide();
+                appleArea.show();
+            }
+            else {
+                appleArea.hide();
+                normalArea.show();
+            }
+        }
+
+        (function init(){
+            if(navigator.userAgent.indexOf("YongChe")>0){
+                var version = navigator.userAgent.substr(navigator.userAgent.indexOf("YongChe")).split(" ")[0].split("/")[1]
+                console.log(version)
+                var isAndroid = navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1; //android终端
+                var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+                version = version.split(".");
+                if((version[0]>7)||(version[0]=7 && version[1] >=1&&version[2]>=5)){
+                    checkIsApple();
+                }
+            } else {
+                console.log("非APP")
+            }
+            start(initPrivilegeTypes);
+        })();
+        rebate.afterInitPrivilegeTypes=$.Deferred();
+
+        $.when(rebate.afterInitPrivilegeTypes).then(function(){
+            afterInitPrivilegeTypes();
+        });
+        function afterInitPrivilegeTypes(){
+            setTags();
+            setTagsBackground();
+            setTagHeight();
+            initInputNumber();
+            initClickEvent();
+            produceGallery();
+            rebatePage.rewardList.attr('href', "//"+webHost+"/cms/page/rebate4_list.html");
+            rebatePage.minRebateCharge.text(rebate.minRebateCharge);
+            $.ajax({
+                method:'get',
+                url:'/ajax/Rechargerebate/getDocument?project_id='+rebate.projectId+'&time='+new Date().toUTCString()
+            }).success(function (res) {
+                console.log(res);
+                //var data=JSON.parse(res);
+                var data=res;
+                if(data.code=200){
+                    if(data.result&&data.result.project_document){
+                        initDocument(data.result.project_document);
+                    }
+                    if(data.result&&data.result.angle_mark){
+                        rebatePage.newUserPrivilege.css('visibility','visible');
+                        rebatePage.newUserPrivilege.css('background-image','url('+data.result.angle_mark+')');
+                    }
+                }
+                rebatePage.loading.hide();
+            }).error(function (e) {
+                //alert('服务器异常，请稍后重试');
+            })
+        }
+
+        function initDocument(document){
+            if(document&&document.popup){
+                if(document.popup.title){
+                    rebatePage.popupTitle.html(document.popup.title);
+                }
+                if(document.popup.value){
+                    rebatePage.popupValue.html(document.popup.value);
+                }
+            }
+            if(document&&document.protocal){
+                if(document.protocal.title){
+                    rebatePage.protocolTitle.html(document.protocal.title);
+                }
+                if(document.protocal.value){
+                    rebatePage.protocolValue.html(document.protocal.value);
+                }
+            }
+            if(document&&document.rule){
+                if(document.rule.title){
+                    rebatePage.ruleTitle.html(document.rule.title);
+                }
+                if(document.rule.value){
+                    rebatePage.ruleValue.html(document.rule.value);
+                }
+            }
+        }
+
+        //初始化多种选择类型
+        function start(callback) {
+            try{
+                $.ajax({
+                    method:'get',
+                    url:'/Ajax/Rechargerebate/getActiveInfo?time='+new Date().toUTCString()
+                }).success(function(data){
+                    //alert(JSON.stringify(data));
+                    //var temp=JSON.parse(data);
+                    var temp=data;
+                    var dataB=$.map(data.result.project_tags,function(e,i){
+                        return e.levels;
+                    });
+                    //var dataB = data.result.project_tags[data.result.project_tags.length-1].levels;
+                    window.maxPrice = dataB[0].max_price;
+                    window.minPrice = dataB[0].min_price;
+                    $.each(dataB,function(i,e){
+                        if(e.max_price>window.maxPrice) window.maxPrice = e.max_price;
+                        if(e.min_price<window.minPrice) window.minPrice = e.min_price;
+                    });
+                    callback(temp);
+                    rebate.afterInitPrivilegeTypes.resolve();
+                }).error(function(e){
+                    //alert('服务器异常，请稍后重试');
+                });
+                $.ajax({
+                    method:'get',
+                    url:'/Ajax/Rechargerebate/getUserAmout?time='+new Date().toUTCString()
+                }).success(function(data){
+                    //var temp=JSON.parse(data);
+                    var temp=data;
+                    if(temp.code==200&&temp.result){
+                        rebatePage.balance.text(temp.result.amount);
+                    }
+                }).error(function(e){
+                    //alert('服务器异常，请稍后重试');
+                });
+            }catch (e){
+                //alert('服务器异常，请稍后重试');
+            }
+        }
+        rebate.toItemIndex=function(index) {
+            rebate.gallery.slideTo(index,0,false);
+            rebatePage.navItem.removeClass('selected-nav-item');
+            $(rebatePage.navItem[index]).addClass('selected-nav-item');
+            rebatePage.selectedFlag.removeClass('selected-flag-visible');
+            $(rebatePage.selectedFlag[index]).addClass('selected-flag-visible');
+            rebate.selectedPrivilegeType=rebate.privilegeTypes[index];
+
+//            if(rebate.isNewUser){
+//                rebatePage.newUserPrivilege.css('visibility','visible');
+//            }else{
+//                rebatePage.newUserPrivilege.css('visibility','hidden');
+//            }
+            if(rebate.selectedPrivilegeType&&rebate.selectedPrivilegeType.isInput){
+                rebate.watchInputNumber();
+                if(rebate.selectedPrivilegeType.number>=1){
+                    rebatePage.inputNumber.val(rebate.selectedPrivilegeType.number);
+                }
+            }
+        }
+        function initPrivilegeTypes(data){
+            rebate.privilegeTypes=[];
+            if(data.code==200){
+                var result=data.result;
+                userAttribution.isBlank=result.is_black;
+                userAttribution.risk=result.risk;
+                if(userAttribution.isBlank){
+                    Risk(userAttribution.risk)
+                }
+                userAttribution.activityToken="";
+                rebate.projectId=result.project_id;
+                // if(result.project_id==329){
+                //     var d=new Date();
+                //     var date=d.getDate();
+                //     var hour=d.getHours();
+                //     if(date>=9&&hour>=1){
+                //         window.location.href='https://www.yongche.com/cms/page/waitingforme.html';
+                //         return;
+                //     }
+                // }
+
+                rebate.document=result.project_document;
+                rebate.minRebateCharge=result.no_rebate_price;
+                rebate.is_rebate_money_limit=result.is_rebate_money_limit;
+                rebate.rebate_money_limit=result.rebate_money_limit;
+                var isJoinRebate=result.is_join_rebate;
+                if(isJoinRebate==0||isJoinRebate==2){
+                    rebate.isNewUser=true;
+                }
+                else{
+                    rebate.isNewUser=false;
+                }
+                if(result&&result.project_tags&&result.project_tags.length>0){
+                    var tags=result.project_tags;
+                    var length=result.project_tags.length;
+                    for(var i=0;i<length;i++){
+                        var tag=tags[i];
+                        var privilegeType=new PrivilegeType(tag.activity_id,[tag.recharge,tag.show_name], tag.recharge);
+
+                        if(tag.percent&&tag.percent!='0'){
+                            privilegeType.privilege=tag.recharge*Number(100+tag.percent)*0.01;
+                            privilegeType.extra=tag.recharge*Number(tag.percent)*0.01
+                        }
+                        else{
+                            privilegeType.presentation='';
+                            privilegeType.privilege='可得'+privilegeType.number+'元余额';
+                        }
+                        if(!!tag.show_name)
+                        {
+                            privilegeType.presentation=tag.show_name;
+                        }
+                        if(!!tag.tag_picture){
+                            privilegeType.info=tag.tag_picture;
+                            privilegeType.imgVisible='visible';
+                        }
+                        if(!!tag.tag_banner){
+                            privilegeType.imgPath=tag.tag_banner;
+                        }
+                        if(isJoinRebate==0||isJoinRebate==2){
+                            privilegeType.isJoinRebate=false;
+                        }
+                        privilegeType.tagOrder=tag.tag_order;
+                        privilegeType.tagId=tag.tag_id;
+                        privilegeType.otherRewards=tag.otherRewards;
+                        privilegeType.percent=Number(tag.percent);
+                        if(tag.activity_id!=1053){
+                            rebate.specialActivity.push(tag.activity_id);
+                        }
+                        if(tag.recharge==0){
+                            privilegeType.isInput=true;
+                            rebate.inputData=tag;
+                            privilegeType.privilege=tag.show_name;
+                            rebate.defaultInputDocument=tag.show_name;
+                        }
+
+                        rebate.privilegeTypes.push(privilegeType);
+                    }
+                }
+                rebate.privilegeTypes.sort(function(x,y){
+                    return x.tagOrder-y.tagOrder;
+                });
+                rebate.length=rebate.privilegeTypes.length;
+                for(var i=0;i<rebate.length;i++){
+                    rebate.privilegeTypes[i].index=i;
+                }
+
+                rebate.selectedPrivilegeType=rebate.privilegeTypes[0];
+            }
+        }
+        //自由输入金额监测
+        function initInputNumber() {
+            rebatePage.inputNumber=$('.input-number');
+            rebatePage.inputPresentation=$('.input-tag .info-area .text-area');
+            rebatePage.inputFlag=$('.input-flag');
+            var contentWidth=$('body').width();
+            if(rebate.length%3==1){
+                rebatePage.inputFlag.width(contentWidth*0.855);
+            }
+            else if(rebate.length%3==2){
+                rebatePage.inputFlag.width(contentWidth*0.55);
+            }
+        }
+
+        //对于弹出提示框的封装
+        function Risk(num) {
+            var alertCont=rebatePage.isBlank.alertCont;
+            var isBlack = rebatePage.isBlank.that;
+            rebatePage.loading.hide();
+            isBlack.show();
+            if(num == 0) {
+                alertCont.html('风控服务请求不到，或没有返回结果')
+            } else if(num == -1) {
+                alertCont.html('同一手机号、移动设备、支付账号仅能以一个账号参与活动，您的手机号已被其他账号参与过充值返现活动。')
+            }
+//                else if(num == -2) {
+//                    alertCont.html('同一手机号、移动设备、支付账号仅能以一个账号参与活动，您的身份证已被其他账号参与过充值返现活动。')
+//                }
+            else if(num == -3) {
+                alertCont.html('同一手机号、移动设备、支付账号仅能以一个账号参与活动，您的用户信息与上次充返记录不一致。')
+            } else if(num == -4) {
+                alertCont.html('同一手机号、移动设备、支付账号仅能以一个账号参与活动，您的移动设备已被其他账号参与过充值返现活动。')
+            } else if(num == -5) {
+
+                alertCont.html('同一手机号、移动设备、支付账号仅能以一个账号参与活动，您的信用卡已被其他账号参与过充值返现活动。')
+            } else if(num <= -6) {
+                alertCont.html('1、移动设备上曾登录过多个账号，存在安全隐患<br/>2、个人信息与司机重合<br/>3、存在风险订单')
+            } else {
+                alertCont.html('1、移动设备上曾登录过多个账号，存在安全隐患<br/>2、个人信息与司机重合<br/>3、存在风险订单')
+            }
+        }
+
+        rebate.watchInputNumber=function (){
+            var inputNumber=$('.input-number');
+
+            rebatePage.inputPresentation=$('.input-tag .info-area .text-area');
+            var length = rebate.privilegeTypes.length;
+            var temp = inputNumber.val();
+            var reg=/^[1-9]\d*$|^0$/;
+            if(!reg.test(temp)&&temp){
+                inputNumber.val(rebate.inputNumber);
+                temp=inputNumber.val();
+            }
+            else{
+                rebate.inputNumber=Number(temp);
+            }
+            //console.log(rebate.inputNumber);
+            if(rebate.inputNumber>0){
+                inputNumber.val(rebate.inputNumber);
+            }
+            else{
+                inputNumber.val('');
+            }
+            //rebate.currentIndex=index-1;
+//            rebate.selectedPrivilegeType=rebate.privilegeTypes[rebate.length-1];
+            var item=rebate.selectedPrivilegeType;
+            if(temp===""){
+                temp=0;
+            }
+            var level=gradientLevel(temp);
+            var percent=level.percent;
+            var otherRewards=level.otherReward;
+            var presentation=item.privilege;
+            if(level.percent!='0' || level.otherReward !='' || level.min_price != '0'){
+                presentation=level.tag_banner;
+            }
+            if (!!temp) {
+                item.setNumber(temp,percent,otherRewards,presentation);
+            }
+            else {
+                item.setNumber(0,percent,otherRewards,presentation);
+            }
+            if(item.number == '0'){
+                $('.amount2').hide();
+            }else{
+                $('.amount2').show();
+            }
+
+            $('.text-area_input_money').html(item.number);
+            $('.text-area_input_send').html(item.number*item.percent/100);
+            $('.text-area_input_result').html(item.number*item.percent/100+item.number);
+
+            if(inputNumber.val()==''){
+
+                $('.input_tips').show();
+
+            }else{
+
+                $('.input_tips').hide();
+
+            }
+
+            //$('.other-rewards2').find('span').html(item.presentation);
+
+            //rebatePage.inputPresentation.html(item.privilege);
+        }
+
+        rebate.tips=function (){
+
+            $('.input_tips').hide();
+            $('.input-number').focus();
+
+        }
+
+        function setTags() {
+            var height=$('body').height();
+            $('body').height(height);
+            var tags='';
+            var navs='';
+            var privilegeTypes=rebate.privilegeTypes;
+            var length=privilegeTypes.length;
+            for(var i=0;i<length;i++){
+                var privilegeType=privilegeTypes[i];
+                if(!!privilegeType.number){
+                    if(!!privilegeType.presentation){
+                        tags+=rebate.tags.hasRewardsTag(privilegeType);
+                    }
+                    else{
+                        tags+=rebate.tags.noRewardsTag(privilegeType);
+                    }
+                }else{
+                    tags+=rebate.tags.inputTag(privilegeType);
+                }
+                navs+=rebate.tags.navItem(privilegeType);
+            }
+            rebatePage.swiperWrapper[0].innerHTML=tags;
+            rebatePage.navArea[0].innerHTML=navs;
+            rebatePage.newUserPrivilege=$('.new-user-privilege');
+            rebatePage.selectedFlag=$('.selected-flag');
+           if(rebate.isNewUser){
+               //rebatePage.newUserPrivilege.css('visibility','hidden');
+           }
+        }
+        function initClickEvent(){
+            rebatePage.normalCharge.get(0).onclick=function(){
+                if(rebate.is_rebate_money_limit!=1&&rebate.selectedPrivilegeType.number<rebate.rebate_money_limit){
+                    //alert('其他金额必须大于等于'+rebate.rebate_money_limit+'元');
+                    //return;
+                }
+                rebate.isApplePay=false;
+                if(rebate.selectedPrivilegeType.number>=rebate.minRebateCharge){
+//                if(!rebate.selectedPrivilegeType.isInput){
+                    //rebatePage.rebateInfo.that.show();
+                    charge(rebate.isApplePay);
+                }else{
+                    //rebatePage.noRebateInfo.that.show();
+                    charge(rebate.isApplePay);
+                }
+            };
+            rebatePage.normalCharge.get(1).onclick=function(){
+                if(rebate.is_rebate_money_limit!=1&&rebate.selectedPrivilegeType.number<rebate.rebate_money_limit){
+                    //alert('其他金额必须大于等于'+rebate.rebate_money_limit+'元');
+                    //return;
+                }
+                rebate.isApplePay=false;
+                if(rebate.selectedPrivilegeType.number>=rebate.minRebateCharge){
+                    charge(rebate.isApplePay);
+                    //rebatePage.rebateInfo.that.show();
+                }else{
+                    //rebatePage.noRebateInfo.that.show();
+                    charge(rebate.isApplePay);
+                }
+            };
+            rebatePage.appleCharge.get(0).onclick=function(){
+                if(rebate.is_rebate_money_limit!=1&&rebate.selectedPrivilegeType.number<rebate.rebate_money_limit){
+                    //alert('其他金额必须大于等于'+rebate.rebate_money_limit+'元');
+                    //return;
+                }
+                rebate.isApplePay=true;
+//                if(rebate.selectedPrivilegeType.number>=rebate.minRebateCharge){
+//                    rebatePage.rebateInfo.that.show();
+//                }else{
+//                    rebatePage.noRebateInfo.that.show();
+//                }
+                charge(rebate.isApplePay);
+            };
+            rebatePage.rule.get(0).onclick=function(){
+                rebatePage.rebateRule.that.show();
+            };
+            rebatePage.rebateRule.exit.get(0).onclick=function(){
+                rebatePage.rebateRule.that.hide();
+            };
+            rebatePage.protocol.get(0).onclick=function(){
+                rebatePage.rebateProtocol.that.show();
+            };
+            rebatePage.rebateProtocol.exit.get(0).onclick=function(){
+                rebatePage.rebateProtocol.that.hide();
+            };
+            rebatePage.rebateInfo.iKnow.get(0).onclick=function(){
+                rebatePage.rebateInfo.that.hide();
+                charge(rebate.isApplePay)
+            };
+            rebatePage.noRebateInfo.goBtn.get(0).onclick=function(){
+                rebatePage.noRebateInfo.that.hide();
+                charge(rebate.isApplePay)
+            };
+            rebatePage.noRebateInfo.backBtn.get(0).onclick=function(){
+                rebatePage.noRebateInfo.that.hide();
+                return;
+            };
+            function charge(isApplePay){
+                var selectedPrivilege=rebate.selectedPrivilegeType;
+                var url=setPayUrl(selectedPrivilege,isApplePay);
+                if(!!!url){
+                    return;
+                }
+                if($('.input-flag').hasClass('selected-nav-item')&&selectedPrivilege.number<window.minPrice&&selectedPrivilege.activityId!=1070){
+                    alert('输入的金额必须大于等于'+window.minPrice+'元');
+                    rebatePage.inputPresentation.html('其他金额必须大于等于'+window.minPrice+'元');
+                    $('.input_tips').show().siblings('input').val('');
+                    return;
+                }else if($('.input-flag').hasClass('selected-nav-item')&&selectedPrivilege.number>=window.maxPrice&&selectedPrivilege.activityId!=1070){
+                    alert('输入的金额必须小于'+window.maxPrice+'元');
+                    $('.input_tips').show().siblings('input').val('');
+                    return;
+                }
+
+                window.location.href=url;
+            }
+        }
+
+        //拼装支付链接地址
+        function setPayUrl(selectedPrivilege,isApplePay) {
+            var url = "", accountDesc = "";
+            //前端判断参数（技术确定），缺少参数的用户点击马上充值出现弹窗，弹窗文案：客官稍后，服务不稳定刷新重试。
+            if(!!!selectedPrivilege.activityId) {
+                alert('客官稍后，服务不稳定刷新重试');
+                return;
+            }
+            var number=selectedPrivilege.number/10000;
+            if (isApplePay) {
+                url += "yongche://applePayPaymentRecharge?";
+            }
+            else {
+                url += "yongche://paymentStore?";
+            }
+
+            if (userAttribution.versionShowSubdesc) {
+                accountDesc+=encodeURIComponent("需支付" + selectedPrivilege.number + "元");
+            }
+            if (userAttribution.isBlank) {//是黑名单用户
+                url += "activity_id=&amount=" + number + "&pay_type=3&callback=rebate.rebate_result&activity_token="
+            }
+            else {
+                var temp=rebate.projectId+'|'+selectedPrivilege.tagId+'|1';
+                var reverse=  encodeURIComponent(temp);
+                var data={order_id:0};
+                data=encodeURIComponent(JSON.stringify(data));
+                url += "from=2&activity_id=" + selectedPrivilege.activityId + "&amount=" + number + "&amount_desc=" + accountDesc + "&pay_type=3&callback=rebate.rebate_result&activity_token=" + reverse+'&data='+data;
+            }
+            //alert(JSON.stringify(selectedPrivilege))
+            return url;
+        }
+
+        function gradientLevel(amount){
+            var retAmount=0;
+            if(rebate.inputData&&rebate.inputData.levels){
+                var levels=rebate.inputData.levels;
+                var length=levels.length;
+                levels=levels.sort(function(a,b){
+                    a.min_price-b.min_price;
+                });
+                for(var i=0;i<length;i++){
+                    var level=levels[i];
+                    if(amount>=level.min_price&&amount<level.max_price){
+                        return level;
+                    }
+                }
+            }
+            return retAmount;
+        }
+        function setTagHeight(){
+            var contentWidth=$('body').width();
+            var tagHeight=contentWidth*42/64;
+            rebatePage.contents.height(tagHeight);
+            rebatePage.tags.height(tagHeight);
+            var navsHeight=rebatePage.navArea.height();
+            //rebatePage.other.height($('body').height()-tagHeight-navsHeight-15);
+        }
+        function setTagsBackground(){
+            rebatePage.tag=$('.tags .tag');
+            rebatePage.contents=$('.swiper-slide .content');
+            rebatePage.imgs=$('.swiper-slide .content .bg-img')
+            rebatePage.navItem=$('.nav-item');
+            var privilegeTypes=rebate.privilegeTypes;
+            var tag=rebatePage.tag;
+            var length=tag.length;
+            if(tag&&tag.length>0){
+                for(var i=0;i<length;i++){
+                    //$(rebatePage.imgs[i]).attr('data-original',privilegeTypes[i].info);
+                }
+            }
+            $('.lazy').lazyload({
+                event:'sporty',
+                effect : "fadeIn",
+            });
+            setTimeout(function() { $("img.lazy").trigger("sporty") }, 100);
+        }
+
+        function produceGallery(){
+            rebate.gallery = new Swiper('.swiper-container', {
+                autoplay: 0,//可选选项，自动滑动
+                longSwipesRatio:0.3,
+                loop:false,
+                loopAdditionalSlides:0,
+                centeredSlides:true,
+                pagination : '.swiper-pagination',
+                paginationClickable:true,
+                watchActiveIndex: true,
+                grabCursorpr: true,
+                resizeReInit: true,
+                slidesPerView:1,
+                watchSlidesProgress : true,
+                watchSlidesVisibility : true,
+                spaceBetween : 0,
+                noSwiping :true,
+                direction:'horizontal',
+                onTransitionEnd:function(param){
+                    var index=param.activeIndex;
+                    rebate.selectedPrivilegeType=rebate.privilegeTypes[index];
+                    setTagHeight();
+                    rebatePage.navItem.removeClass('selected-nav-item');
+                    $(rebatePage.navItem[index]).addClass('selected-nav-item');
+                    rebatePage.selectedFlag.removeClass('selected-flag-visible');
+                    $(rebatePage.selectedFlag[index]).addClass('selected-flag-visible');
+                    if(rebate.selectedPrivilegeType.isInput){
+                        rebate.watchInputNumber();
+                        if(rebate.selectedPrivilegeType.number>=1){
+                            rebatePage.inputNumber.val(rebate.selectedPrivilegeType.number);
+                        }
+                    }
+                },
+            });
+            var index=0;
+            var length=rebate.privilegeTypes.length;
+            if(length>2){
+                index=length-2;
+            }
+            rebate.toItemIndex(4);
+        }
+
+    }
+    // 充值回调函数
+    rebate.rebate_result=function (transactionId, data) {
+        var tid=transactionId||0;
+        if(!transactionId||transactionId==0){
+            //alert(data);
+            return;
+        }
+        //rebate.toOtherPage(document.location.href.replace('index','complete'));
+        var callbackUrl=userAttribution.callbackUrl;
+        var selectedPrivilege=rebate.selectedPrivilegeType;
+        var totalMoney=selectedPrivilege.number;
+        if(totalMoney>=rebate.minRebateCharge){
+            totalMoney=(selectedPrivilege.number*(selectedPrivilege.percent*0.01+1)).toFixed(2);
+        }
+        setTimeout(function(){
+            var temp=window.location.href;
+            var flag = '?';
+            if(temp.indexOf('?')>0){
+                flag = '&';
+            }
+            window.location.href=window.location.href.replace('index','complete') + flag +"transaction_id=" + transactionId + "&activity_id=" + selectedPrivilege.activityId+'&other_rewards='+encodeURIComponent(selectedPrivilege.otherRewards)+'&total_money='+totalMoney+'&project_id='+rebate.projectId;
+            //rebate.toOtherPage(callbackUrl + "?transaction_id=" + transactionId + "&activity_id=" + selectedPrivilege.activityId+'&other_rewards='+encodeURIComponent(selectedPrivilege.otherRewards)+'&total_money='+totalMoney);
+        },1000);
+    };
+</script>
+</body>
+</html>
+<!-- render: data/page/recharge.html at 2018-06-06 11:49:08 by 1797 -->

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        window.isLogin=$.Deferred();
+        function is_weixin(){
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if(is_weixin()){
+            $.ajax({
+                method:'get',
+                url:'/ajax/Rechargerebate/getRebateIndex?time='+new Date().toUTCString()
+            }).done(function(data){
+                //alert(JSON.stringify(data));
+                //var temp=JSON.parse(data);
+                var temp=data;
+                window.isLogin.resolve(temp);
+            }).fail(function(e){
+                window.isLogin.reject();
+            });
+        }else{
+            window.location.href='https://3g.yongche.com';
+        }
+    </script>
+    <style>
+        * { padding:0; margin:0;-webkit-tap-highlight-color: rgba(0,0,0,0);font-family: "Microsoft YaHei"}
+        *:focus { outline: none; }
+        HTML ,body { font-size:12px;height:100%;width:100%; font-family: "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;}
+        a { color:#fff; text-decoration:none; outline:none;}
+        a:hover{ outline:none;}
+        li { list-style-type:none;}
+        h1 , h2 { font-weight:normal;}
+        input, input[type="submit"], input[type="reset"] {-webkit-appearance: none;padding-left: 10%;padding-right: 10%;text-align: left;}
+        input::-webkit-input-placeholder{
+            text-align: left;
+        }
+        .top-area{
+            position: relative;
+            height: 50%;
+            width: 100%;
+            background-image: url(<{asset:media/g2/M04/14/10/rBEBJVitT4GIBUK_AAD3HyK31FcAAH47wKKu7QAAPc3679.jpg}>);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        .title-info{
+            height:2.4rem;
+            line-height: 2.4rem;
+            margin-left: 0%;
+            font-weight: 500;
+            text-align: center;
+        }
+        .telephone{
+            width: 60%;
+            margin-left: 10%;
+            border:1px #FD544D solid;
+            padding-left: 2rem;
+        }
+        .capycha-area{
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 0.5rem;
+        }
+        .capycha-area .capycha{
+            float: left;
+            margin-top: 0rem;
+            border:1px #FD544D solid;
+            width: 35%;
+            padding-left: 2rem;
+        }
+        .capycha-area .capycha-btn{
+            float: right;
+            margin-top: 0rem;
+            background-color:#F8542A;
+            border:1px #FD544D solid;
+            width: 40%;
+            padding: 0;
+            color:white;
+            text-align: center;
+        }
+        .login-btn{
+            background-color:#818181;
+            border:1px #818181 solid;
+            color:white;
+            font-size: 1rem;
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .btn-base{
+            height: 2.4rem;
+            line-height: 2.4rem;
+            border-radius: 1.2rem;
+        }
+        .default-fs{
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        @media screen and(max-width: 320px) {
+            html{
+                font-size:16px;
+            }
+        }
+        @media screen and (min-width: 321px) and (max-width: 360px){
+            html{
+                font-size: 18px;
+            }
+        }
+        @media screen and (min-width:361px ) and (max-width: 413px){
+            html{
+                font-size: 20px;
+            }
+        }
+        @media screen and (min-width:414px ){
+            html{
+                font-size: 22px;
+            }
+        }
+        #imageCapychaArea{
+            /*display: none;*/
+            margin-top: 0.5rem;
+            height:30px;
+            font-size: 0.6rem;
+        }
+        #imageCapychaArea .capycha{
+            margin-top: 0;
+            height:30px;
+            line-height: 30px;
+            padding: 0;
+            font-size: 0.8rem;
+            width:60%;
+            padding-left: 2rem;
+        }
+        #imageCapychaArea #imageCapychaSrc{
+            height:25px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="top-area"></div>
+<div class="title-info default-fs">验证手机号</div>
+<input class="telephone default-fs btn-base" type="tel" placeholder="输入手机号"  oninput="checkTelephone()"/>
+<div class="capycha-area btn-base" id="imageCapychaArea">
+    <input class="capycha default-fs btn-base" type="text" id="imageCapycha" placeholder="图片验证码"  oninput="checkCapyche()"/>
+    <img id="imageCapychaSrc" src="/ajax/Webuser/getCaptcha"/>
+</div>
+<div class="capycha-area btn-base">
+    <input class="capycha default-fs btn-base" id="capycha" type="tel" placeholder="输入验证码"  oninput="checkCapyche()"/>
+    <input class="capycha-btn default-fs btn-base" type="button" value="获取验证码"/>
+</div>
+<input type="button" class="btn-base login-btn"  value="登录" disabled="disabled"/>
+<script>
+    function checkMobile(number){
+        if(!(/^1[3|4|5|6|7|8][0-9]\d{4,8}$/.test(number))){
+            return false;
+        }
+        return true;
+    }
+    var topArea=$('.top-area');
+    var width=topArea.width();
+    topArea.height(width/640*549);
+    var domain='http://qudongjie.h5.yongche.orG';
+    var indexPage='/touch/Weixinrecharge/index';
+    var login={
+        code:0,
+        needImageCaptcha:true,
+        imageCaptchaContent:'',
+        goBtn:$('.login-btn'),
+        telephone:$('.telephone'),
+        capycha:$('#capycha'),
+        capychaBtn:$('.capycha-btn'),
+        iamgeCaptcha:$('#imageCapycha'),
+        imageCapychaSrc:$('#imageCapychaSrc'),
+        imageCaptchaArea:$('#imageCapychaArea')
+    };
+
+    login.imageCapychaSrc[0].onclick=function(){
+        modifyImageCapychaSrc();
+    };
+    function modifyImageCapychaSrc() {
+        login.imageCapychaSrc.attr('src','/ajax/Webuser/getCaptcha?t='+new Date());
+    }
+    window.isLogin.then(function(res){
+            if(res.code==200){
+                window.location.href=indexPage;
+            }else{
+                initEvent();
+            }
+        }
+        ,function(){
+            alert('服务异常，请重新进入页面')
+        });
+    function initEvent() {
+        login.capychaBtn.get(0).onclick=function() {
+                getCapycha(true);
+        };
+        login.goBtn.get(0).onclick=function(){
+            //$("#loading").css('display','block');
+            var code = login.capycha.val();
+            var cellphone = login.telephone.val();
+            console.log(code);
+            $.ajax({
+                type:"get",
+                url:"/ajax/Webuser/Login?cellphone="+cellphone+"&code="+code,
+                success:function(data) {
+                    //var codeRes = JSON.parse(data);
+                    var codeRes = data;
+                    console.log(codeRes);
+                    if(codeRes.code==200){
+                        window.location.href=indexPage;
+                    } else{
+                        alert('验证码输入错误，请重试')
+                    }
+                }
+            });
+        }
+    }
+    var interval;
+    function getCapycha(isNeedInput){
+        var value=login.telephone.val();
+
+        if(checkMobile(value)){
+            if(isNeedInput){
+                login.imageCaptchaContent=login.iamgeCaptcha.val();
+                if(!!!login.imageCaptchaContent)
+                {
+                    alert('图片验证码不能为空');
+                    return;
+                }
+            }
+            login.capychaBtn.attr('disabled','disabled');
+            login.capychaBtn.css('background-color','#818181');
+            login.capychaBtn.css('border-color','#818181');
+            var sTime=59;
+            login.capychaBtn.val(sTime+'s');
+            interval=setInterval(function(){
+                sTime--;
+                if(sTime==0){
+                    clearInterval(interval);
+                    login.capychaBtn.removeAttr('disabled');
+                    login.capychaBtn.css('background-color','#F8542A');
+                    login.capychaBtn.css('border-color','#FD544D');
+                    login.capychaBtn.val('获取验证码');
+                    modifyImageCapychaSrc();
+                    login.imageCaptchaArea.show();
+                }else{
+                    login.capychaBtn.val(sTime+'s');
+                }
+            },1000);
+        }else{
+            alert('请输入正确的手机号');
+        }
+
+        $.ajax({
+            type:"get",
+            url:'/ajax/Webuser/getCode?cellphone='+value+'&&captcha='+login.imageCaptchaContent,
+            success:function(data) {
+                console.log(data);
+                //var res = JSON.parse(data);
+                var res = data;
+                if(res.code==200){
+                    login.goBtn.removeAttr('disabled');
+                    login.goBtn.css('background-color','#F8542A');
+                    login.goBtn.css('border-color','#FD544D');
+                } else if(res.code==429) {
+                    alert('请求次数过多请稍后重试哦');
+                    activeGetCapycha();
+                    modifyImageCapychaSrc();
+                } else if(res.code==449) {
+                    alert('服务器忙，请稍后重试')
+                    activeGetCapycha();
+                    modifyImageCapychaSrc();
+                } else{
+                    alert(res.msg);
+                    activeGetCapycha();
+                    modifyImageCapychaSrc();
+                }
+            },
+            error:function(error){
+                alert('请求出错，请重新请求');
+                modifyImageCapychaSrc();
+            }
+        });
+    }
+    function activeGetCapycha() {
+        clearInterval(interval);
+        login.capychaBtn.removeAttr('disabled');
+        login.capychaBtn.css('background-color','#F8542A');
+        login.capychaBtn.css('border-color','#FD544D');
+        login.capychaBtn.val('获取验证码');
+    }
+
+    function checkTelephone(){
+        var value=login.telephone.val();
+        if(value.length>11){
+            value=value.substring(0,11);
+            login.telephone.val(value);
+        }
+//        console.log(value);
+    }
+
+    function checkCapyche(){
+        var value=login.capycha.val();
+        if(value.length>6){
+            value=value.substring(0,6);
+            login.capycha.val(value);
+        }
+//        console.log(value);
+    }
+
+</script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js "></script>
+<script>
+    $.ajax({
+        url:"//weixin.yongche.com/wechat/jssdk/config?url="+encodeURIComponent(window.location.href),
+        method:'get',
+        dataType:'jsonp'
+    }).done(function(data){
+        console.log(data);
+        if(data.code==200){
+            wx_share(data.result);
+        }
+    }).fail(function(error){
+        console.log(error)
+    });
+    function wx_share(jsData) {
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: jsData.appId, // 必填，公众号的唯一标识
+            timestamp: jsData.timestamp, // 必填，生成签名的时间戳
+            nonceStr: jsData.nonceStr, // 必填，生成签名的随机串
+            signature: jsData.signature,// 必填，签名，见附录1
+            jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline','onMenuShareQQ','onMenuShareWeibo'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+        wx.ready(function(){
+            var shareData =
+                {
+                    link:"//h5.yongche.com/touch/Weixinrecharge/index",
+                    imgUrl:"https://i3.yongche.Name"+"/media/g2/M03/14/09/rBEBJViqqxOIBWpMAAAaEG-Qgf4AAH2EgP_pf0AABoo303.jpg",
+                    title:"你有一份50%返现+出行券礼包优惠，请及时领取！",
+                    desc:"参加易到充返，天天出行不用愁！",
+                    type: '', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                };
+            wx.onMenuShareAppMessage(shareData);
+            wx.onMenuShareTimeline(shareData);
+            wx.onMenuShareQQ(shareData);
+            //alert('ok');
+        });
+    }
+</script>
+</body>
+</html>
