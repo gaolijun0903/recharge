@@ -35,7 +35,7 @@
             width: 100%;
             height: 60%;
         }
-        .result-area .amount{
+        /*.result-area .amount{
             position: relative;
             height: 4rem;
             line-height: 4rem;
@@ -69,8 +69,8 @@
             font-size: 1.8rem;
             font-weight: 900;
             text-align: center;
-        }
-        .result-area .other-rewards{
+        }*/
+        /*.result-area .other-rewards{
             margin-top: -1rem;
             position: relative;
             width: 70%;
@@ -125,8 +125,8 @@
             margin-top: 1rem;
             height: 1px;
             background: #F96565;
-        }
-        .result-area .my-rewards-info{
+        }*/
+        /*.result-area .my-rewards-info{
             position: relative;
             width: 100%;
             height: 1rem;
@@ -134,8 +134,8 @@
             line-height: 1rem;
             color:#F8DCCA;
             text-align: center;
-        }
-        .ad-image{
+        }*/
+        /*.ad-image{
             visibility: hidden;
             width: 100%;
             height: 10%;
@@ -162,13 +162,7 @@
             position: absolute;
             bottom: 15%;
             color:#FFFFFF;
-            /*color:#FFFFFF;*/
-            /*-webkit-box-shadow:  1px 0px 1px 0px #FF9596,*/
-            /*-1px 0px 1px 0px #FF9596,*/
-            /*0px 2px 2px 0px #FF9596;*/
-            /*box-shadow:  1px 0px 1px 0px #FF9596,*/
-            /*-1px 0px 1px 0px #FF9596,*/
-            /*0px 2px 2px 0px #FF9596;*/
+            
         }
         .info-area .invite-friend .big-text{
             font-size: 1.2rem;
@@ -186,21 +180,15 @@
             position: absolute;
             top:10%;
             color:#FFFFFF;
-            /*border: 1px solid #FD4C48;*/
-            /*-webkit-box-shadow:  1px 0px 1px 0px #FF9596,*/
-            /*-1px 0px 1px 0px #FF9596,*/
-            /*0px 2px 2px 0px #FF9596;*/
-            /*box-shadow:  1px 0px 1px 0px #FF9596,*/
-            /*-1px 0px 1px 0px #FF9596,*/
-            /*0px 2px 2px 0px #FF9596;*/
+            
         }
         .info-area .re-rebate .big-text{
             font-size: 1.2rem;
             height: 3rem;
             line-height: 3rem;
             text-align: center;
-        }
-        .pop-box {
+        }*/
+        /*.pop-box {
             position: fixed;
             top:0;
             left:0;
@@ -223,18 +211,12 @@
             width: 100%;
             height: 30%;
             bottom: 0;
-        }
-        .invite-area .invite-friend{
+        }*/
+        /*.invite-area .invite-friend{
             position: absolute;
             bottom: 15%;
-            /*background:#FD4C48;*/
             color:#FFFFFF;
-            /*-webkit-box-shadow:  1px 0px 1px 0px #FF9596,*/
-            /*-1px 0px 1px 0px #FF9596,*/
-            /*0px 2px 2px 0px #FF9596;*/
-            /*box-shadow:  1px 0px 1px 0px #FF9596,*/
-            /*-1px 0px 1px 0px #FF9596,*/
-            /*0px 2px 2px 0px #FF9596;*/
+           
         }
         .invite-area .invite-friend .big-text{
             font-size: 1.2rem;
@@ -251,14 +233,7 @@
         .invite-area .re-rebate{
             position: absolute;
             top:10%;
-            /*border: 1px solid #FD4C48;*/
-            /*-webkit-box-shadow:  1px 0px 1px 0px #FF9596,*/
-            /*-1px 0px 1px 0px #FF9596,*/
-            /*0px 2px 2px 0px #FF9596;*/
-            /*box-shadow:  1px 0px 1px 0px #FF9596,*/
-            /*-1px 0px 1px 0px #FF9596,*/
-            /*0px 2px 2px 0px #FF9596;*/
-            /*background-color:#ffffff;*/
+            
             color:#FFFFFF;
         }
         .invite-area .re-rebate .big-text{
@@ -272,7 +247,7 @@
             line-height: 1rem;
             height: 1rem;
             text-align: center;
-        }
+        }*/
         @media screen and(max-width: 320px) {
             html{
                 font-size:16px;
@@ -398,7 +373,7 @@
     var transaction_id = request['transaction_id'];
     var project_id = request['project_id'];
     var total_money=request['total_money'];
-    var other_rewards=request['other_rewards'];
+    //var other_rewards=request['other_rewards'];
     var activity_id=request['activity_id'];
     var time;
     var getTimes = 0;
@@ -407,17 +382,17 @@
 
     var chargeMoney=0;
     var totalMoney=total_money;
-    var otherRewards=other_rewards;
-    var rewardList=[];
-    if(!!otherRewards){
-        rewardList=otherRewards.split('/');
-    }
+    //var otherRewards=other_rewards;
+    //var rewardList=[];
+    //if(!!otherRewards){
+    //    rewardList=otherRewards.split('/');
+    //}
     resultPage={
-        amount:$('.amount'),
-        totalNumber:$('.number'),
-        rewardsTitle:$('.other-rewards .center'),
-        rewards:$('.other-rewards ul'),
-        lrLine:$('.lr-line-width'),
+        //amount:$('.amount'),
+        //totalNumber:$('.number'),
+        //rewardsTitle:$('.other-rewards .center'),
+        //rewards:$('.other-rewards ul'),
+        //lrLine:$('.lr-line-width'),
         sections:$("section"),
         loading:$('#loading'),
         rechargeFail:{
@@ -425,54 +400,54 @@
             p:$(".recharge_fail p")
         },
         rechargeUnknow:$(".recharge_unknow"),
-        popBox:$('#popBox'),
-        reminder:$('#reminder'),
-        enterInfo:$('#enter-info'),
-        btn1:$('#btn1'),
-        btn1Text:$('#btn1-text'),
-        btn2:$('#btn2'),
-        btn2Text:$('#btn2-text'),
-        popBtn1:$('#popBtn1'),
-        popBtn1Text:$('#popBtn1-text'),
-        popBtn2:$('#popBtn2'),
-        popBtn2Text:$('#popBtn2-text'),
+        //popBox:$('#popBox'),
+        //reminder:$('#reminder'),
+        //enterInfo:$('#enter-info'),
+        //btn1:$('#btn1'),
+        //btn1Text:$('#btn1-text'),
+        //btn2:$('#btn2'),
+        //btn2Text:$('#btn2-text'),
+        //popBtn1:$('#popBtn1'),
+        //popBtn1Text:$('#popBtn1-text'),
+        //popBtn2:$('#popBtn2'),
+        //popBtn2Text:$('#popBtn2-text'),
         resultArea:$('.result-area'),
-        infoArea:$('.info-area'),
-        adImage:$('.ad-image')
+        //infoArea:$('.info-area'),
+        //adImage:$('.ad-image')
     };
-    function initChargeNumber(){
-        if(chargeMoney){
-            //resultPage.amount.text('成功充了'+chargeMoney+'元');
-            resultPage.amount.text('购卡成功！');
-        }
-    }
-    function initRewards(){
-        var length=rewardList.length;
-        if(otherRewards&&length>0){
-            var rewards='';
-            for(var i=0;i<length;i++){
-                rewards+='<li><span class="yellow-text">·</span>'+rewardList[i]+'</li>';
-            }
-            resultPage.lrLine.width('35%');
-            resultPage.rewardsTitle.width('30%');
-            resultPage.rewardsTitle.text('同时得到');
-            resultPage.rewards.html(rewards);
-        }
-    }
-    function initTotalNumber(){
-        if(totalMoney){
-            resultPage.totalNumber.text(totalMoney);
-        }
-    }
-    function init(){
-        initChargeNumber();
-        initTotalNumber();
-        initRewards();
-        resultPage.popBox.show();
-        setTimeout(function(){
-            resultPage.popBox.hide();
-        },10000);
-    }
+//  function initChargeNumber(){
+//      if(chargeMoney){
+//          //resultPage.amount.text('成功充了'+chargeMoney+'元');
+//          resultPage.amount.text('购卡成功！');
+//      }
+//  }
+//  function initRewards(){
+//      var length=rewardList.length;
+//      if(otherRewards&&length>0){
+//          var rewards='';
+//          for(var i=0;i<length;i++){
+//              rewards+='<li><span class="yellow-text">·</span>'+rewardList[i]+'</li>';
+//          }
+//          //resultPage.lrLine.width('35%');
+//          //resultPage.rewardsTitle.width('30%');
+//          //resultPage.rewardsTitle.text('同时得到');
+//          //resultPage.rewards.html(rewards);
+//      }
+//  }
+//  function initTotalNumber(){
+//      if(totalMoney){
+//          resultPage.totalNumber.text(totalMoney);
+//      }
+//  }
+    //function init(){
+        //initChargeNumber();
+        //initTotalNumber();
+        //initRewards();
+        //resultPage.popBox.show();
+        //setTimeout(function(){
+        //    resultPage.popBox.hide();
+        //},10000);
+    //}
 
     function getRechargeResult() {
         $.ajax({
@@ -502,54 +477,54 @@
                 chargeMoney=result.recharge_amount;
                 $('.allMoney').text(chargeMoney);
                 //alert('用户充值'+result.recharge_amount+'，获得奖励金'+result.gljul_amount+'，共得奖励金'+result.glju_total_amount);
-                if(Number(result.glju_total_amount)>0){
-                    resultPage.reminder.html('本次获得'+result.gljul_amount+'元<br/>奖励金现已累积'+result.glju_total_amount+'元<br/>将在'+result.glj_sendtime+'存入您的易到余额账户');
-                    resultPage.enterInfo.text('提示：查看奖励金请到个人中心点击【充返奖励金】');
-                }
-                init();
+                //if(Number(result.glju_total_amount)>0){
+                    //resultPage.reminder.html('本次获得'+result.gljul_amount+'元<br/>奖励金现已累积'+result.glju_total_amount+'元<br/>将在'+result.glj_sendtime+'存入您的易到余额账户');
+                    //resultPage.enterInfo.text('提示：查看奖励金请到个人中心点击【充返奖励金】');
+                //}
+                //init();
                 if(result&&result.results_page){
                     if(result.results_page.resultPic_pop){
-                        $('#popImage').attr('src',result.results_page.resultPic_pop);
+                        //$('#popImage').attr('src',result.results_page.resultPic_pop);
                     }
                     if(result.results_page.resultPic){
-                        resultPage.adImage.css('background-image','url('+result.results_page.resultPic+')');
+                        //resultPage.adImage.css('background-image','url('+result.results_page.resultPic+')');
                     }
                     if(result.results_page.button1){
                         var button1=result.results_page.button1;
                         if(button1.type=='text'){
-                            resultPage.btn1Text.text(button1.doc)
+                            //resultPage.btn1Text.text(button1.doc)
                         }else{
-                            resultPage.btn1.css('background-image','url('+button1.pic+')');
-                            resultPage.btn1.css('background-size','100%');
-                            resultPage.btn1.css('background-color','rgba(255,255,255,0)');
+                            //resultPage.btn1.css('background-image','url('+button1.pic+')');
+                            //resultPage.btn1.css('background-size','100%');
+                            //resultPage.btn1.css('background-color','rgba(255,255,255,0)');
                         }
                         if(button1.openType=='h5url'){
-                            resultPage.btn1.get(0).onclick=function () {
-                                window.location.href=button1.h5url;
-                            }
+                            //resultPage.btn1.get(0).onclick=function () {
+                            //    window.location.href=button1.h5url;
+                            //}
                         }else{
-                            resultPage.btn1.get(0).onclick=function () {
-                                setShare(resultPage.btn1,button1);
-                            }
+                            //resultPage.btn1.get(0).onclick=function () {
+                            //    setShare(resultPage.btn1,button1);
+                            //}
                         }
                     }
                     if(result.results_page.button2){
                         var button2=result.results_page.button2;
                         if(button2.type=='text'){
-                            resultPage.btn2Text.text(button2.doc)
+                            //resultPage.btn2Text.text(button2.doc)
                         }else{
-                            resultPage.btn2.css('background-image','url('+button2.pic+')');
-                            resultPage.btn2.css('background-size','100%');
-                            resultPage.btn2.css('background-color','rgba(255,255,255,0)');
+                            //resultPage.btn2.css('background-image','url('+button2.pic+')');
+                            //resultPage.btn2.css('background-size','100%');
+                            //resultPage.btn2.css('background-color','rgba(255,255,255,0)');
                         }
                         if(button2.openType=='h5url'){
-                            resultPage.btn2.get(0).onclick=function () {
-                                window.location.href=button2.h5url;
-                            }
+                            //resultPage.btn2.get(0).onclick=function () {
+                             //   window.location.href=button2.h5url;
+                            //}
                         }else{
-                            resultPage.btn2.get(0).onclick=function () {
-                                setShare(resultPage.btn1,button2);
-                            }
+                            //resultPage.btn2.get(0).onclick=function () {
+                            //    setShare(resultPage.btn1,button2);
+                            //}
                         }
                     }
                     if(result.results_page.is_pop==1){
@@ -570,48 +545,48 @@
                         if(result.results_page.pop_button1){
                             var pop_button1=result.results_page.pop_button1;
                             if(pop_button1.type=='text'){
-                                resultPage.popBtn1Text.text(pop_button1.doc)
+                                //resultPage.popBtn1Text.text(pop_button1.doc)
                             }else{
-                                resultPage.popBtn1.css('background-image','url('+pop_button1.pic+')');
-                                resultPage.popBtn1.css('background-size','100%');
-                                resultPage.popBtn1.css('background-color','rgba(255,255,255,0)');
+                                //resultPage.popBtn1.css('background-image','url('+pop_button1.pic+')');
+                                //resultPage.popBtn1.css('background-size','100%');
+                                //resultPage.popBtn1.css('background-color','rgba(255,255,255,0)');
                             }
                             if(pop_button1.openType=='h5url'){
-                                resultPage.popBtn1.get(0).onclick=function () {
-                                    window.location.href=pop_button1.h5url;
-                                }
+                                //resultPage.popBtn1.get(0).onclick=function () {
+                                //    window.location.href=pop_button1.h5url;
+                                //}
                             }else{
-                                resultPage.popBtn1.get(0).onclick=function () {
-                                    setShare(resultPage.popBtn1,pop_button1,true);
-                                }
+                                //resultPage.popBtn1.get(0).onclick=function () {
+                                //    setShare(resultPage.popBtn1,pop_button1,true);
+                                //}
                             }
                         }
                         if(result.results_page.pop_button2){
                             var pop_button2=result.results_page.pop_button2;
                             if(pop_button2.type=='text'){
-                                resultPage.popBtn2Text.text(pop_button2.doc)
+                                //resultPage.popBtn2Text.text(pop_button2.doc)
                             }else{
-                                resultPage.popBtn2.css('background-image','url('+pop_button2.pic+')');
-                                resultPage.popBtn2.css('background-size','100%');
-                                resultPage.popBtn2.css('background-color','rgba(255,255,255,0)');
+                                //resultPage.popBtn2.css('background-image','url('+pop_button2.pic+')');
+                                //resultPage.popBtn2.css('background-size','100%');
+                                //resultPage.popBtn2.css('background-color','rgba(255,255,255,0)');
                             }
                             if(pop_button2.openType=='h5url'){
-                                resultPage.popBtn2.get(0).onclick=function () {
-                                    window.location.href=pop_button2.h5url;
-                                }
+                                //resultPage.popBtn2.get(0).onclick=function () {
+                                //    window.location.href=pop_button2.h5url;
+                                //}
                             }else{
-                                resultPage.popBtn2.get(0).onclick=function () {
-                                    setShare(resultPage.popBtn2,pop_button2, true);
-                                }
+                                //resultPage.popBtn2.get(0).onclick=function () {
+                                //    setShare(resultPage.popBtn2,pop_button2, true);
+                                //}
                             }
                         }
                     }else{
-                        resultPage.popBox.hide();
+                        //resultPage.popBox.hide();
                     }
 
                 }
             } else if (code == "618") {
-                //交易失败活交易中
+                //交易失败或交易中
                 if (getTimes > 1) {
                     clearInterval(time);
                     resultPage.loading.hide();
@@ -619,8 +594,8 @@
                 resultPage.sections.hide();
                 resultPage.rechargeFail.that.show();
                 resultPage.resultArea.hide();
-                resultPage.infoArea.hide();
-                resultPage.popBox.hide();
+                //resultPage.infoArea.hide();
+                //resultPage.popBox.hide();
             } else if (code == "619") {
                 document.title=failTitle;
                 //交易失败
@@ -630,8 +605,8 @@
                 resultPage.rechargeFail.that.show();
                 resultPage.loading.hide();
                 resultPage.resultArea.hide();
-                resultPage.infoArea.hide();
-                resultPage.popBox.hide();
+                //resultPage.infoArea.hide();
+                //resultPage.popBox.hide();
             } else {
                 document.title=failTitle;
                 //其他异常
@@ -640,8 +615,8 @@
                 resultPage.rechargeUnknow.show();
                 resultPage.loading.hide();
                 resultPage.resultArea.hide();
-                resultPage.infoArea.hide();
-                resultPage.popBox.hide();
+                //resultPage.infoArea.hide();
+                //resultPage.popBox.hide();
             }
         }).fail(function () {
             document.title=failTitle;
