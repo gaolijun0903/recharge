@@ -20,7 +20,7 @@
         font {}
         input[type="button"], input[type="submit"], input[type="reset"] {-webkit-appearance: none;}
         body{ padding-top: 80px; box-sizing: border-box; }
-        .yellow-text{
+        /*.yellow-text{
             color:#F8C372;
             font-weight: 600;
             margin-right: 5px;
@@ -29,7 +29,7 @@
             color:#F6BAAD;
             font-weight: 600;
             font-size:0.4rem;
-        }
+        }*/
         .result-area{
             position: relative;
             width: 100%;
@@ -272,7 +272,7 @@
         .recharge_unknow p,.recharge_fail p{text-align: center;color: #888;font-size: 20px;margin-top: 30px;}
         .recharge_unknow p a,.recharge_fail p a{color: #1e82e6;}
         .recharge_unknow a.rebate_again,.recharge_fail a.rebate_again{font-size: 20px;text-align: center;color: #ec4949;height: 90px;line-height: 90px;border: 1px solid #ec4949;-webkit-box-sizing: border-box;box-sizing: border-box;background: #fff;width: 90%;display: block;position: absolute;bottom: 30px;margin:0 5%;}
-        .result{ font-size: 30px; background: url('<{asset:media/g2/M01/1C/22/rBEBP1qObo6IH9yLAAAWCt-Zht4AALGugLzUBIAABYi607.png}>') no-repeat; background-size: 50px; margin-left: 25%; padding-left: 65px; line-height: 50px; box-sizing: border-box;}
+        .result{ font-size: 30px; background: url('https://i3.yongche.name/media/g2/M01/1C/22/rBEBP1qObo6IH9yLAAAWCt-Zht4AALGugLzUBIAABYi607.png') no-repeat; background-size: 50px; margin-left: 25%; padding-left: 65px; line-height: 50px; box-sizing: border-box;}
         .tips{ margin: 0 auto; text-align: center; color: #888; font-size: 22px; margin-top: 15px;}
         .resultImg{ position: relative;  width: 95%; margin: 0 auto; margin-top: 50px;}
         .resultImg img{ width: 100%; }
@@ -290,7 +290,7 @@
     <div class="result">支付成功</div>
     <div class="tips">出行卡金额已到您的账户</div>
     <div class="resultImg">
-        <img src="<{asset:media/g2/M04/1C/26/rBEBJVqREzCIYbx3AAMBywvEeBUAALIBQFzA4wAAwHj219.png}>">
+        <img src="https://i3.yongche.name/media/g2/M04/1C/26/rBEBJVqREzCIYbx3AAMBywvEeBUAALIBQFzA4wAAwHj219.png">
         <p>
             <span class="allMoney">5000</span>
         </p>
@@ -327,7 +327,7 @@
     </div>
 </div>
 <div class="pop-box" id="popBox">
-    <img id="popImage" src="<{asset:media/g2/M03/15/07/rBEBJVjGUcCIWegfAABvftT--NgAAIORQIcudkAAG-W714.png}>">
+    <img id="popImage" src="https://i3.yongche.name/media/g2/M03/15/07/rBEBJVjGUcCIWegfAABvftT--NgAAIORQIcudkAAG-W714.png">
     <div class="invite-area">
         <div class="btn re-rebate"  id="popBtn1">
             <div class="big-text" id="popBtn1-text"></div>
@@ -339,18 +339,18 @@
 </div> -->
 <!-- 通信异常 -->
 <section class="recharge_unknow">
-    <img src="<{asset:media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png}>" alt="">
+    <img src="https://i3.yongche.name/media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png" alt="">
     <p>网络通信异常</p>
     <a class="rebate_again" href="/touch/rechargerebate/index">返回重试</a>
 </section>
 <!-- 充值失败 -->
 <section class="recharge_fail">
-    <img src="<{asset:media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png}>" alt="">
+    <img src="https://i3.yongche.name/media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png" alt="">
     <p>购卡未完成</p>
     <a class="rebate_again" href="/touch/rechargerebate/index">返回重试</a>
 </section>
 <div class="loading" id="loading" style="display:block;">
-    <img src="<{asset:media/g1/M01/06/16/rBEARFY8Xy2ID24xAABHEtelIYMAACiQAMX9E8AAEcq787.gif}>" alt="">
+    <img src="https://i3.yongche.name/media/g1/M01/06/16/rBEARFY8Xy2ID24xAABHEtelIYMAACiQAMX9E8AAEcq787.gif" alt="">
     <p>交易处理中...</p>
 </div>
 <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
@@ -378,7 +378,9 @@
     var time;
     var getTimes = 0;
     var failTitle="购卡失败";
-    time = setInterval(getRechargeResult,2000);
+   	//time = setInterval(getRechargeResult,2000);   //TODO
+   	$('section').hide();   //TODO
+   	$('#loading').hide();   //TODO
 
     var chargeMoney=0;
     var totalMoney=total_money;
