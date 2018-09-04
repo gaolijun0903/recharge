@@ -19,7 +19,7 @@
         h1 , h2 { font-weight:normal;}
         font {}
         input[type="button"], input[type="submit"], input[type="reset"] {-webkit-appearance: none;}
-        body{ padding-top: 80px; box-sizing: border-box; }
+        body{ /*padding-top: 80px;*/ box-sizing: border-box; }
         /*.yellow-text{
             color:#F8C372;
             font-weight: 600;
@@ -29,13 +29,13 @@
             color:#F6BAAD;
             font-weight: 600;
             font-size:0.4rem;
-        }*/
+        }
         .result-area{
             position: relative;
             width: 100%;
             height: 60%;
         }
-        /*.result-area .amount{
+        .result-area .amount{
             position: relative;
             height: 4rem;
             line-height: 4rem;
@@ -69,8 +69,8 @@
             font-size: 1.8rem;
             font-weight: 900;
             text-align: center;
-        }*/
-        /*.result-area .other-rewards{
+        }
+        .result-area .other-rewards{
             margin-top: -1rem;
             position: relative;
             width: 70%;
@@ -125,8 +125,8 @@
             margin-top: 1rem;
             height: 1px;
             background: #F96565;
-        }*/
-        /*.result-area .my-rewards-info{
+        }
+        .result-area .my-rewards-info{
             position: relative;
             width: 100%;
             height: 1rem;
@@ -134,8 +134,8 @@
             line-height: 1rem;
             color:#F8DCCA;
             text-align: center;
-        }*/
-        /*.ad-image{
+        }
+        .ad-image{
             visibility: hidden;
             width: 100%;
             height: 10%;
@@ -187,8 +187,8 @@
             height: 3rem;
             line-height: 3rem;
             text-align: center;
-        }*/
-        /*.pop-box {
+        }
+        .pop-box {
             position: fixed;
             top:0;
             left:0;
@@ -211,8 +211,8 @@
             width: 100%;
             height: 30%;
             bottom: 0;
-        }*/
-        /*.invite-area .invite-friend{
+        }
+        .invite-area .invite-friend{
             position: absolute;
             bottom: 15%;
             color:#FFFFFF;
@@ -263,8 +263,14 @@
                 font-size: 20px;
             }
         }
+        .result-area{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color:#F5F5F5; 
+        }
+        
         .loading{width: 100%;height: 100%;background-color: #f0f0f0;position: fixed;left: 0;top: 0;bottom:0;right:0;z-index: 9999;color: #888;font-size: 20px;text-align: center;margin:auto;}
-        .allMoney{ font-weight: bold; }
         .loading img{display: block;height:50px;width:50px;position: absolute;left: 50%;top: 50%;margin-left:-25px;margin-top:-25px;}
         .loading p{display: block;height:50px;width:100%;position: absolute;top: 60%;}
         .recharge_unknow,.recharge_fail{position: fixed;left: 0;top: 0;bottom:0;right:0;z-index: 9999;width: 100%;height: 100%;background-color: #f0f0f0;}
@@ -272,12 +278,22 @@
         .recharge_unknow p,.recharge_fail p{text-align: center;color: #888;font-size: 20px;margin-top: 30px;}
         .recharge_unknow p a,.recharge_fail p a{color: #1e82e6;}
         .recharge_unknow a.rebate_again,.recharge_fail a.rebate_again{font-size: 20px;text-align: center;color: #ec4949;height: 90px;line-height: 90px;border: 1px solid #ec4949;-webkit-box-sizing: border-box;box-sizing: border-box;background: #fff;width: 90%;display: block;position: absolute;bottom: 30px;margin:0 5%;}
-        .result{ font-size: 30px; background: url('https://i3.yongche.name/media/g2/M01/1C/22/rBEBP1qObo6IH9yLAAAWCt-Zht4AALGugLzUBIAABYi607.png') no-repeat; background-size: 50px; margin-left: 25%; padding-left: 65px; line-height: 50px; box-sizing: border-box;}
-        .tips{ margin: 0 auto; text-align: center; color: #888; font-size: 22px; margin-top: 15px;}
+        .whitebg{ background-color:#FFFFFF; padding-top: 60px; */}
+        .result{ font-size: 17px; background: url('https://i3.yongche.name/media/g2/M01/1C/22/rBEBP1qObo6IH9yLAAAWCt-Zht4AALGugLzUBIAABYi607.png') no-repeat; background-size: 32px; margin-left: 36%; padding-left: 44px; line-height: 32px; box-sizing: border-box; color: #323232;}
+        .tips{ margin: 0 auto; text-align: center; color: #646464; font-size: 15px; margin-top: 12px;}
         .resultImg{ position: relative;  width: 95%; margin: 0 auto; margin-top: 50px;}
         .resultImg img{ width: 100%; }
         .resultImg p{ position: absolute; right: 20%; bottom: 22%; color: #fff; }
         .resultImg p span{ font-size: 50px; }
+        .allMoney{ font-weight: bold; }
+        
+        .footer { margin-top: 12px; background-color:#FFFFFF; height: 60px; display: none;}
+        .footer .icon{float: left; width: 24px; height: 24px; margin:18px 12px 18px 16px; }
+        .footer .textwrapper{padding-top: 0.1px; float: left; height: 100%; width: 60%; overflow: hidden;}
+        .textwrapper .title{ margin: 12px 0 8px; 	font-size: 15px; color: #323232; line-height: 15px; }
+        .textwrapper .subtitle{font-size: 12px; color: #888888; line-height: 12px; width: 100%; height: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+		.footer .sharebtn{margin:18px 16px 18px 0; float: right; width: 58px; height: 24px; font-size: 14px; color: #FF5252; line-height: 24px; text-align: center; border: 1px solid #FF5252; border-radius: 4px;}
+        
         @media screen and (max-height: 568px) {
             .result{ font-size: 26px; background-size: 40px; background-position: left center; margin-left: 28%; padding-left: 50px;}
             .tips{ font-size: 18px; }
@@ -287,13 +303,22 @@
 </head>
 <body>
 <div class="result-area">
-    <div class="result">支付成功</div>
-    <div class="tips">出行卡金额已到您的账户</div>
-    <div class="resultImg">
-        <img src="https://i3.yongche.name/media/g2/M04/1C/26/rBEBJVqREzCIYbx3AAMBywvEeBUAALIBQFzA4wAAwHj219.png">
-        <p>
-            <span class="allMoney">5000</span>
-        </p>
+	<div class="whitebg">
+		<div class="result">支付成功</div>
+	    <div class="tips">出行卡金额已到您的账户</div>
+	    <div class="resultImg">
+	        <img src="https://i3.yongche.name/media/g2/M04/1C/26/rBEBJVqREzCIYbx3AAMBywvEeBUAALIBQFzA4wAAwHj219.png">
+	        <p><span class="allMoney">5000</span> </p>
+	    </div>
+	</div>
+	    
+    <div class="footer">
+    		<div class="icon"><img src="https://i1.yongche.name/media/g3/M00/01/3F/rBEDA1uOJpGITUgjAAAFzKmeFSIAAAx1wGBsg4AAAXk287.png" width="100%" height="100%"/></div>
+    		<div class="textwrapper">
+    			<div class="title">分享和好友一起领红包</div>
+    			<div class="subtitle">超级大包等你来撩，超级大包等你来撩，超级大包等你来撩，手慢无~</div>
+    		</div>
+    		<div class="sharebtn">去分享</div>
     </div>
 </div>
 <!-- <div class="result-area">
@@ -379,8 +404,8 @@
     var getTimes = 0;
     var failTitle="购卡失败";
    	//time = setInterval(getRechargeResult,2000);   //TODO
-   	$('section').hide();   //TODO
-   	$('#loading').hide();   //TODO
+     	$('section').hide();   //TODO
+     	$('#loading').hide();   //TODO
 
     var chargeMoney=0;
     var totalMoney=total_money;
@@ -417,39 +442,39 @@
         //infoArea:$('.info-area'),
         //adImage:$('.ad-image')
     };
-//  function initChargeNumber(){
-//      if(chargeMoney){
-//          //resultPage.amount.text('成功充了'+chargeMoney+'元');
-//          resultPage.amount.text('购卡成功！');
-//      }
-//  }
-//  function initRewards(){
-//      var length=rewardList.length;
-//      if(otherRewards&&length>0){
-//          var rewards='';
-//          for(var i=0;i<length;i++){
-//              rewards+='<li><span class="yellow-text">·</span>'+rewardList[i]+'</li>';
-//          }
-//          //resultPage.lrLine.width('35%');
-//          //resultPage.rewardsTitle.width('30%');
-//          //resultPage.rewardsTitle.text('同时得到');
-//          //resultPage.rewards.html(rewards);
-//      }
-//  }
-//  function initTotalNumber(){
-//      if(totalMoney){
-//          resultPage.totalNumber.text(totalMoney);
-//      }
-//  }
-    //function init(){
-        //initChargeNumber();
-        //initTotalNumber();
-        //initRewards();
-        //resultPage.popBox.show();
-        //setTimeout(function(){
-        //    resultPage.popBox.hide();
-        //},10000);
-    //}
+    /*function initChargeNumber(){
+        if(chargeMoney){
+            //resultPage.amount.text('成功充了'+chargeMoney+'元');
+            resultPage.amount.text('购卡成功！');
+        }
+    }
+    function initRewards(){
+        var length=rewardList.length;
+        if(otherRewards&&length>0){
+            var rewards='';
+            for(var i=0;i<length;i++){
+                rewards+='<li><span class="yellow-text">·</span>'+rewardList[i]+'</li>';
+            }
+            //resultPage.lrLine.width('35%');
+            //resultPage.rewardsTitle.width('30%');
+            //resultPage.rewardsTitle.text('同时得到');
+            //resultPage.rewards.html(rewards);
+        }
+    }
+    function initTotalNumber(){
+        if(totalMoney){
+            resultPage.totalNumber.text(totalMoney);
+        }
+    }
+    function init(){
+          initChargeNumber();
+          initTotalNumber();
+          initRewards();
+          resultPage.popBox.show();
+          setTimeout(function(){
+              resultPage.popBox.hide();
+          },10000);
+    }*/
 
     function getRechargeResult() {
         $.ajax({
@@ -475,9 +500,9 @@
                 clearInterval(time);
                 resultPage.sections.hide();
                 resultPage.loading.hide();
-                //chargeMoney=result.recharge_amount.toFixed(2);
                 chargeMoney=result.recharge_amount;
                 $('.allMoney').text(chargeMoney);
+                
                 //alert('用户充值'+result.recharge_amount+'，获得奖励金'+result.gljul_amount+'，共得奖励金'+result.glju_total_amount);
                 //if(Number(result.glju_total_amount)>0){
                     //resultPage.reminder.html('本次获得'+result.gljul_amount+'元<br/>奖励金现已累积'+result.glju_total_amount+'元<br/>将在'+result.glj_sendtime+'存入您的易到余额账户');
@@ -485,13 +510,51 @@
                 //}
                 //init();
                 if(result&&result.results_page){
-                    if(result.results_page.resultPic_pop){
+                		if(result.results_page.red_packets){//新版红包裂变新增字段
+                			if(result.results_page.red_packets.shareTitle){//红包裂变入口开放
+                				var red_obj = result.results_page.red_packets;
+                				$('.footer').show();
+			                $('.footer .title').html(red_obj.entry_title);
+			                $('.footer .subtitle').html(red_obj.entry_subtitle);
+			                $('.footer .icon img').src(red_obj.entry_icon);
+			                $('.footer .sharebtn').html(red_obj.entry_sharebtn);
+			                
+			                $.ajax({
+                                url:red_obj.redStatUrl+'&action=1',
+                                type:'get',
+                                xhrFields:{
+                                    withCredentials:true
+                                }
+                            }).done(function (data) {
+                                console.log(data);
+                            }).fail(function (error) {
+                                console.log(error);
+                            })
+                            
+			                var shareInfo = {
+			                		shareUrl:red_obj.shareUrl,
+			                		icon:red_obj.icon,
+			                		shareTitle:red_obj.shareTitle,
+			                		subTitle:red_obj.subTitle,
+			                		redStatUrl:red_obj.redStatUrl
+			                };
+			                setShare($('.sharebtn'),shareInfo)
+			                
+                			}else{//红包裂变入口关闭
+                				
+                			}
+                		}
+                	
+                	
+                    /*新版红包裂变入口不用这些字段
+                     * 
+                    if(result.results_page.resultPic_pop){ //红包的弹屏图片？
                         //$('#popImage').attr('src',result.results_page.resultPic_pop);
                     }
-                    if(result.results_page.resultPic){
+                    if(result.results_page.resultPic){  //不属于裂变红包
                         //resultPage.adImage.css('background-image','url('+result.results_page.resultPic+')');
                     }
-                    if(result.results_page.button1){
+                    if(result.results_page.button1){  //
                         var button1=result.results_page.button1;
                         if(button1.type=='text'){
                             //resultPage.btn1Text.text(button1.doc)
@@ -585,6 +648,7 @@
                     }else{
                         //resultPage.popBox.hide();
                     }
+                    */
 
                 }
             } else if (code == "618") {
@@ -627,6 +691,8 @@
             console.log("complete");
         });
     }
+    
+    
 </script>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
