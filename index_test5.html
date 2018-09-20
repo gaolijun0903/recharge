@@ -1675,7 +1675,7 @@
                     return;
                 }
                 if($('.input-flag').hasClass('selected-nav-item')&&selectedPrivilege.number<window.minPrice&&selectedPrivilege.activityId!=1070){
-                    alert('输入的金额必须大于等于'+window.minPrice+'元');
+                    alert('单次至少购买'+window.minPrice+'元的出行卡呦');
                     rebatePage.inputPresentation.html('其他金额必须大于等于'+window.minPrice+'元');
                     $('.input_tips').show().siblings('input').val('');
                     return;

@@ -725,7 +725,7 @@
         .loading{display: block;width: 100%;height: 100%;background-color: #f0f0f0;opacity:1;position: fixed;left: 0;top: 0;z-index: 9999;color: #888;font-size: 20px;text-align: center;margin:auto;}
         .loading img{display: block;height:50px;width:50px;opacity:0.7;position: absolute;left: 50%;top: 50%;margin-left:-25px;margin-top:-25px;}
         .loading p{display: block;height:50px;width:100%;position: absolute;top: 60%;}
-                  #tan_mask {position: fixed;left: 0;top: 0;width: 100%; height: 100%;background:black;opacity: 0.8;z-index: 999999998;}
+          #tan_mask {position: fixed;left: 0;top: 0;width: 100%; height: 100%;background:black;opacity: 0.8;z-index: 999999998;}
           #tanchuang{position: fixed;left: 0;top: 0;width: 80%;z-index: 999999999;left:50%;border-radius:15px;overflow:hidden;top: 50%; -webkit-transform:translate(-50%,-50%);}
           #tan_header{height:50px; background: #f7f7f7 url("https://i3.yongche.name/media/g2/M02/1A/03/rBEBP1oNNROIDExJAAAgdVymM8wAAKImAFwB8IAACCN389.png") no-repeat center;position: relative;background-size: 25%;}
           #tan_content{background-color: white;padding:22px 15px;text-align: center;font-size: 16px;line-height: 25px;}
@@ -1035,7 +1035,7 @@
             isBlank:false,
             activityToken:0,
             activityId:1053,
-            callbackUrl:result.callback_url,
+            //callbackUrl:result.callback_url,  //现在接口没有返回这个字段了
             risk:1
         };
 
@@ -1118,7 +1118,7 @@
             setPayType(isApple);
         }
 
-        //是否支持apple pay
+        //设置支付方式对应的btn
         function setPayType(isApple) {
             var normalArea=rebatePage.normalArea;
             var appleArea=rebatePage.appleArea;
@@ -1274,18 +1274,18 @@
                 if(userAttribution.isBlank){
                     Risk(userAttribution.risk)
                 }
-                userAttribution.activityToken="";
-                rebate.projectId=result.project_id;
+                userAttribution.activityToken="";    //目前没有使用
+                rebate.projectId=result.project_id;  //getDocument接口需要的参数
 
-                rebate.document=result.project_document;
-                rebate.minRebateCharge=result.no_rebate_price;
-                rebate.is_rebate_money_limit=result.is_rebate_money_limit;
-                rebate.rebate_money_limit=result.rebate_money_limit;
-                var isJoinRebate=result.is_join_rebate;
+                rebate.document=result.project_document;  //目前没有使用
+                rebate.minRebateCharge=result.no_rebate_price;    //目前没有使用
+                rebate.is_rebate_money_limit=result.is_rebate_money_limit;  //目前没有使用
+                rebate.rebate_money_limit=result.rebate_money_limit;  //目前没有使用
+                var isJoinRebate=result.is_join_rebate; //目前没有使用
                 if(isJoinRebate==0||isJoinRebate==2){  //旺子的是is_join_rebate=0
-                    rebate.isNewUser=true;
+                    rebate.isNewUser=true;  //目前没有使用
                 } else{
-                    rebate.isNewUser=false;
+                    rebate.isNewUser=false;  //目前没有使用
                 }
                 if(result&&result.project_tags&&result.project_tags.length>0){
                     var tags=result.project_tags;
@@ -1294,32 +1294,32 @@
                         var tag=tags[i];
                         var privilegeType=new PrivilegeType(tag.activity_id,[tag.recharge,tag.show_name], tag.recharge);
 
-                        if(tag.percent&&tag.percent!='0'){
-                            privilegeType.privilege=tag.recharge*Number(100+tag.percent)*0.01;
-                            privilegeType.extra=tag.recharge*Number(tag.percent)*0.01
+                        if(tag.percent&&tag.percent!='0'){   //如果有返现
+                            privilegeType.privilege=tag.recharge*Number(100+tag.percent)*0.01;  //返现后总金额
+                            privilegeType.extra=tag.recharge*Number(tag.percent)*0.01;   //返现金额
                         }else{
                             privilegeType.presentation='';
                             privilegeType.privilege='可得'+privilegeType.number+'元余额';
                         }
-                        if(!!tag.show_name){
+                        if(!!tag.show_name){  //目前都是''
                             privilegeType.presentation=tag.show_name;
                         }
-                        if(!!tag.tag_picture){
+                        if(!!tag.tag_picture){  //卡片的背景图片
                             privilegeType.info=tag.tag_picture;
                             privilegeType.imgVisible='visible';
                         }
-                        if(!!tag.tag_banner){//目前没有用privilegeType.imgPath
-                            privilegeType.imgPath=tag.tag_banner;
+                        if(!!tag.tag_banner){  //目前都是''
+                            privilegeType.imgPath=tag.tag_banner;  //目前没有用privilegeType.imgPath
                         }
                         if(isJoinRebate==0||isJoinRebate==2){//新用户
-                            privilegeType.isJoinRebate=false;
+                            privilegeType.isJoinRebate=false;  //目前没有使用privilegeType.isJoinRebate
                         }
                         privilegeType.tagOrder=tag.tag_order;   //标签的顺序
                         privilegeType.tagId=tag.tag_id;  //标签id
                         privilegeType.otherRewards=tag.otherRewards;
-                        privilegeType.percent=Number(tag.percent);
-                        if(tag.activity_id!=1053){
-                            rebate.specialActivity.push(tag.activity_id);
+                        privilegeType.percent=Number(tag.percent);  //返现比例
+                        if(tag.activity_id!=1053){  //特殊活动
+                            rebate.specialActivity.push(tag.activity_id);  //目前没有使用rebate.specialActivity
                         }
                         if(tag.recharge==0){ //其他金额
                             privilegeType.isInput=true;
@@ -1341,8 +1341,8 @@
                 rebate.selectedPrivilegeType=rebate.privilegeTypes[0];
             }
         }
-        //自由输入金额监测
-        function initInputNumber() {
+        
+        function initInputNumber() {  //初始化输入框
             rebatePage.inputNumber=$('.input-number');
             rebatePage.inputPresentation=$('.input-tag .info-area .text-area');
             rebatePage.inputFlag=$('.input-flag');
@@ -1380,6 +1380,7 @@
             }
         }
 
+		//自由输入金额监测
         rebate.watchInputNumber=function (){
             var inputNumber=$('.input-number');
 
@@ -1415,24 +1416,21 @@
             else {
                 item.setNumber(0,percent,otherRewards,presentation);
             }
-            if(item.number == '0'){
-                $('.amount2').hide();
-            }else{
-                $('.amount2').show();
-            }
+            
+            //if(item.number == '0'){
+            //    $('.amount2').hide();
+            //}else{
+            //    $('.amount2').show();
+            //}
 
-            $('.text-area_input_money').html(item.number);
-            $('.text-area_input_send').html(item.number*item.percent/100);
-            $('.text-area_input_result').html(item.number*item.percent/100+item.number);
+            //$('.text-area_input_money').html(item.number);
+            //$('.text-area_input_send').html(item.number*item.percent/100);
+            //$('.text-area_input_result').html(item.number*item.percent/100+item.number);
 
             if(inputNumber.val()==''){
-
                 $('.input_tips').show();
-
             }else{
-
                 $('.input_tips').hide();
-
             }
 
         }
@@ -1444,7 +1442,7 @@
 
         }
 
-        function setTags() {
+        function setTags() {   //构造等级标签和图片的 DOM结构
             var height=$('body').height();
             $('body').height(height);
             var tags='';
@@ -1453,14 +1451,14 @@
             var length=privilegeTypes.length;
             for(var i=0;i<length;i++){
                 var privilegeType=privilegeTypes[i];
-                if(!!privilegeType.number){
-                    if(!!privilegeType.presentation){
+                if(!!privilegeType.number){  //各等级的金额值
+                    if(!!privilegeType.presentation){  //目前该值都是'',
                         tags+=rebate.tags.hasRewardsTag(privilegeType);
                     }
                     else{
                         tags+=rebate.tags.noRewardsTag(privilegeType);
                     }
-                }else{
+                }else{ //金额为0，显示输入框
                     tags+=rebate.tags.inputTag(privilegeType);
                 }
                 navs+=rebate.tags.navItem(privilegeType);
@@ -1538,9 +1536,9 @@
                     return;
                 }
                 if($('.input-flag').hasClass('selected-nav-item')&&selectedPrivilege.number<window.minPrice&&selectedPrivilege.activityId!=1070){
-                    alert('输入的金额必须大于等于'+window.minPrice+'元');
-                    rebatePage.inputPresentation.html('其他金额必须大于等于'+window.minPrice+'元');
-                    $('.input_tips').show().siblings('input').val('');
+                    alert('单次至少购买'+window.minPrice+'元的出行卡呦~');
+                    rebatePage.inputPresentation.html('单次至少购买'+window.minPrice+'元的出行卡呦~');
+                    $('.input_tips').show().siblings('input').val('');  //
                     return;
                 }else if($('.input-flag').hasClass('selected-nav-item')&&selectedPrivilege.number>=window.maxPrice&&selectedPrivilege.activityId!=1070){
                     alert('根据国家有关部门要求，单次购卡金额不得超过1000元，若您想购买总面值超过1000元的出行卡，可以分为多次进行操作，为您造成的不便敬请谅解。');
@@ -1573,9 +1571,8 @@
             }
             if (userAttribution.isBlank) {//是黑名单用户
                 url += "activity_id=&amount=" + number + "&pay_type=3&callback=rebate.rebate_result&activity_token="
-            }
-            else {
-                var temp=rebate.projectId+'|'+selectedPrivilege.tagId+'|1';
+            }else {
+                var temp=rebate.projectId+'|'+selectedPrivilege.tagId+'|1';    //例子：  "255|684|1"
                 var reverse=  encodeURIComponent(temp);
                 var data={order_id:0};
                 data=encodeURIComponent(JSON.stringify(data));

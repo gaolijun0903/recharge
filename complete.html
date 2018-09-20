@@ -279,7 +279,7 @@
         .recharge_unknow p a,.recharge_fail p a{color: #1e82e6;}
         .recharge_unknow a.rebate_again,.recharge_fail a.rebate_again{font-size: 20px;text-align: center;color: #ec4949;height: 90px;line-height: 90px;border: 1px solid #ec4949;-webkit-box-sizing: border-box;box-sizing: border-box;background: #fff;width: 90%;display: block;position: absolute;bottom: 30px;margin:0 5%;}
         .whitebg{ background-color:#FFFFFF; padding-top: 60px; */}
-        .result{ font-size: 17px; background: url('https://i3.yongche.name/media/g2/M01/1C/22/rBEBP1qObo6IH9yLAAAWCt-Zht4AALGugLzUBIAABYi607.png') no-repeat; background-size: 32px; margin-left: 36%; padding-left: 44px; line-height: 32px; box-sizing: border-box; color: #323232;}
+        .result{ font-size: 17px; background: url('<{asset:media/g2/M01/1C/22/rBEBP1qObo6IH9yLAAAWCt-Zht4AALGugLzUBIAABYi607.png}>') no-repeat; background-size: 32px; margin-left: 36%; padding-left: 44px; line-height: 32px; box-sizing: border-box; color: #323232;}
         .tips{ margin: 0 auto; text-align: center; color: #646464; font-size: 15px; margin-top: 12px;}
         .resultImg{ position: relative;  width: 95%; margin: 0 auto; margin-top: 50px;}
         .resultImg img{ width: 100%; }
@@ -292,10 +292,10 @@
         .footer .textwrapper{padding-top: 0.1px; float: left; height: 100%; width: 60%; overflow: hidden;}
         .textwrapper .title{ margin: 12px 0 8px; 	font-size: 15px; color: #323232; line-height: 15px; }
         .textwrapper .subtitle{font-size: 12px; color: #888888; line-height: 12px; width: 100%; height: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
-		.footer .sharebtn{margin:18px 16px 18px 0; float: right; width: 58px; height: 24px; font-size: 14px; color: #FF5252; line-height: 24px; text-align: center; border: 1px solid #FF5252; border-radius: 4px;}
+		.footer .sharebtn{margin:18px 16px 18px 0; float: right; /*width: 58px;*/ padding: 0 10px; height: 24px; font-size: 14px; color: #FF5252; line-height: 24px; text-align: center; border: 1px solid #FF5252; border-radius: 4px;}
         
         @media screen and (max-height: 568px) {
-            .result{ font-size: 26px; background-size: 40px; background-position: left center; margin-left: 28%; padding-left: 50px;}
+            .result{ font-size: 26px; background-size: 32px; background-position: left center; margin-left: 28%; padding-left: 50px;}
             .tips{ font-size: 18px; }
             .resultImg p span{ font-size: 40px; }
         }
@@ -307,18 +307,18 @@
 		<div class="result">支付成功</div>
 	    <div class="tips">出行卡金额已到您的账户</div>
 	    <div class="resultImg">
-	        <img src="https://i3.yongche.name/media/g2/M04/1C/26/rBEBJVqREzCIYbx3AAMBywvEeBUAALIBQFzA4wAAwHj219.png">
+	        <img src="<{asset:media/g2/M04/1C/26/rBEBJVqREzCIYbx3AAMBywvEeBUAALIBQFzA4wAAwHj219.png}>">
 	        <p><span class="allMoney">5000</span> </p>
 	    </div>
 	</div>
 	    
     <div class="footer">
-    		<div class="icon"><img src="https://i1.yongche.name/media/g3/M00/01/3F/rBEDA1uOJpGITUgjAAAFzKmeFSIAAAx1wGBsg4AAAXk287.png" width="100%" height="100%"/></div>
+    		<div class="icon"><img src="<{asset:media/g3/M00/01/3F/rBEDA1uOJpGITUgjAAAFzKmeFSIAAAx1wGBsg4AAAXk287.png}>" width="100%" height="100%"/></div>
     		<div class="textwrapper">
     			<div class="title">分享和好友一起领红包</div>
     			<div class="subtitle">超级大包等你来撩，超级大包等你来撩，超级大包等你来撩，手慢无~</div>
     		</div>
-    		<div class="sharebtn">去分享</div>
+    		<div id="sharebtn" class="sharebtn">去分享</div>
     </div>
 </div>
 <!-- <div class="result-area">
@@ -352,7 +352,7 @@
     </div>
 </div>
 <div class="pop-box" id="popBox">
-    <img id="popImage" src="https://i3.yongche.name/media/g2/M03/15/07/rBEBJVjGUcCIWegfAABvftT--NgAAIORQIcudkAAG-W714.png">
+    <img id="popImage" src="<{asset:media/g2/M03/15/07/rBEBJVjGUcCIWegfAABvftT--NgAAIORQIcudkAAG-W714.png}>">
     <div class="invite-area">
         <div class="btn re-rebate"  id="popBtn1">
             <div class="big-text" id="popBtn1-text"></div>
@@ -364,18 +364,18 @@
 </div> -->
 <!-- 通信异常 -->
 <section class="recharge_unknow">
-    <img src="https://i3.yongche.name/media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png" alt="">
+    <img src="<{asset:media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png}>" alt="">
     <p>网络通信异常</p>
     <a class="rebate_again" href="/touch/rechargerebate/index">返回重试</a>
 </section>
 <!-- 充值失败 -->
 <section class="recharge_fail">
-    <img src="https://i3.yongche.name/media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png" alt="">
+    <img src="<{asset:media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png}>" alt="">
     <p>购卡未完成</p>
     <a class="rebate_again" href="/touch/rechargerebate/index">返回重试</a>
 </section>
 <div class="loading" id="loading" style="display:block;">
-    <img src="https://i3.yongche.name/media/g1/M01/06/16/rBEARFY8Xy2ID24xAABHEtelIYMAACiQAMX9E8AAEcq787.gif" alt="">
+    <img src="<{asset:media/g1/M01/06/16/rBEARFY8Xy2ID24xAABHEtelIYMAACiQAMX9E8AAEcq787.gif}>" alt="">
     <p>交易处理中...</p>
 </div>
 <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
@@ -403,9 +403,10 @@
     var time;
     var getTimes = 0;
     var failTitle="购卡失败";
-   	//time = setInterval(getRechargeResult,2000);   //TODO
-     	$('section').hide();   //TODO
-     	$('#loading').hide();   //TODO
+   	time = setInterval(getRechargeResult,2000);   //TODO
+   	//$('section').hide();   //TODO
+   	//$('#loading').hide();   //TODO
+	//$('.footer').show();   //TODO
 
     var chargeMoney=0;
     var totalMoney=total_money;
@@ -509,6 +510,18 @@
                     //resultPage.enterInfo.text('提示：查看奖励金请到个人中心点击【充返奖励金】');
                 //}
                 //init();
+                
+                //测试
+//              var shareInfo = {
+//              		shareUrl:"https://www.yongche.com/cms/page/2018/09/05142312.html?transaction_id=120&activity_id=1053&other_rewards=&total_money=100&project_id=255",
+//              		icon:"http:\/\/i3-testing.yongche.Org"+"\/media\/g2\/M00\/0B\/37\/CgAL21t72B-AHIyUAABgmzBv9-c357.png",
+//              		shareTitle:"订单结束",
+//              		subTitle:"分享有红包",
+//              		redStatUrl:"https:\/\/testing.red-packets.yongche.Org\/v1\/hongbao\/share?source=2&order_id=112&zt=lybr25fif3tg04gw"
+//              };
+//              setShare('sharebtn',shareInfo)
+//			                
+                
                 if(result&&result.results_page){
                 		if(result.results_page.red_packets){//新版红包裂变新增字段
                 			if(result.results_page.red_packets.shareTitle){//红包裂变入口开放
@@ -516,7 +529,8 @@
                 				$('.footer').show();
 			                $('.footer .title').html(red_obj.entry_title);
 			                $('.footer .subtitle').html(red_obj.entry_subtitle);
-			                $('.footer .icon img').src(red_obj.entry_icon);
+			               // $('.footer .icon img').src(red_obj.entry_icon);
+			                $('.footer .icon img').attr('src',red_obj.entry_icon);
 			                $('.footer .sharebtn').html(red_obj.entry_sharebtn);
 			                
 			                $.ajax({
@@ -538,7 +552,7 @@
 			                		subTitle:red_obj.subTitle,
 			                		redStatUrl:red_obj.redStatUrl
 			                };
-			                setShare($('.sharebtn'),shareInfo)
+			                setShare('sharebtn',shareInfo)
 			                
                 			}else{//红包裂变入口关闭
                 				
@@ -735,9 +749,25 @@
                 var _tmpOpenLink = _protocolLink + _str;
                 window.location.href = _tmpOpenLink;
             }
+//          ,
+//          shareThisPageToFriend:function(){
+//              var _str = "link="+shareRead_link+"&pics="+shareRead_pics+"&title="+shareRead_title+"&content="+shareRead_content+"&sourceType="+shareRead_sourceType+"&callback="+shareRead_callback+"&codeUrl="+shareRead_codeUrl;
+//              var _tmpOpenLink = _protocolLinkFriend + _str;
+//              window.location.href = _tmpOpenLink;
+//          },
+//          shareThisPageToTimeline:function(){
+//              var _str = "link="+shareRead_link+"&pics="+shareRead_pics+"&title="+shareRead_title+"&content="+shareRead_content+"&sourceType="+shareRead_sourceType+"&callback="+shareRead_callback+"&codeUrl="+shareRead_codeUrl;
+//              var _tmpOpenLink = _protocolLinkTimeline + _str;
+//              window.location.href = _tmppenLOink;
+//          }
         };
 
-        dom.click=Tools.shareThisPage();
+        //dom.click=Tools.shareThisPage();
+        /*端内分享，页面分享按钮点击*/
+	    document.getElementById(dom).addEventListener("click", function(){
+	        ga('send', 'event', 'share_button', 'click', 'shareClickRecharge');
+	        Tools.shareThisPage();
+	    });
     }
 </script>
 </body>

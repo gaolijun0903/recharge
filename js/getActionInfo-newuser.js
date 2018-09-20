@@ -145,3 +145,17 @@ https://h5.yongche.com/Ajax/Rechargerebate/getActiveInfo?time=Fri,%2024%20Aug%20
         "rebate_money_limit":1
     }
 }
+
+
+
+		// //以下字段值,"充值"改为"购卡"后暂时未使用
+        //this.document = result.project_document; 
+        //this.minRebateCharge = result.no_rebate_price;   
+        //this.is_rebate_money_limit = result.is_rebate_money_limit;  
+        //this.rebate_money_limit = result.rebate_money_limit; 
+        //this.result.is_join_rebate = result.result.is_join_rebate; 
+        //if(result.is_join_rebate==0||result.is_join_rebate==2){
+        //    this.isNewUser=true; 
+        //} else{
+        //    this.isNewUser=false; 
+        //}

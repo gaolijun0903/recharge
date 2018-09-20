@@ -11,34 +11,312 @@
     <meta name="format-detection" content="telephone=no">
 	<title>购买出行卡</title>
 	<!--<link href="https://i3.yongche.name/js/app/swiper/swiper3.07.min.css" rel="stylesheet">-->
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
 	<script src="https://i3.yongche.name/media/g4/M04/00/21/rBEDBVsaXZOIZtJ1AAAPg6xQb3EAAAM_gBNCnkAAA-b7128.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+	
 	<style>
 #app{
-	position: relative;height: 100%;min-height: 10.0rem;border: 1px solid red;
+	position: relative;height: 100%;min-height: 10.0rem;/*border: 1px solid red;*/
 }	
+.container{
+	
+}
 .header{
-	width: 85%; margin: 0.3rem auto 0;
+	padding: 0 0.6rem;
+    line-height: 0.8rem;
 }	
-.balance{
-	font-size: 0.34rem;
+.header .balance{
+	font-size: 0.30rem;
     color: #323232;
     font-weight: bold;
 }
-.account-details a{
+.header .account-details{
 	display: block;
+	font-size: 0.26rem;
     color: #888;
-    margin-right: 10px;
-    font-size: 0.3rem;
 }
+
 .banners-wrapper{
-	border: 1px solid yellow;
-	width: 100%;
-	height: 236px;
-	position: relative;
-    background-size: cover;
-    background-repeat: no-repeat;
+}
+.banners-wrapper .bannerlist{
+	margin: 0 auto;
     overflow: hidden;
+    width: 6.9rem;
+    height: 4.5rem;
+}
+.banners-wrapper .bannerlist .banneritem{
+    font-size: 0;
+    height: 4.5rem;
+	position: relative;
+}
+
+.banners-wrapper .bannerlist .banneritem .price-wrapper{
+	position: absolute;
+	bottom: 0.95rem ;
+	right: 0.7rem;
+	color: #FFFFFF;
+}
+.banners-wrapper .bannerlist .banneritem .price-wrapper .formula{
+	font-size: 0.44rem;
+}
+.banners-wrapper .bannerlist .banneritem .price-wrapper .total-price {
+	font-size: 0.78rem;
+}
+.banners-wrapper .bannerlist .banneritem .price-wrapper .symbol{
+	font-size: 0.36rem;
+}
+.banners-wrapper .bannerlist .banneritem .price-wrapper .explain{
+	padding-left: 0.1rem;
+    line-height: 0.28rem;
+	font-size: 0.28rem;
+}
+.banners-wrapper .bannerlist .banneritem .price-wrapper .explain span{
+	margin-right: 0.5rem;
+}
+.banners-wrapper .bannerlist .banneritem .price-wrapper input{
+    padding-top: 0.2rem;
+	width: 3.0rem;
+	height: 1.0rem;
+    font-size: 0.8rem;
+    color: transparent;
+    text-align: right;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 0.08rem;
+    border: 1px solid white;
+    outline: none;
+}
+.banners-wrapper .bannerlist .banneritem .price-wrapper input.ok-white{
+	color: white;
+}
+.banners-wrapper .bannerlist .banneritem .price-wrapper input::-webkit-input-placeholder{
+    color: #cc9897;
+    font-size: 0.58rem;
+}
+        
+.banners-wrapper .bannerlist .banneritem .tag-desciption {
+	position: absolute;
+	top: 1.5rem;
+	right: 0.7rem;
+	font-size: 0.28rem;
+	line-height: 0.4rem;
+	color: #FFFFFF;
+}
+
+.tags-wrapper {
+	padding-top: 0.2rem;
+}
+.tags-wrapper .taglist{
+	margin: 0 auto;
+    overflow: hidden;
+    width: 6.5rem;
+}
+.tags-wrapper .taglist .tagitem{
+	margin:0 0.2rem 0.12rem 0;
+	display: inline-block;
+	width: 2.02rem;
+	height: 0.94rem;
+	text-align: center;
+	font-size: 0.38rem;
+	line-height: 0.94rem;
+	border: 2px solid #E2E2E2;
+	border-radius: 0.08rem;
+}
+.tags-wrapper .taglist .tagitem:nth-child(3n){
+	margin-right: 0;
+}
+
+.tags-wrapper .taglist .tagitem.chosen{
+	color: #FF5252;
+    border: 2px solid #FF5252;
+}
+
+.footer .btn-wrapper{
+	margin: 0.15rem auto;
+	width: 6.5rem;
+	height: 1.0rem;
+	font-size: 0.44rem;
+	line-height: 1.0rem;
+	text-align: center;
+    color:white;
+    font-weight: bold;
+}
+.footer .btn-wrapper .btn-normal{
+    background:#FC4B47;
+    border-radius: 1.2rem;
+    -webkit-box-shadow:  1px 0px 1px 0px #FF9596,
+    -1px 0px 1px 0px #FF9596,
+    0px 2px 2px 0px #FF9596;
+    box-shadow:  1px 0px 1px 0px #FF9596,
+    -1px 0px 1px 0px #FF9596,
+    0px 2px 2px 0px #FF9596;
+}
+.footer .btn-wrapper .btn-normal-pay{
+    float: left;
+    width: 3.0rem;
+    height: 1.0rem;
+    background: #FC4B47;
+    border-radius: 8px;
+}
+.footer .btn-wrapper .btn-apple-pay{
+	float: right;
+    width: 3.0rem;
+    height: 1.0rem;
+    border-radius:8px;
+    border: 1px #000000 solid;
+    background: url(//i2-testing.yongche.org/media/g2/M04/08/04/rBEBJVe1HtiIQ9vXAAAP_4yh0LQAADJcwDTrFwAABAX865.png);
+    background-size:100% 100%;
+}
+.footer .statement{
+	margin-top: 0.28rem;
+	font-size: 0.16rem;
+	text-align: center;
+	color: #8F8F8F;
+}
+.footer .statement .protocol-btn{
+	color: #000000;
+}
+.mask{
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    z-index: 9999;
+    width: 100%;
+    height:100%;
+}
+.mask-page{
+    
+    background:rgba(240,240,240,1);
+}
+.mask-page .title{
+    height: 1.5rem;
+    line-height: 1.5rem;
+    font-size: 0.5rem;
+    text-align: center;
+    font-weight:bold;
+    color: #FC4B47;
+}
+.mask-page .content{
+    position: absolute;
+    left:0;
+    right:0;
+    top:1.5rem;
+    bottom: 1.5rem;
+    font-size: 0.24rem;
+    padding: 0 0.32rem;
+    color:#7E7E7E;
+    overflow-y: auto;
+}
+.mask-page .shadow{
+    position: absolute;
+    bottom: 1.5rem;
+    height: 1.5rem;
+    width: 100%;
+    background: linear-gradient(top,rgba(240,240,240,0),rgba(240,240,240,1));
+    background: -webkit-linear-gradient(top,rgba(240,240,240,0),rgba(240,240,240,1));
+}
+.mask-page .exit-wrapper{
+    position: absolute;
+    bottom:0.6rem;
+    width: 100%;
+    height:0.8rem;
+}
+.mask-page .exit-wrapper .btn-exit{
+	margin: 0 auto;
+    height:0.8rem;
+    width: 0.8rem;
+	background: url(//i2-testing.yongche.org/media/g2/M01/07/11/rBEBP1er3niIXR6KAAAHqq9WERAAAC1igP_9CEAAAfC486.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+
+.loading{display: block;background-color: #f0f0f0;opacity:1;color: #888;font-size: 20px;text-align: center;margin:auto;}
+.loading img{display: block;height:50px;width:50px;opacity:0.7;position: absolute;left: 50%;top: 50%;margin-left:-25px;margin-top:-25px;}
+.loading p{display: block;height:50px;width:100%;position: absolute;top: 60%;}
+
+
+#is-black{
+    display: none;
+    background:rgba(0,0,0,0.6);
+    font-size: 0.26rem;
+}
+#is-black .pop-box{
+    position:fixed;
+    top: 0.5rem;
+    bottom: 1.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    overflow: hidden;
+}
+#is-black .pop-box .headbg{
+    position: relative;
+    display: block;
+    height: 4.0rem;
+    background:#B4BFB6;
+}
+#is-black .pop-box .headbg img{
+    position: absolute;
+    height:2.0rem;
+    width: 2.0rem;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin: auto;
+}
+#is-black .pop-box .content-title{
+	padding: 0.2rem 0.32rem 0;
+	line-height: 0.36rem;
+}     
+#is-black .pop-box .content-text{
+	padding: 0.2rem 0.32rem;
+	font-size: 0.24rem;
+	line-height: 0.6rem;
+	color:#666;
+}   
+
+
+#tan_mask {position: fixed;left: 0;top: 0;width: 100%; height: 100%;background:black;opacity: 0.8;z-index: 999999998;}
+#tanchuang{position: fixed;left: 0;top: 0;width: 80%;z-index: 999999999;left:50%;border-radius:15px;overflow:hidden;top: 50%; -webkit-transform:translate(-50%,-50%);}
+#tan_header{height:50px; background: #f7f7f7 url("https://i3.yongche.name/media/g2/M02/1A/03/rBEBP1oNNROIDExJAAAgdVymM8wAAKImAFwB8IAACCN389.png") no-repeat center;position: relative;background-size: 25%;}
+#tan_content{background-color: white;padding:22px 15px;text-align: center;font-size: 16px;line-height: 25px;}
+#tan_footer{border:none;border-top: solid #c9c9c9 1px;background-color: white; line-height: 50px;text-align: center;font-size: 16px;color: red;display: block; width: 100%;border-radius: 0;}
+
+
+.mask-confirm{
+	background: rgba(0,0,0,0.7);
+}
+.mask-confirm .mask-inner{
+ 	margin: 4.0rem auto;
+ 	width: 6.0rem;
+ 	border-radius: 0.08rem;
+    overflow: hidden;
+}  
+.mask-confirm .mask-inner .confirm-title{
+	height: 1.0rem;
+    background: #f7f7f7 url(https://i1.yongche.name/media/g3/M00/02/24/rBEDAlugjyuIRJKIAACa9XACtZgAABAJQMD9TEAAJsN403.png) no-repeat center;
+    background-size: 42%;
+}
+.mask-confirm .mask-inner .confirm-content{
+	background-color: white;
+    padding: 0.44rem 0.3rem;
+    text-align: center;
+    font-size: 0.32rem;
+    line-height: 0.5rem;
+    border-top: solid #c9c9c9 1px;
+    border-bottom: solid #c9c9c9 1px;
+}
+.mask-confirm .mask-inner .confirm-footer{
+    background-color: white;
+    line-height: 1.0rem;
+    text-align: center;
+    font-size: 0.32rem;
+    color: red;
 }
 	</style>
 </head>
@@ -47,23 +325,87 @@
 	<div class="container">
 		<section class="header clearfix">
 			<div class="balance fl">余额{{balance}}元</div>
-			<div class="account-details fr"><a href="https://pay.yongche.Org/touch/balance/balancelist" class="seeList fr">账户明细 <span>&gt;</span></a></div>
+			<a class="account-details fr" href="https://pay.yongche.Org/touch/balance/balancelist" class="seeList fr">账户明细 <span>&gt;</span></a>
 		</section>
 		<section class="banners-wrapper">
-			<div class="newuser"></div>
-			<ul class="bannerlist">
-				<li class="banneritem">
-					<img src=""/>
+			<ul class="bannerlist" v-if="project_tags.length>0">
+				<li class="banneritem" v-for="(tag,idx) in project_tags" v-show="cur_tag_idx==tag.tag_order">
+					<!--各等级对应的卡片背景-->
+					<img v-if="tag.tag_picture" :src="tag.tag_picture" width="100%" height="100%" />
+					<!--各等级对应的卡片的描述文字-->
+					<section class="tag-desciption">
+						购卡100元以上即可获得40%返现
+					</section>
+					<!--固定金额-->
+					<section class="price-wrapper" v-if="tag.recharge!=0">
+						<div v-if="tag.percent>0">   <!--充值有返现-->
+							<div class="formula">    <!--计算公式-->
+								<span>{{tag.recharge}}+{{tag.extra}}=</span><span class="total-price">{{tag.total}}</span><span class="symbol">元</span>
+							</div>
+							<div class="explain">
+								<span>购买</span><span>赠送</span><span>总计</span>
+							</div>
+						</div>
+						<div v-if="tag.percent==0">  <!--充值无返现-->
+							<span class="total-price">{{tag.recharge}}</span> <span class="symbol">元</span>
+						</div>
+					</section>	
+					<!--其他金额输入框-->
+					<section class="price-wrapper" v-if="tag.recharge==0">
+						<input type="tel" :class="{'ok-white':ok_white}" v-model="input_price" @input="watchInput" @propertychange="watchInput" @keyup="watchInput" maxlength="5" placeholder="请输入面值"/>
+						<span class="symbol">元</span>
+					</section>	
 				</li>
 			</ul>
 		</section>
 		<section class="tags-wrapper">
-			
+			<ul class="taglist" v-if="project_tags.length>0">
+				<li class="tagitem" :class="{'chosen':cur_tag_idx==tag.tag_order}" v-for="(tag,idx) in project_tags" @click="chooseTag(tag.tag_order)">
+					<span v-if="tag.recharge>0">￥{{tag.recharge}}</span>
+					<span v-if="tag.recharge==0">其他金额</span>
+				</li>
+			</ul>
 		</section>
 		<section class="footer">
-			
+			<div class="btn-wrapper">
+				<div class="btn-normal" v-if="!support_applepay" @click="payFn(false)">购卡并绑定</div>
+				<div class="btn-apple" v-if="support_applepay">   <!--支持Apple pay-->
+					<div class="btn-normal-pay" @click="payFn(false)">购卡并绑定</div>
+					<div class="btn-apple-pay"  @click="payFn(true)"></div>
+				</div>
+			</div>
+			<p class="statement">点击购卡并绑定，即表示您已经同意易到用车<span class="protocol-btn" @click="showProtocal">《出行卡购买协议》</span></p>
 		</section>
 	</div>
+	<div class="mask mask-page" v-show="protocal && show_protocal">  <!--出行卡购买协议-->
+		<div class="title " v-if="protocal.title">{{protocal.title}}</div>
+	    <div class="content" v-if="protocal.value" v-html="protocal.value"></div>
+	    <div class="shadow"></div>
+	    <div class="exit-wrapper"><div class="btn-exit" @click="closeMask"></div></div>
+	</div>
+	
+	<div class="mask loading" v-show="loading">  <!--加载中页面-->
+	    <img src="//i2-testing.yongche.org/media/g1/M01/06/16/rBEARFY8Xy2ID24xAABHEtelIYMAACiQAMX9E8AAEcq787.gif" alt="">
+	    <p>数据请求中...</p>
+	</div>
+	
+	<div class="mask " id="is-black" v-show="is_black">  <!--黑名单用户，风控提示文案-->
+	    <div class="pop-box">
+	        <div class="headbg"><img src="//i1.yongche.name/media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png"></div>
+	        <p class="content-title"><font>抱歉，您的账户不具备购买条件，<br/>可能原因如下：</font></p>
+	        <div class="content-text" v-html="risk_text"></div>
+	    </div>
+	</div>
+	
+	<div class="mask mask-confirm" v-show="show_confirm">
+		<div class="mask-inner">
+			<div class="confirm-title"></div>
+			<div class="confirm-content">输入的金额必须小于1000元</div>
+			<div class="confirm-footer">确定</div>
+		</div>
+	</div>
+	
+	
 	<transition name="slide-up-fade">
 		<div class="toastmsg" v-if="showToast">
 			<div class="toasttext" v-html="toastMsg"></div>
@@ -84,16 +426,5 @@
 	
 </script>
 
-<!-- GA: -->
-<!--<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-18761483-4', 'auto');
-    ga('send', 'pageview');
-
-</script>	-->
 </body>
 </html>
