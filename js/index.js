@@ -1,4 +1,4 @@
-new Vue({
+var rebate = new Vue({
   	el: '#app',
 	data:{
 		urlDomain:'',
@@ -11,10 +11,11 @@ new Vue({
 		risk:1,  //风控类型字段，对应风控提示文案不同
 		show_protocal:false,  //是否展示 购买协议
 		show_confirm:false, //是否展示确认弹窗
+		confirm_text:'', //确认弹窗-提示文案
 		support_applepay:false, //是否支持apple pay
 		ok_white:false, //控制input的字体颜色
 		input_price:'',  //其他金额--输入的金额
-		cur_tag_idx:9, //当前选中的金额等级标签，对应“tag_order”
+		cur_tag_idx:8, //当前选中的金额等级标签，对应“tag_order”
 		minRebateCharge:'',  //享有返现的最小充值额度  目前没有使用
 		price_range:{   //可充值金额的最大最小值
 			max:0,
@@ -112,7 +113,7 @@ new Vue({
             {
                 "levels":[
                     {
-                        "min_price":0,
+                        "min_price":10,
                         "max_price":100,
                         "percent":0,
                         "tag_banner":"",
@@ -194,6 +195,7 @@ new Vue({
 	},
 	mounted: function(){
 		this.loading = false;  //TODO
+		this.setPriceRange(this.project_tags);  //设置可充值的金额的最大最小值 //TODO  测试的
 		this.sortProjectTags(this.project_tags); //充值金额按tag_order排序   //TODO  测试的
 	},
 	methods:{
@@ -226,56 +228,23 @@ new Vue({
                 method:'get',
                 url:'/Ajax/Rechargerebate/getActiveInfo?time='+new Date().getTime()
             }).success(function(data){
-                vm.dealActiveInfo(data);
+                if(data && data.code==200 && data.result){
+	        			var result = data.result;
+	        			vm.is_black = result.is_black;  //是否黑名单用户
+	                vm.risk = result.risk;  //风控类型
+	                vm.project_id = result.project_id;  //项目ID，getDocument接口需要的参数
+					vm.getDocument();  //获取协议、规则、弹窗提示 的文案，依赖参数project_id
+	        			if(result.project_tags&&result.project_tags.length>0){
+	        				vm.sortProjectTags(result.project_tags); //充值金额按tag_order排序
+	        				vm.setPriceRange(result.project_tags);  //设置可充值的金额的最大最小值
+	        				
+	        			}
+	        		}
                 
             }).error(function(e){
                 //alert('服务器异常，请稍后重试');
             });
         },
-        dealActiveInfo:function(data){
-        		if(data && data.code==200 && data.result){
-        			var result = data.result;
-        			this.is_black = result.is_black;  //是否黑名单用户
-                this.risk = result.risk;  //风控类型
-                this.project_id = result.project_id;  //项目ID，getDocument接口需要的参数
-				
-        			if(result.project_tags&&result.project_tags.length>0){
-        				this.setPriceRange(result.project_tags);  //设置可充值的金额的最大最小值
-        				
-        				this.sortProjectTags(result.project_tags); //充值金额按tag_order排序
-        				
-        			}
-        			
-        		}
-        },
-        sortProjectTags:function(tags){   //充值金额按tag_order排序
-			tags.sort(function(x,y){  //按照tag_order排序
-                return x.tag_order-y.tag_order;
-            });
-            tags.forEach(function(tag,idx){  //增加优惠金额和总金额字段
-            		tag.extra =  Number(tag.recharge) * Number(tag.percent)*0.01;
-            		tag.total = tag.recharge + tag.extra;
-            })
-            this.project_tags = tags;  //充值等级标签--数组
-        },
-        setPriceRange:function(data){ //设置可充值的金额的最大最小值
-        		var levels = $.map(data,function(e,i){
-                return e.levels;
-            });
-            levels = levels.sort(function(a,b){ //排序
-            		a.min_price-b.min_price;
-            })
-            var maxPrice = levels[0].max_price;
-            var minPrice = levels[0].min_price;
-            $.each(levels,function(i,e){
-                if(e.max_price>maxPrice) maxPrice = e.max_price;
-                if(e.min_price<minPrice) minPrice = e.min_price;
-            });
-    			this.price_range.max = maxPrice;
-    			this.price_range.min = minPrice;
-    			this.levels = levels;
-        },
-        
         getUserAmout:function(){  //获取账户余额
         		var vm = this;
         		$.ajax({
@@ -289,8 +258,6 @@ new Vue({
                 //alert('服务器异常，请稍后重试');
             });
         },
-        
-        
         getDocument:function(){ //获取协议、规则、弹窗提示 的文案
         		var vm = this;
         		$.ajax({
@@ -320,62 +287,82 @@ new Vue({
                 //alert('服务器异常，请稍后重试');
             })
         },
+        sortProjectTags:function(tags){   //充值金额按tag_order排序
+			tags.sort(function(x,y){  //按照tag_order排序
+                return x.tag_order-y.tag_order;
+            });
+            tags.forEach(function(tag,idx){  //增加优惠金额和总金额字段
+            		tag.extra =  Number(tag.recharge) * Number(tag.percent)*0.01;
+            		tag.total = tag.recharge + tag.extra;
+            })
+            this.project_tags = tags;  //充值等级标签--数组
+        },
+        setPriceRange:function(data){ //设置可充值的金额的最大最小值
+        		var levels = $.map(data,function(e,i){
+                return e.levels;
+            });
+            levels = levels.sort(function(a,b){ //排序
+            		a.min_price-b.min_price;
+            })
+            var maxPrice = levels[0].max_price;
+            var minPrice = levels[0].min_price;
+            $.each(levels,function(i,e){
+                if(e.max_price>maxPrice) maxPrice = e.max_price;
+                if(e.min_price<minPrice) minPrice = e.min_price;
+            });
+    			this.price_range.max = maxPrice;
+    			this.price_range.min = minPrice;
+    			this.levels = levels;
+        },
         payFn:function(isApplePay){
-        		var amount = this.project_tags[this.cur_tag_idx].recharge;  //当前所选分类的金额值
-        		if(amount==0){  //其他金额recharge=0，取手动输入的金额
-        			if(this.input_price==''){   //没有输入
-        				amount = 0;
-        			}else{
-        				amount = this.input_price;
-        			}
-        			
-        			
-        		}
-        		
-        		
-        		var params = {
-        			amount: 100,
-        			tag_id: this.project_tags[this.cur_tag_idx].tag_id,
-        			activity_id: this.project_tags[this.cur_tag_idx].activity_id
-        		}
-        		
-        		
+        		var params = this.setParams();  //构造参数对象
+    			if( params.amount< this.price_range.min && curTagObj.activity_id!=1070){   //输入的金额 < 允许购买的最小值
+    				this.show_confirm = true;
+				this.confirm_text = "单次至少购买"+ this.price_range.min +"元的出行卡呦~";
+				return
+    			}else if( params.amount> this.price_range.max && curTagObj.activity_id!=1070){   //输入的金额 > 允许购买的最大值
+    				this.show_confirm = true; 
+				this.confirm_text = "根据国家有关部门要求，单次购卡金额不得超过1000元，若您想购买总面值超过1000元的出行卡，可以分为多次进行操作，为您造成的不便敬请谅解。";
+				return
+    			}
         		var url = this.setPayUrl(params,isApplePay);
         		console.log(url);
         		//window.location.href = url;
         },
-        
-        chooseTag:function(idx){  //选择金额标签
-        		this.cur_tag_idx = idx;
-        },
-        showProtocal:function(){  //展示协议详情页面
-        		this.show_protocal = true;
-        },
-        closeMask:function(){  //关闭协议详情页面
-        		this.show_protocal = false;
-        },
-        
-        watchInput:function(){
-        		var val = this.input_price;
-        		var reg = /^[1-9]\d*$/;
-        		if(reg.test(val)){ //不以0开头
-                this.ok_white = true;  //控制输入框字体的颜色，--白色
-            }else{// 以0开头
-            		this.ok_white = false;  //控制输入框字体的颜色，--透明
-            		val = '';
-            }
-        		this.input_price = val;
+        setParams:function(){  //构造参数对象
+        		var curTagObj = this.project_tags[this.cur_tag_idx];  //当前所选标签等级
+        		var amount = curTagObj.recharge;  //当前所选分类的金额值，0--代表手动输入的其他金额
+        		var percent = curTagObj.percent;
+        		var otherReward = curTagObj.otherRewards;
+        		if(amount==0){  //其他金额recharge=0，取手动输入的金额
+        			amount = Number(this.input_price=='' ? 0 : this.input_price) ;   //没有输入，值为0
+        			var levelObj = this.judgeLevel(amount);
+        			percent = levelObj.percent;
+        			otherReward = levelObj.otherReward;
+        		}
+        		var params = {
+        			amount: amount,
+        			percent: percent,
+        			otherReward:otherReward,
+        			tag_id: curTagObj.tag_id,
+        			activity_id: curTagObj.activity_id
+        		}
+        		console.log(params)
+        		return params
         },
         judgeLevel:function(inputNum){ //判断输入框输入的金额在哪个等级范围内
         		var levels = this.levels;
         		var levelObj = '';
+        		if(inputNum == this.price_range.max){//输入金额为最大值时
+        			//TODO
+        		}
         		levels.forEach(function(level,idx){
         			if(inputNum >= level.min_price && inputNum < level.max_price){
         				levelObj = level;
         			}
         		})
-        		var percent = levelObj.percent;
-        		
+        		//var percent = levelObj.percent;
+        		return levelObj;
         },
         setPayUrl:function(params,isApplePay){
         		var url ="", accountDesc = "";
@@ -394,16 +381,57 @@ new Vue({
                 activity_token =  encodeURIComponent(activity_token);
                 var data = {order_id:0};
                 data = encodeURIComponent(JSON.stringify(data));
-                url += "from=2&activity_id=" + params.activity_id + "&amount=" + params.amount + "&amount_desc=" + accountDesc + "&pay_type=3&callback=rebate_result&activity_token=" + activity_token +'&data='+data;
+                url += "from=2&activity_id=" + params.activity_id + "&amount=" + params.amount + "&amount_desc=" + accountDesc + "&pay_type=3&callback=rebate.rebate_result&activity_token=" + activity_token +'&data='+data;
             }
-            
-            function rebate_result(){  //?TODO
-            	
-            }
-            
             return url;
-        		
         },
+        rebate_result:function(transactionId, data){
+        		console.log('rebate_result')
+	        if(!transactionId||transactionId==0){
+	            return;
+	        }
+	        
+//	        var totalMoney=selectedPrivilege.number;
+//	        if(totalMoney>=rebate.minRebateCharge){
+//	            totalMoney=(selectedPrivilege.number*(selectedPrivilege.percent*0.01+1)).toFixed(2);
+//	        }
+//	        setTimeout(function(){
+//	            var temp=window.location.href;
+//	            var flag = '?';
+//	            if(temp.indexOf('?')>0){
+//	                flag = '&';
+//	            }
+//	            window.location.href=window.location.href.replace('index','complete') + flag +"transaction_id=" + transactionId + "&activity_id=" + selectedPrivilege.activityId+'&other_rewards='+encodeURIComponent(selectedPrivilege.otherRewards)+'&total_money='+totalMoney+'&project_id='+rebate.projectId;
+//	            
+//	            //https://testing-h5.yongche.org/Touch/Rechargerebate/complete?transaction_id=112&activity_id=1053&total_money=10&project_id=255
+//	            
+//	        },1000)
+	        
+	        
+	        
+        },
+        watchInput:function(){ //监控输入的内容
+        		var val = this.input_price;
+        		var reg = /^[1-9]\d*$/;
+        		if(reg.test(val)){ //不以0开头
+                this.ok_white = true;  //控制输入框字体的颜色，--白色
+            }else{// 以0开头
+            		this.ok_white = false;  //控制输入框字体的颜色，--透明
+            		val = '';
+            }
+        		this.input_price = val;
+        },
+        chooseTag:function(idx){  //选择金额标签
+        		this.cur_tag_idx = idx;
+        },
+        showProtocal:function(){  //展示协议详情页面
+        		this.show_protocal = true;
+        },
+        closeMask:function(){  //关闭协议详情页面\关闭confirm提示框
+        		this.show_protocal = false;
+        		this.show_confirm = false;
+        },
+        
         checkUserAgent:function () {   //根据移动终端浏览器版本信息，检测是否支持apple pay
         		var u = navigator.userAgent;
 			var browser = {
