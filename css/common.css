@@ -331,3 +331,96 @@ p{ text-indent:0;}
     color:#1F1F1F;
     text-decoration: underline;
 }
+
+
+
+
+  
+.inner-main{
+	position: absolute;
+	top: 0;
+	bottom: 1.36rem;
+	width: 100%;
+	overflow-y: auto;
+}
+.inner-bottom{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 1.36rem;
+	background: #F5F5F5;
+	padding: 0.24rem;
+}
+.inner-bottom .again-btn{
+	display: block;
+	height: 0.88rem;
+	background: #FF5252;
+	border-radius: 0.08rem;
+	color: #FFFFFF;
+	font-size: 0.34rem;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 0.88rem;
+	font-weight: 600;
+}
+.inner-main .whitebg{
+	background: #FFFFFF;
+	padding-top: 0.6rem;
+}
+.inner-main .result-wrapper{
+	margin-bottom: 0.34rem;
+}
+.inner-main .result-wrapper .result-title{
+	margin: 0 auto 0.12rem;
+	padding-left: 0.76rem;
+	width: 2.4rem;
+	height: 0.56rem;
+	font-size: 0.4rem;
+	line-height: 0.56rem;
+	color: #323232;
+	text-align: center;
+	font-weight: 600;
+	background: url('https://i3.yongche.name/media/g2/M01/1C/22/rBEBP1qObo6IH9yLAAAWCt-Zht4AALGugLzUBIAABYi607.png') no-repeat; 
+	background-size: 0.56rem; 
+}
+.inner-main .result-wrapper .result-subtitle{
+	font-size:0.28rem;
+	line-height: 0.4rem;
+	color: #646464;
+	text-align: center;
+}
+
+.inner-main .other-wrapper{
+	padding: 0.16rem 0.24rem 0.4rem;
+}
+.inner-main .other{
+	background: #FFFFFF; border: 1px solid #E1E1E1; border-radius: 0.08rem; height: 3.2rem; overflow: hidden;
+}
+.inner-main .other .other-title{
+	margin: 0.26rem 0 0.16rem;
+	padding-left: 0.3rem;
+	font-size: 0.34rem;
+	line-height: 0.48rem;
+	color: #323232;
+	letter-spacing: 0;
+	font-weight: 600;
+}
+.inner-main .other .swiper-container{
+	height: 1.98rem;
+}
+.inner-main .other .swiper-container .active-list .active-item{
+	margin-left: 0.16rem;
+	width: 2.64rem;
+	height: 1.98rem;
+	background: grey;
+}
+.inner-main .other .swiper-container .active-list .active-item:first-child{
+	margin-left: 0.3rem;
+}
+.inner-main .other .swiper-container .active-list .active-item a{
+	display: block;
+    height: 100%;
+}
+.inner-main .other .swiper-container .active-list .active-item img{
+	vertical-align: bottom;
+}

@@ -32,18 +32,73 @@ p{ text-indent:0;}
 .slide-up-fade-leave-active { transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0); }
 .slide-up-fade-enter , .slide-up-fade-leave-to { transform: translateY(100px); opacity: 0; }
 /*公用弹层背景*/
-.mask{ position: absolute; top:0; bottom: 0; left:0; right: 0; z-index: 9999; width: 100%; height:100%; background-color: #f0f0f0;}
+.mask{ position: absolute; top:0; bottom: 0; left:0; right: 0; z-index: 9999; width: 100%; height:100%; }
+/*loading加载页*/
+.loading{display: block;background-color: #f0f0f0;opacity:1;color: #888;font-size: 20px;text-align: center;margin:auto;}
+.loading img{display: block;height:50px;width:50px;opacity:0.7;position: absolute;left: 50%;top: 50%;margin-left:-25px;margin-top:-25px;}
+.loading p{display: block;height:50px;width:100%;position: absolute;top: 60%;}
+
+.recharge_unknow,.recharge_fail{position: fixed;left: 0;top: 0;bottom:0;right:0;z-index: 9999;width: 100%;height: 100%;background-color: #f0f0f0; display: none;}
+.recharge_unknow img,.recharge_fail img{display: block;margin: 20% auto 0;}
+.recharge_unknow p,.recharge_fail p{text-align: center;color: #888;font-size: 20px;margin-top: 30px;}
+.recharge_unknow p a,.recharge_fail p a{color: #1e82e6;}
+.recharge_unknow a.rebate_again,.recharge_fail a.rebate_again{font-size: 20px;text-align: center;color: #ec4949;height: 90px;line-height: 90px;border: 1px solid #ec4949;-webkit-box-sizing: border-box;box-sizing: border-box;background: #fff;width: 90%;display: block;position: absolute;bottom: 30px;margin:0 5%;}
 	</style>	
 	<style>
 #app{ position: relative;height: 100%;min-height: 10.0rem; background: #F5F5F5;}	
 .container{ position: relative;height: 100%;}
-.inner-main{ position: absolute; top: 0; bottom: 1.36rem; width: 100%; overflow-y: auto; }
-
-.inner-main .whitebg{ background: #FFFFFF; padding-top: 0.6rem; }
-.inner-main .result-wrapper{ margin-bottom: 0.34rem; }
-.inner-main .result-wrapper .result-title{ margin: 0 auto 0.12rem; padding-left: 0.76rem; width: 2.4rem; height: 0.56rem; font-size: 0.4rem; line-height: 0.56rem; color: #323232; text-align: center; font-weight: 600; background: url('https://i3.yongche.name/media/g2/M01/1C/22/rBEBP1qObo6IH9yLAAAWCt-Zht4AALGugLzUBIAABYi607.png') no-repeat;  background-size: 0.56rem;  }
-.inner-main .result-wrapper .result-subtitle{ font-size:0.28rem; line-height: 0.4rem; color: #646464; text-align: center; }
-
+.inner-main{
+	position: absolute;
+	top: 0;
+	bottom: 1.36rem;
+	width: 100%;
+	overflow-y: auto;
+}
+.inner-bottom{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 1.36rem;
+	background: #F5F5F5;
+	padding: 0.24rem;
+}
+.inner-bottom .again-btn{
+	height: 0.88rem;
+	background: #FF5252;
+	border-radius: 0.08rem;
+	color: #FFFFFF;
+	font-size: 0.34rem;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 0.88rem;
+	font-weight: 600;
+}
+.inner-main .whitebg{
+	background: #FFFFFF;
+	padding-top: 0.6rem;
+}
+.inner-main .result-wrapper{
+	margin-bottom: 0.34rem;
+}
+.inner-main .result-wrapper .result-title{
+	margin: 0 auto 0.12rem;
+	padding-left: 0.76rem;
+	width: 2.4rem;
+	height: 0.56rem;
+	font-size: 0.4rem;
+	line-height: 0.56rem;
+	color: #323232;
+	text-align: center;
+	font-weight: 600;
+	background: url('https://i3.yongche.name/media/g2/M01/1C/22/rBEBP1qObo6IH9yLAAAWCt-Zht4AALGugLzUBIAABYi607.png') no-repeat; 
+	background-size: 0.56rem; 
+}
+.inner-main .result-wrapper .result-subtitle{
+	font-size:0.28rem;
+	line-height: 0.4rem;
+	color: #646464;
+	text-align: center;
+}
 .inner-main .banner{ margin: 0 auto; overflow: hidden; width: 6.9rem; height: 4.5rem; position: relative; }
 .inner-main .banner .price-wrapper{ position: absolute; bottom: 0.95rem ; right: 0.7rem; color: #FFFFFF; }
 .inner-main .banner .price-wrapper .formula{ font-size: 0.44rem; }
@@ -60,32 +115,48 @@ p{ text-indent:0;}
 .inner-main .redpocket .textwrapper .subtitle{font-size: 0.24rem; color: #888888; line-height: 0.24rem; width: 100%; height: 0.24rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 .inner-main .redpocket .sharebtn{margin:0.36rem 0.32rem 0.36rem  0; float: right; /*width: 58px;*/ padding: 0 0.1rem; height: 0.48rem; font-size: 0.28rem; color: #FF5252; line-height: 0.48rem; text-align: center; border: 1px solid #FF5252; border-radius: 0.08rem;}
 
-.inner-main .other-wrapper{ padding: 0.16rem 0.24rem 0.4rem; }
-.inner-main .other{ background: #FFFFFF; border: 1px solid #E1E1E1; border-radius: 0.08rem; height: 3.2rem; overflow: hidden; }
-.inner-main .other .other-title{ margin: 0.26rem 0 0.16rem; padding-left: 0.3rem; font-size: 0.34rem; line-height: 0.48rem; color: #323232; letter-spacing: 0; font-weight: 600; }
-.inner-main .other .swiper-container{ height: 1.98rem; }
-.inner-main .other .swiper-container .active-list .active-item{ margin-left: 0.16rem; width: 2.64rem; height: 1.98rem; background: grey; }
-.inner-main .other .swiper-container .active-list .active-item:first-child{ margin-left: 0.3rem; }
-.inner-main .other .swiper-container .active-list .active-item a{ display: block; height: 100%; }
-.inner-main .other .swiper-container .active-list .active-item img{ vertical-align: bottom; }  
-    
-.inner-bottom{ position: absolute; bottom: 0; width: 100%; height: 1.36rem; background: #F5F5F5; padding: 0.24rem; }
-.inner-bottom .again-btn{ display: block; height: 0.88rem; background: #FF5252; border-radius: 0.08rem; color: #FFFFFF; font-size: 0.34rem; letter-spacing: 0; text-align: center; line-height: 0.88rem; font-weight: 600; }
-
-.recharge_unknow img,.recharge_fail img{display: block;margin: 20% auto 0;}
-.recharge_unknow p,.recharge_fail p{text-align: center;color: #888;font-size: 20px;margin-top: 30px;}
-.recharge_unknow p a,.recharge_fail p a{color: #1e82e6;}
-.recharge_unknow a.rebate_again,.recharge_fail a.rebate_again{font-size: 20px;text-align: center;color: #ec4949;height: 60px;line-height: 60px;border: 1px solid #ec4949;-webkit-box-sizing: border-box;box-sizing: border-box;background: #fff;width: 90%;display: block;position: absolute;bottom: 30px;margin:0 5%;} 
-/*loading加载页*/
-.loading{display: block;background-color: #f0f0f0;opacity:1;color: #888;font-size: 20px;text-align: center;margin:auto;}
-.loading img{display: block;height:50px;width:50px;opacity:0.7;position: absolute;left: 50%;top: 50%;margin-left:-25px;margin-top:-25px;}
-.loading p{display: block;height:50px;width:100%;position: absolute;top: 60%;}
-
+.inner-main .other-wrapper{
+	padding: 0.16rem 0.24rem 0.4rem;
+}
+.inner-main .other{
+	background: #FFFFFF; border: 1px solid #E1E1E1; border-radius: 0.08rem; height: 3.2rem; overflow: hidden;
+}
+.inner-main .other .other-title{
+	margin: 0.26rem 0 0.16rem;
+	padding-left: 0.3rem;
+	font-size: 0.34rem;
+	line-height: 0.48rem;
+	color: #323232;
+	letter-spacing: 0;
+	font-weight: 600;
+}
+.inner-main .other .swiper-container{
+	height: 1.98rem;
+}
+.inner-main .other .swiper-container .active-list{
+	
+}
+.inner-main .other .swiper-container .active-list .active-item{
+	margin-left: 0.16rem;
+	width: 2.64rem;
+	height: 1.98rem;
+	background: grey;
+}
+.inner-main .other .swiper-container .active-list .active-item:first-child{
+	margin-left: 0.3rem;
+}
+.inner-main .other .swiper-container .active-list .active-item a{
+	display: block;
+    height: 100%;
+}
+.inner-main .other .swiper-container .active-list .active-item img{
+	vertical-align: bottom;
+}
 	</style>
 </head>
 <body>
 <div id="app" v-cloak>
-	<div class="container" v-if="res_status===1">  <!--购卡成功-->
+	<div class="container" v-if="res_status===1">
 		<div class="inner-main">
 			<section class="whitebg">
 				<section class="result-wrapper">
@@ -93,9 +164,9 @@ p{ text-indent:0;}
 					<div class="result-subtitle">出行卡金额已到您的账户</div>
 				</section>
 				<section class="banner">
-					<!--卡片背景-->
+					<!--各等级对应的卡片背景-->
 					<img  :src="params.tag_picture" width="100%" height="100%" />
-					<!--购卡金额-->
+					<!--固定金额-->
 					<section class="price-wrapper">
 						<div v-if="params.percent>0">   <!--充值有返现-->
 							<div class="formula">    <!--计算公式-->
@@ -111,17 +182,17 @@ p{ text-indent:0;}
 					</section>	
 				</section>
 			</section>
-			<section class="redpocket-wrapper" v-if="red_obj.entry_title">   <!--红包裂变入口-->
+			<section class="redpocket-wrapper" v-if="red_obj.entry_title">
 				<div class="redpocket">
 					<div class="icon"><img :src="red_obj.entry_icon" width="100%" height="100%"/></div>
 			    		<div class="textwrapper">
 			    			<div class="title">{{red_obj.entry_title}}</div>
 			    			<div class="subtitle">{{red_obj.entry_subtitle}}</div>
 			    		</div>
-			    		<div id="sharebtn" class="sharebtn">{{red_obj.entry_sharebtn}}</div>  <!--去分享的按钮-->
+			    		<div id="sharebtn" class="sharebtn">{{red_obj.entry_sharebtn}}</div>
 				</div>
 			</section>
-			<section class="other-wrapper" v-if="actives.length>0">   <!--更多活动-->
+			<section class="other-wrapper" v-if="actives.length>0">
 				<div class="other">
 					<div class="other-title">更多活动</div>
 					<div class="swiper-container">
@@ -134,16 +205,20 @@ p{ text-indent:0;}
 				</div>
 			</section>
 		</div>
-		<div class="inner-bottom"><a class="again-btn" href="/touch/rechargerebate/index">再次购买</a></div>
+		<div class="inner-bottom">
+			<div class="again-btn">再次购买</div>
+		</div>
+			
 	</div>
 	
-	<section class="mask recharge_unknow" v-if="res_status===2">  <!-- 通信异常 -->
+	<!-- 通信异常 -->
+	<section class="recharge_unknow" v-if="res_status===2">
 	    <img src="https://i1.yongche.name/media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png" alt="">
 	    <p>网络通信异常</p>
 	    <a class="rebate_again" href="/touch/rechargerebate/index">返回重试</a>
 	</section>
-	
-	<section class="mask recharge_fail"  v-if="res_status===0"><!-- 充值失败 -->
+	<!-- 充值失败 -->
+	<section class="recharge_fail"  v-if="res_status===0">
 	    <img src="https://i1.yongche.name/media/g1/M01/06/15/rBEARFY7FnuIfX5xAAASm9Iv5oYAACh1wP_6mMAABKz686.png" alt="">
 	    <p>{{fail_desc}}</p>
 	    <a class="rebate_again" href="/touch/rechargerebate/index">返回重试</a>
@@ -168,21 +243,94 @@ var rebateResult = new Vue({
 		Ad_host:'https://testing-marketapi.yongche.Org', //"更多活动"接口域名
 		//Ad_host:'https://testing-marketapi.yongche.Org',   // TODO
 		res_status:'',   // 0--充值失败， 1--成功， 2--网络异常
-		loading: true, //是否加载中
+		loading: false, //是否加载中
 		fail_title: '购卡失败',
 		fail_desc:'购卡未完成',
 		timer:'',
 		time_counter:0,
 		recharge_amount:'',
 		params:'', //支付接口需要的参数
-		red_obj:{},
-		actives:[],
+		red_obj:{
+			entry_title:'分享和好友一起领红包',
+			entry_subtitle:'超级大包等你来撩，超级大包等你来撩，超级大包等你来撩，手慢无~',
+			entry_icon:'https://i1.yongche.name/media/g3/M00/01/3F/rBEDA1uOJpGITUgjAAAFzKmeFSIAAAx1wGBsg4AAAXk287.png',
+			entry_sharebtn:'去分享'
+		},
+		actives:[
+            {
+                "id":4448,
+                "title":"",
+                "redirect_url":"https://www.baidu.com/",
+                "image_url":"https://i3.yongche.name/media/g3/M04/01/24/rBEDAlt-NHyIckZlAAIn58iurf4AAAnawMP-eEAAif_828.png"
+            },
+            {
+                "id":4449,
+                "title":"",
+                
+                "redirect_url":"https://www.baidu.com/",
+                "image_url":"https://i3.yongche.name/media/g3/M04/01/24/rBEDAlt-NI2IKfHTAAIzxJ_Ym7EAAAnawOGe8oAAjPc299.png"
+            },
+            {
+                "id":4450,
+                "title":"",
+                
+                "redirect_url":"",
+                "image_url":"https://i1.yongche.name/media/g3/M04/01/24/rBEDA1t-NJuIXJWLAAIwL-PvcRkAAAnawP5ETkAAjBH635.png"
+            },
+            {
+                "id":4451,
+                "title":"",
+                
+                "redirect_url":"",
+                "image_url":"https://i3.yongche.name/media/g3/M04/01/24/rBEDAlt-NKuIR_sBAAIy9jxykZYAAAncQAJZO4AAjMO188.png"
+            },
+            {
+                "id":4452,
+                "title":"",
+                
+                "redirect_url":"",
+                "image_url":"https://i2.yongche.name/media/g3/M03/01/24/rBEDA1t8-QeIT13iAAI2Y9ZXP1AAAAnHAPygsMAAjZ7859.png"
+            },
+            {
+                "id":4453,
+                "title":"",
+                
+                "redirect_url":"",
+                "image_url":"https://i1.yongche.name/media/g3/M03/01/24/rBEDA1t8-RuIa-BiAAIzbPiDLw8AAAnIgDLlO4AAjOE865.png"
+            },
+            {
+                "id":4454,
+                "title":"",
+                
+                "redirect_url":"",
+                "image_url":"https://i2.yongche.name/media/g3/M03/01/24/rBEDAlt8-T2IZlrOAAIxalR0dkQAAAnIgExLxgAAjGC265.png"
+            },
+            {
+                "id":4455,
+                "title":"",
+                
+                "redirect_url":"",
+                "image_url":"https://i3.yongche.name/media/g4/M02/01/24/rBEDBVt8-WiISuImAAIxk9FSSqcAAAnGQP2QyoAAjGr721.png"
+            },
+            {
+                "id":4456,
+                "title":"",
+                
+                "redirect_url":"",
+                "image_url":"https://i2.yongche.name/media/g3/M04/01/24/rBEDAlt-MmWIJ6_CAAITKh-5SZAAAAnawKaI8oAAhNC013.png"
+            }
+        ],
+		
 		
 		showToast:false,  //吐司提示框的展示与否  false-不展示，true-展示
 	  	toastMsg:'' //吐司提示信息
 	},
+	computed:{
+		
+	},
 	mounted: function(){
 		this.init();
+		this.getOrderCompleteAd();
 	},
 	methods:{
 		init:function (){
@@ -225,8 +373,6 @@ var rebateResult = new Vue({
                 alert("您尚未登录，请登录后再购卡");
                 window.location.href = "yongche://login";
             } else if (code == "200") {   //交易成功
-            	
-				this.getOrderCompleteAd();
                 clearInterval(this.timer);
                 this.loading = false;
                 this.res_status = 1;
@@ -261,7 +407,7 @@ var rebateResult = new Vue({
         getOrderCompleteAd:function(){  //获取“更多活动”的数据
         		var vm = this;
         		$.ajax({
-		        url: vm.Ad_host + '/User/Advertisement/getOrderCompleteAd',
+		        url: Ad_host + '/User/Advertisement/getOrderCompleteAd',
 	            type: 'get',
 		        success:function(data){
 		        		if(data.code == 200){
