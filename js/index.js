@@ -7,6 +7,7 @@ var rebate = new Vue({
 		balance:'97',   //账户余额
 		loading: true, //是否加载中
 		project_id:'',  //项目ID， getActiveInfo接口返回，getDocument接口需要的参数
+		params:'', //支付接口需要的参数
 		is_black:false,  //是否是黑名单用户
 		risk:1,  //风控类型字段，对应风控提示文案不同
 		show_protocal:false,  //是否展示 购买协议
@@ -26,7 +27,7 @@ var rebate = new Vue({
                 "tag_id":4448,
                 "tag_banner":"",
                 "tag_picture":"https://i3.yongche.name/media/g3/M04/01/24/rBEDAlt-NHyIckZlAAIn58iurf4AAAnawMP-eEAAif_828.png",
-                "show_name":"",
+                "show_name":"购卡100元以上享受返现",
                 "recharge":100,
                 "activity_id":1053,
                 "tag_order":1,
@@ -37,7 +38,7 @@ var rebate = new Vue({
                 "tag_id":4449,
                 "tag_banner":"",
                 "tag_picture":"https://i3.yongche.name/media/g3/M04/01/24/rBEDAlt-NI2IKfHTAAIzxJ_Ym7EAAAnawOGe8oAAjPc299.png",
-                "show_name":"",
+                "show_name":"购卡100元以上享受返现",
                 "recharge":200,
                 "activity_id":1053,
                 "tag_order":2,
@@ -48,7 +49,7 @@ var rebate = new Vue({
                 "tag_id":4450,
                 "tag_banner":"",
                 "tag_picture":"https://i1.yongche.name/media/g3/M04/01/24/rBEDA1t-NJuIXJWLAAIwL-PvcRkAAAnawP5ETkAAjBH635.png",
-                "show_name":"",
+                "show_name":"购卡100元以上享受返现",
                 "recharge":300,
                 "activity_id":1053,
                 "tag_order":3,
@@ -59,7 +60,7 @@ var rebate = new Vue({
                 "tag_id":4451,
                 "tag_banner":"",
                 "tag_picture":"https://i3.yongche.name/media/g3/M04/01/24/rBEDAlt-NKuIR_sBAAIy9jxykZYAAAncQAJZO4AAjMO188.png",
-                "show_name":"",
+                "show_name":"购卡100元以上享受返现",
                 "recharge":400,
                 "activity_id":1053,
                 "tag_order":4,
@@ -70,7 +71,7 @@ var rebate = new Vue({
                 "tag_id":4452,
                 "tag_banner":"",
                 "tag_picture":"https://i2.yongche.name/media/g3/M03/01/24/rBEDA1t8-QeIT13iAAI2Y9ZXP1AAAAnHAPygsMAAjZ7859.png",
-                "show_name":"",
+                "show_name":"购卡100元以上享受返现",
                 "recharge":900,
                 "activity_id":1053,
                 "tag_order":7,
@@ -160,11 +161,29 @@ var rebate = new Vue({
 		popup:{},
 		levels:[],
 		
+		color:'',  
+		color1:'',  //#FF9596
+		tagbg:'https://i2.yongche.name/media/g2/M01/0B/00/rBEBJVfXq2GIWfNLAAAFuwniE4cAAESpADva9QAAAXT299.png',
 		
 		showToast:false,  //吐司提示框的展示与否  false-不展示，true-展示
 	  	toastMsg:'' //吐司提示信息
 	},
 	computed:{
+		tag_style:function(){
+			var obj = {
+				color: this.color,
+    				border: '2px solid '+this.color,
+    				background:'url('+ this.tagbg +') 101% 103% /18px 20px no-repeat'
+			}
+			return obj;
+		},
+		btn_style:function(){
+			var obj = {
+				backgroundColor: this.color,
+			    boxShadow:  '1px 0px 1px 0px '+ this.color1 +',-1px 0px 1px 0px '+ this.color1 +',0px 2px 2px 0px '+ this.color1
+			}
+			return obj;
+		},
 		rewardlist_url:function(){  //我的奖品页面地址
 			return "//"+this.webHost+"/cms/page/rebate4_list.html" ;
 		},
@@ -194,9 +213,15 @@ var rebate = new Vue({
 		}
 	},
 	mounted: function(){
-		this.loading = false;  //TODO
-		this.setPriceRange(this.project_tags);  //设置可充值的金额的最大最小值 //TODO  测试的
-		this.sortProjectTags(this.project_tags); //充值金额按tag_order排序   //TODO  测试的
+		this.$nextTick(function(){   //TODO  测试的
+			this.color = '#FF5252';
+			this.color1 = '#FF9596';
+		})
+//		this.loading = false;  //TODO
+//		this.setPriceRange(this.project_tags);  //设置可充值的金额的最大最小值 //TODO  测试的
+//		this.sortProjectTags(this.project_tags); //充值金额按tag_order排序   //TODO  测试的
+		
+		this.init();
 	},
 	methods:{
 		init:function (){
@@ -215,7 +240,7 @@ var rebate = new Vue({
                 		vm.checkUserAgent(); //根据移动终端浏览器版本信息，检测是否支持apple pay
 					vm.getActiveInfo();  //获取充返活动信息
 					vm.getUserAmout();   //获取账户余额
-              }else{  //未登录，跳转登录页面
+              	}else{  //未登录，跳转登录页面
                     window.location.href = 'yongche://login?done=' + encodeURIComponent(window.location.href);
                 }
 		    }).error(function(e){
@@ -315,28 +340,22 @@ var rebate = new Vue({
     			this.levels = levels;
         },
         payFn:function(isApplePay){
-        		var params = this.setParams();  //构造参数对象
-    			if( params.amount< this.price_range.min && curTagObj.activity_id!=1070){   //输入的金额 < 允许购买的最小值
-    				this.show_confirm = true;
-				this.confirm_text = "单次至少购买"+ this.price_range.min +"元的出行卡呦~";
-				return
-    			}else if( params.amount> this.price_range.max && curTagObj.activity_id!=1070){   //输入的金额 > 允许购买的最大值
-    				this.show_confirm = true; 
-				this.confirm_text = "根据国家有关部门要求，单次购卡金额不得超过1000元，若您想购买总面值超过1000元的出行卡，可以分为多次进行操作，为您造成的不便敬请谅解。";
-				return
-    			}
-        		var url = this.setPayUrl(params,isApplePay);
-        		console.log(url);
-        		//window.location.href = url;
-        },
-        setParams:function(){  //构造参数对象
-        		var curTagObj = this.project_tags[this.cur_tag_idx];  //当前所选标签等级
+			var curTagObj = this.project_tags[this.cur_tag_idx];  //当前所选标签等级
         		var amount = curTagObj.recharge;  //当前所选分类的金额值，0--代表手动输入的其他金额
         		var percent = curTagObj.percent;
         		var otherReward = curTagObj.otherRewards;
         		if(amount==0){  //其他金额recharge=0，取手动输入的金额
         			amount = Number(this.input_price=='' ? 0 : this.input_price) ;   //没有输入，值为0
-        			var levelObj = this.judgeLevel(amount);
+        			if( amount< this.price_range.min && curTagObj.activity_id!=1070){   //输入的金额 < 允许购买的最小值
+	    				this.show_confirm = true;
+					this.confirm_text = "单次至少购买"+ this.price_range.min +"元的出行卡呦~";
+					return
+	    			}else if( amount> this.price_range.max && curTagObj.activity_id!=1070){   //输入的金额 > 允许购买的最大值
+	    				this.show_confirm = true; 
+					this.confirm_text = "根据国家有关部门要求，单次购卡金额不得超过1000元，若您想购买总面值超过1000元的出行卡，可以分为多次进行操作，为您造成的不便敬请谅解。";
+					return
+	    			}
+        			var levelObj = this.judgeLevel(amount);  //判断输入的金额在哪个等级范围内
         			percent = levelObj.percent;
         			otherReward = levelObj.otherReward;
         		}
@@ -345,23 +364,29 @@ var rebate = new Vue({
         			percent: percent,
         			otherReward:otherReward,
         			tag_id: curTagObj.tag_id,
-        			activity_id: curTagObj.activity_id
+        			activity_id: curTagObj.activity_id,
+        			tag_picture: curTagObj.tag_picture
         		}
-        		console.log(params)
-        		return params
+        		this.params = params;
+        		
+        		//console.log(this.params)
+        		var url = this.setPayUrl(params,isApplePay);
+        		console.log(url);
+        		this.setLocalStorage(params);
+        		//window.location.href = url;    //TODO
         },
         judgeLevel:function(inputNum){ //判断输入框输入的金额在哪个等级范围内
         		var levels = this.levels;
         		var levelObj = '';
         		if(inputNum == this.price_range.max){//输入金额为最大值时
-        			//TODO
+        			levelObj = levels[levels.length-1];
+        		}else{
+        			levels.forEach(function(level,idx){
+	        			if(inputNum >= level.min_price && inputNum < level.max_price){
+	        				levelObj = level;
+	        			}
+	        		})
         		}
-        		levels.forEach(function(level,idx){
-        			if(inputNum >= level.min_price && inputNum < level.max_price){
-        				levelObj = level;
-        			}
-        		})
-        		//var percent = levelObj.percent;
         		return levelObj;
         },
         setPayUrl:function(params,isApplePay){
@@ -386,29 +411,28 @@ var rebate = new Vue({
             return url;
         },
         rebate_result:function(transactionId, data){
-        		console.log('rebate_result')
+        		console.log('rebate.rebate_result')
 	        if(!transactionId||transactionId==0){
 	            return;
 	        }
+	        console.log(this.params);
+	        var params = this.params;
 	        
-//	        var totalMoney=selectedPrivilege.number;
-//	        if(totalMoney>=rebate.minRebateCharge){
-//	            totalMoney=(selectedPrivilege.number*(selectedPrivilege.percent*0.01+1)).toFixed(2);
-//	        }
-//	        setTimeout(function(){
-//	            var temp=window.location.href;
-//	            var flag = '?';
-//	            if(temp.indexOf('?')>0){
-//	                flag = '&';
-//	            }
-//	            window.location.href=window.location.href.replace('index','complete') + flag +"transaction_id=" + transactionId + "&activity_id=" + selectedPrivilege.activityId+'&other_rewards='+encodeURIComponent(selectedPrivilege.otherRewards)+'&total_money='+totalMoney+'&project_id='+rebate.projectId;
-//	            
-//	            //https://testing-h5.yongche.org/Touch/Rechargerebate/complete?transaction_id=112&activity_id=1053&total_money=10&project_id=255
-//	            
-//	        },1000)
-	        
-	        
-	        
+	        var totalMoney=tparams.amount;
+	        if(totalMoney>=this.price.min){
+	            totalMoney=(params.amount*(params.percent*0.01+1)).toFixed(2);
+	        }
+	        setTimeout(function(){
+	            var temp=window.location.href;
+	            var flag = '?';
+	            if(temp.indexOf('?')>0){
+	                flag = '&';
+	            }
+	            window.location.href=window.location.href.replace('index','complete') + flag +"transaction_id=" + transactionId + "&activity_id=" + params.activity_id+"&other_rewards="+encodeURIComponent(params.otherReward)+"&total_money=" +totalMoney+ "&project_id="+params.project_id;
+	            
+	            //https://testing-h5.yongche.org/Touch/Rechargerebate/complete?transaction_id=112&activity_id=1053&total_money=10&project_id=255
+	            
+	        },1000)
         },
         watchInput:function(){ //监控输入的内容
         		var val = this.input_price;
@@ -431,7 +455,6 @@ var rebate = new Vue({
         		this.show_protocal = false;
         		this.show_confirm = false;
         },
-        
         checkUserAgent:function () {   //根据移动终端浏览器版本信息，检测是否支持apple pay
         		var u = navigator.userAgent;
 			var browser = {
@@ -488,11 +511,11 @@ var rebate = new Vue({
 			}else{
 				return null;
 			}
+		},
+		setLocalStorage:function(params){   //设置localstorage
+			var str = JSON.stringify(params);
+			var storage = window.localStorage;
+			storage.setItem("params",str);
 		}
-  	},
-	watch:{
-		input_price:function(){
-			
-		}
-	}
+  	}
 })
