@@ -9,9 +9,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
-	<title>购买出行卡</title>
+	<title>购买结果</title>
 	<script src="https://i3.yongche.name/media/g4/M04/00/21/rBEDBVsaXZOIZtJ1AAAPg6xQb3EAAAM_gBNCnkAAA-b7128.js"></script>
-	<link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.1.0/css/swiper.min.css">
+	<!--<link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.1.0/css/swiper.min.css">-->
+	<link href="<{asset2:js/app/swiper/swiper3.07.min.css}>" rel="stylesheet">
 	<style>
 [v-cloak] {display: none;}
 html, body { position: relative; height: 100%;}
@@ -33,8 +34,7 @@ p{ text-indent:0;}
 .slide-up-fade-enter , .slide-up-fade-leave-to { transform: translateY(100px); opacity: 0; }
 /*公用弹层背景*/
 .mask{ position: absolute; top:0; bottom: 0; left:0; right: 0; z-index: 9999; width: 100%; height:100%; background-color: #f0f0f0;}
-	</style>	
-	<style>
+
 #app{ position: relative;height: 100%;min-height: 10.0rem; background: #F5F5F5;}	
 .container{ position: relative;height: 100%;}
 .inner-main{ position: absolute; top: 0; bottom: 1.36rem; width: 100%; overflow-y: auto; }
@@ -45,12 +45,15 @@ p{ text-indent:0;}
 .inner-main .result-wrapper .result-subtitle{ font-size:0.28rem; line-height: 0.4rem; color: #646464; text-align: center; }
 
 .inner-main .banner{ margin: 0 auto; overflow: hidden; width: 6.9rem; height: 4.5rem; position: relative; }
-.inner-main .banner .price-wrapper{ position: absolute; bottom: 0.95rem ; right: 0.7rem; color: #FFFFFF; }
-.inner-main .banner .price-wrapper .formula{ font-size: 0.44rem; }
-.inner-main .banner .price-wrapper .total-price { font-size: 0.78rem; }
-.inner-main .banner .price-wrapper .symbol{ font-size: 0.36rem; }
-.inner-main .banner .price-wrapper .explain{ padding-left: 0.1rem; line-height: 0.28rem; font-size: 0.28rem; }
-.inner-main .banner .price-wrapper .explain span{ margin-right: 0.5rem; }
+.inner-main .banner .price-wrapper{ position: absolute; bottom: 0.59rem ; right: 0.56rem; color: #FFFFFF; }
+.inner-main .banner .price-wrapper .formula{ font-size: 0.4rem; }
+.inner-main .banner .price-wrapper .jiashu{ display: inline-block; min-width: 0.76rem; text-align: center; }
+.inner-main .banner .price-wrapper .plus{ display: inline-block; margin:0 0.04rem; width:0.24rem;}
+.inner-main .banner .price-wrapper .total-price { display: inline-block; min-width: 1.8rem; font-size: 0.72rem; text-align: center;}
+.inner-main .banner .price-wrapper .symbol{ font-size: 0.32rem; }
+.inner-main .banner .price-wrapper .explain{ line-height: 0.24rem; font-size: 0.24rem; }
+.inner-main .banner .price-wrapper .explain .plus{ color: transparent; }
+.inner-main .banner .price-wrapper .explain .total-price{ font-size: 0.24rem; }
  
 .inner-main .redpocket-wrapper{ margin-top: 12px; padding: 0 0.24rem; }
 .inner-main .redpocket { background: #FFFFFF; border: 1px solid #E1E1E1; border-radius: 0.08rem; height: 1.2rem; }
@@ -64,7 +67,7 @@ p{ text-indent:0;}
 .inner-main .other{ background: #FFFFFF; border: 1px solid #E1E1E1; border-radius: 0.08rem; height: 3.2rem; overflow: hidden; }
 .inner-main .other .other-title{ margin: 0.26rem 0 0.16rem; padding-left: 0.3rem; font-size: 0.34rem; line-height: 0.48rem; color: #323232; letter-spacing: 0; font-weight: 600; }
 .inner-main .other .swiper-container{ height: 1.98rem; }
-.inner-main .other .swiper-container .active-list .active-item{ margin-left: 0.16rem; width: 2.64rem; height: 1.98rem; background: grey; }
+.inner-main .other .swiper-container .active-list .active-item{ margin-left: 0.16rem; width: 2.64rem; height: 1.98rem; background: grey; border-radius: 0.08rem; overflow: hidden;}
 .inner-main .other .swiper-container .active-list .active-item:first-child{ margin-left: 0.3rem; }
 .inner-main .other .swiper-container .active-list .active-item a{ display: block; height: 100%; }
 .inner-main .other .swiper-container .active-list .active-item img{ vertical-align: bottom; }  
@@ -92,21 +95,21 @@ p{ text-indent:0;}
 					<div class="result-title">支付成功</div>
 					<div class="result-subtitle">出行卡金额已到您的账户</div>
 				</section>
-				<section class="banner">
+				<section class="banner" v-show="local_params">
 					<!--卡片背景-->
-					<img  :src="params.tag_picture" width="100%" height="100%" />
+					<img  :src="local_params.tag_picture" width="100%" height="100%" />
 					<!--购卡金额-->
 					<section class="price-wrapper">
-						<div v-if="params.percent>0">   <!--充值有返现-->
+						<div v-if="local_params.percent>0">   <!--充值有返现-->
 							<div class="formula">    <!--计算公式-->
-								<span>{{params.amount}}+{{params.extra}}=</span><span class="total-price">{{params.total}}</span><span class="symbol">元</span>
+								<span class="jiashu">{{local_params.amount}}</span><span class="plus">+</span><span class="jiashu">{{local_params.extra}}</span><span class="plus">=</span><span class="total-price">{{local_params.total}}</span><span class="symbol">元</span>
 							</div>
 							<div class="explain">
-								<span>购买</span><span>赠送</span><span>总计</span>
+								<span class="jiashu">购买</span><span class="plus">+</span><span class="jiashu">赠送</span><span class="plus">=</span><span class="total-price">总计</span>
 							</div>
 						</div>
-						<div v-if="params.percent==0">  <!--充值无返现-->
-							<span class="total-price">{{params.amount}}</span> <span class="symbol">元</span>
+						<div v-if="local_params.percent==0">  <!--充值无返现-->
+							<span class="total-price">{{local_params.amount}}</span> <span class="symbol">元</span>
 						</div>
 					</section>	
 				</section>
@@ -134,7 +137,7 @@ p{ text-indent:0;}
 				</div>
 			</section>
 		</div>
-		<div class="inner-bottom"><a class="again-btn" href="/touch/rechargerebate/index">再次购买</a></div>
+		<div class="inner-bottom"><a class="again-btn" :style="btn_style" href="/touch/rechargerebate/index">再次购买</a></div>
 	</div>
 	
 	<section class="mask recharge_unknow" v-if="res_status===2">  <!-- 通信异常 -->
@@ -156,17 +159,17 @@ p{ text-indent:0;}
 </div>
 		
 
-<script src='https://cdn.bootcss.com/vue/2.5.16/vue.min.js'></script>	
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>	
-<script src="https://i3.yongche.name/js/jquery.plugins/jquery.lazyLoad/jquery.lazyload.1.9.3.js"></script>
-<script src="https://cdn.bootcss.com/Swiper/4.1.0/js/swiper.min.js"></script>
-<!--<script src="js/index.js"></script>-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js'></script>	
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->	
+<script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/Swiper/4.1.0/js/swiper.min.js"></script>-->
+<script src="<{asset2:js/app/swiper/swiper3.07.min.js}>"></script>
 <script type="text/javascript">
 var rebateResult = new Vue({
   	el: '#app',
 	data:{
-		Ad_host:'https://testing-marketapi.yongche.Org', //"更多活动"接口域名
-		//Ad_host:'https://testing-marketapi.yongche.Org',   // TODO
+		//Ad_host:'https://testing-marketapi.yongche.Org', //"更多活动"接口域名
+		Ad_host:'https://marketapi.yongche.com',   // TODO
 		res_status:'',   // 0--充值失败， 1--成功， 2--网络异常
 		loading: true, //是否加载中
 		fail_title: '购卡失败',
@@ -174,48 +177,59 @@ var rebateResult = new Vue({
 		timer:'',
 		time_counter:0,
 		recharge_amount:'',
-		params:'', //支付接口需要的参数
-		red_obj:{},
-		actives:[],
+		complete_params:'', //complete接口需要的参数
+		local_params:'', //从localstorage中获取的参数
+		red_obj:{},  //红包裂变相关信息
+		actives:[],  //更多活动相关信息
 		
 		showToast:false,  //吐司提示框的展示与否  false-不展示，true-展示
 	  	toastMsg:'' //吐司提示信息
 	},
+	computed:{
+		btn_style:function(){
+			var obj = {
+				backgroundColor: this.local_params.color
+			}
+			return obj;
+		}
+	},
 	mounted: function(){
+	　　clearInterval(this.timer)
 		this.init();
+	},
+	distroyed: function () {
+	　　clearInterval(this.timer)
 	},
 	methods:{
 		init:function (){
 			var reqObj = this.getRequest();  //从URL中解析出参数
-			var completeParams = {
+			this.complete_params = {
 				transaction_id: reqObj.transaction_id, 
 				is_joined: 0, 
 				activity_id: reqObj.activity_id,
 				project_id: reqObj.project_id
 			}
-			this.timer = setInterval(this.getRechargeResult(completeParams),2000); 
+			this.timer = setInterval(this.getRechargeResult,2000); 
         },
-        getRechargeResult:function(completeParams){ //检测登录状态
+        getRechargeResult:function(){ //检测登录状态
         		var vm = this;
-        		$.ajax({
-		        url: '/ajax/Rechargerebate/complete',
-	            type: 'POST',
-	            data: completeParams,
-		        success:function(data){
-		        		vm.time_counter++;
-		        		if(vm.time_counter>3){
-		        			clearInterval(vm.timer);
-                			vm.loading = false;
-		        		}
-		        		if(data){
-		        			vm.dealData(data)
-		        		}
-			    },
-			    error:function(e){
-			    		document.title = vm.fail_title;
-			        //alert('服务器异常，请稍后重试');   
-			    }
-		    });
+			axios.post('/ajax/Rechargerebate/complete', vm.complete_params)
+			.then(function (response) {
+			   	var data = response.data;
+				console.log(data);
+				vm.time_counter++;
+				if(vm.time_counter>3){
+					clearInterval(vm.timer);
+					vm.loading = false;
+				}
+				if(data){
+					vm.dealData(data)
+				}
+			})
+			.catch(function (error) {
+				document.title = vm.fail_title;
+			    console.log(error);
+			});
         },
         dealData:function(data){// res_status:'',   //-1--加载中， 0--充值失败， 1--成功， 2--网络异常
         		var code = data.code;
@@ -225,21 +239,14 @@ var rebateResult = new Vue({
                 alert("您尚未登录，请登录后再购卡");
                 window.location.href = "yongche://login";
             } else if (code == "200") {   //交易成功
-            	
-				this.getOrderCompleteAd();
+				this.getOrderCompleteAd();   //获取“更多活动”的数据
                 clearInterval(this.timer);
                 this.loading = false;
                 this.res_status = 1;
-                this.recharge_amount = result.recharge_amount;
-                this.getLocalStorage();  //获取购买页存储的参数信息  TODO
-                if(result.results_page && result.results_page.red_packets){  //新版红包裂变新增字段
-                		var red_obj = result.results_page.red_packets;
-                		if(red_obj.shareTitle){//红包裂变入口开放
-                			this.red_obj = red_obj;  //红包裂变入口相关配置文案
-                			this.redStatAction(red_obj.redStatUrl,1);  //可能是数据埋点用的  
-		                setShareInfo('sharebtn',red_obj);
-                		}
-                }
+                this.recharge_amount = result.recharge_amount;  //充值金额
+                this.complete_params.recharge_amount = result.recharge_amount;  //获取红包裂变接口需要增加充值金额这个参数
+                this.getLocalStorage();  //获取购买页存储的参数信息 
+                this.getRedPocket();   //获取红包裂变配置信息
             } else if (code == "618") { //交易失败或交易中
                	if (this.time_counter > 1) {
                     clearInterval(this.timer);
@@ -258,29 +265,51 @@ var rebateResult = new Vue({
                 this.res_status = 2;
             }
         },
+        getRedPocket:function(){    //获取红包裂变配置信息
+        		var vm = this;
+		    axios.post('/ajax/Rechargerebate/completeExtInfo', vm.complete_params)
+			.then(function (response) {
+			    var data = response.data;
+				console.log(data);
+				if(data && data.code == 200){
+	        			var result = data.result;
+	        			if(result.results_page && result.results_page.red_packets){
+	                		var red_obj = result.results_page.red_packets;
+	                		if(red_obj.shareTitle){//红包裂变入口开放
+	                			vm.red_obj = red_obj;  //红包裂变入口相关配置文案
+	                			vm.redStatAction(red_obj.redStatUrl,1);  //可能是数据埋点用的  
+			                setShareInfo('sharebtn',red_obj);
+	                		}
+	                }
+	        		}else if(data.code == 600){  //参数错误
+	        			console.log('红包裂变接口参数错误')
+	        		}
+			})
+			.catch(function (error) {
+			    console.log(error);
+			});
+        },
         getOrderCompleteAd:function(){  //获取“更多活动”的数据
         		var vm = this;
-        		$.ajax({
-		        url: vm.Ad_host + '/User/Advertisement/getOrderCompleteAd',
-	            type: 'get',
-		        success:function(data){
-		        		if(data.code == 200){
-		        			var res = data.result;
-		        			if(res.count>0){
-		        				vm.actives = res.list;
-		        				vm.$nextTick(function(){
-								vm.initSwiper();
-							})
-		        			}
-		        		}
-			    },
-			    error:function(e){
-			    		document.title = vm.fail_title;
-			        //alert('服务器异常，请稍后重试');   
-			    }
-		    });
+			axios.get(vm.Ad_host + '/User/Advertisement/getOrderCompleteAd')
+			.then(function (response) {
+				var data = response.data;
+				if(data && data.code==200 && data.result){
+	                 var res = data.result;
+	        			if(res.count>0){
+	        				vm.actives = res.list;
+	        				vm.$nextTick(function(){
+							vm.initSwiper(); //初始化轮播图
+						})
+	        			}
+                }
+			})
+			.catch(function (error) {
+				document.title = vm.fail_title;
+				console.log(error);
+			});
         },
-        initSwiper:function(){
+        initSwiper:function(){  //初始化轮播图
 	        	var sw = new Swiper(".swiper-container", {
 				slidesPerView: 'auto'
 	        });
@@ -308,32 +337,20 @@ var rebateResult = new Vue({
 	    },
 		getLocalStorage:function(){     //获取本地存储，为结果页留存所需信息
 			var str = window.localStorage.getItem("params");
-			//var params = JSON.parse(str);   //TODO
-			var params = {
-        			amount: 100,   
-        			extra:40,
-        			total:140,
-        			percent: 40,
-        			otherReward:'',
-        			tag_id: 684,
-        			activity_id: 1053,
-        			tag_picture: 'https://i2.yongche.name/media/g3/M04/01/24/rBEDAlt-MmWIJ6_CAAITKh-5SZAAAAnawKaI8oAAhNC013.png'
-        		}
-			this.params = params;
-			console.log(this.params);
+			if(!str){
+				console.log('localStorage没有存储购卡信息');
+				return
+			}
+			this.local_params = JSON.parse(str);
 		},
         redStatAction:function(redStatUrl,num){  //可能是数据埋点用的，对该接口返回数据没有任何处理
-        		$.ajax({
-                url:redStatUrl+'&action='+num,
-                type:'get',
-                xhrFields:{
-                    withCredentials:true
-                }
-            }).done(function (data) {
-                console.log(data);
-            }).fail(function (error) {
-                console.log(error);
-            })
+			axios.get(redStatUrl+'&action='+num)
+			.then(function (response) {
+				console.log('done');
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
         }
   	}
 })	
@@ -372,10 +389,13 @@ var rebateResult = new Vue({
 
         //dom.click=Tools.shareThisPage();
         /*端内分享，页面分享按钮点击*/
-	    document.getElementById(dom).addEventListener("click", function(){
+       setTimeout(function(){
+       	document.getElementById(dom).addEventListener("click", function(){
 	        ga('send', 'event', 'share_button', 'click', 'shareClickRecharge');
 	        Tools.shareThisPage();
 	    });
+       },1000)
+	    
     }
 </script>
 <script>

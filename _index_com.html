@@ -1678,7 +1678,7 @@
                     rebatePage.inputPresentation.html('单次至少购买'+window.minPrice+'元的出行卡呦~');
                     $('.input_tips').show().siblings('input').val('');
                     return;
-                }else if($('.input-flag').hasClass('selected-nav-item')&&selectedPrivilege.number>=window.maxPrice&&selectedPrivilege.activityId!=1070){
+                }else if($('.input-flag').hasClass('selected-nav-item')&&selectedPrivilege.number>window.maxPrice&&selectedPrivilege.activityId!=1070){
                     alert('根据国家有关部门要求，单次购卡金额不得超过1000元，若您想购买总面值超过1000元的出行卡，可以分为多次进行操作，为您造成的不便敬请谅解。');
                     $('.input_tips').show().siblings('input').val('');
                     return;

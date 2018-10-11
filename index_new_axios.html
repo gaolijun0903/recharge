@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
-	<title>购买出行卡</title>
+	<title>出行卡</title>
 	<script src="https://i3.yongche.name/media/g4/M04/00/21/rBEDBVsaXZOIZtJ1AAAPg6xQb3EAAAM_gBNCnkAAA-b7128.js"></script>
 	<style>
 [v-cloak] {display: none;}
@@ -35,36 +35,36 @@ p{ text-indent:0;}
 .loading img{display: block;height:50px;width:50px;opacity:0.7;position: absolute;left: 50%;top: 50%;margin-left:-25px;margin-top:-25px;}
 .loading p{display: block;height:50px;width:100%;position: absolute;top: 60%;}
 
-	</style>	
-	<style>
 #app{ position: relative;height: 100%;min-height: 10.0rem; }	
-.container{ }
 .header{ padding: 0 0.6rem; line-height: 0.8rem; }   
 .header .balance{ font-size: 0.30rem; color: #323232; font-weight: bold; }
 .header .account-details{ display: block; font-size: 0.26rem; color: #888; }
 
-.banners-wrapper{  }
 .banners-wrapper .bannerlist{ margin: 0 auto; overflow: hidden; width: 6.9rem; height: 4.5rem; }
 .banners-wrapper .bannerlist .banneritem{ font-size: 0; height: 4.5rem; position: relative; }
-.banners-wrapper .bannerlist .banneritem .price-wrapper{ position: absolute; bottom: 0.95rem ; right: 0.7rem; color: #FFFFFF; }
-.banners-wrapper .bannerlist .banneritem .price-wrapper .formula{ font-size: 0.44rem; }
-.banners-wrapper .bannerlist .banneritem .price-wrapper .total-price { font-size: 0.78rem; }
-.banners-wrapper .bannerlist .banneritem .price-wrapper .symbol{ font-size: 0.36rem; }
-.banners-wrapper .bannerlist .banneritem .price-wrapper .explain{ padding-left: 0.1rem; line-height: 0.28rem; font-size: 0.28rem; }
-.banners-wrapper .bannerlist .banneritem .price-wrapper .explain span{ margin-right: 0.5rem; }
-.banners-wrapper .bannerlist .banneritem .price-wrapper input{ padding-top: 0.2rem; width: 3.0rem; height: 1.0rem; font-size: 0.8rem; color: transparent; text-align: right; font-weight: bold; background-color: transparent; border-radius: 0.08rem; border: 1px solid white; outline: none; }
+.banners-wrapper .bannerlist .banneritem .price-wrapper{ position: absolute; bottom: 0.80rem ; right: 0.65rem; color: #FFFFFF; }
+.banners-wrapper .bannerlist .banneritem .price-wrapper .formula{ font-size: 0.4rem; }
+.banners-wrapper .bannerlist .banneritem .price-wrapper .jiashu{ display: inline-block; min-width: 0.76rem; text-align: center; }
+.banners-wrapper .bannerlist .banneritem .price-wrapper .jiashu2{ display: inline-block; min-width: 0.76rem; text-align: center; }
+.banners-wrapper .bannerlist .banneritem .price-wrapper .plus{ display: inline-block; margin:0 0.04rem; width:0.24rem;}
+.banners-wrapper .bannerlist .banneritem .price-wrapper .total-price { display: inline-block; min-width: 1.3rem; font-size: 0.72rem; text-align: center;}
+.banners-wrapper .bannerlist .banneritem .price-wrapper .symbol{ font-size: 0.32rem; }
+.banners-wrapper .bannerlist .banneritem .price-wrapper .explain{ line-height: 0.24rem; font-size: 0.24rem; }
+.banners-wrapper .bannerlist .banneritem .price-wrapper .explain .plus{ color: transparent; }
+.banners-wrapper .bannerlist .banneritem .price-wrapper .explain .total-price{ font-size: 0.24rem; }
+.banners-wrapper .bannerlist .banneritem .price-wrapper input{ width: 3.0rem; height: 0.8rem; font-size: 0.6rem;  color: #FFFFFF; text-align: center; font-weight: bold; background-color: transparent; border-radius: 0.08rem; border: 1px solid rgba(255,255,255,0.7); outline: none; }
 .banners-wrapper .bannerlist .banneritem .price-wrapper input.ok-white{ color: white; }
-.banners-wrapper .bannerlist .banneritem .price-wrapper input::-webkit-input-placeholder{ color: #cc9897; font-size: 0.58rem; }        
+.banners-wrapper .bannerlist .banneritem .price-wrapper input::-webkit-input-placeholder{ color: rgba(255,255,255,0.6); font-size: 0.50rem; }        
 .banners-wrapper .bannerlist .banneritem .tag-desciption { position: absolute; top: 1.5rem; right: 0.7rem; font-size: 0.28rem; line-height: 0.4rem; color: #FFFFFF; }
 
 .tags-wrapper { padding-top: 0.2rem; }
 .tags-wrapper .taglist{ margin: 0 auto; overflow: hidden; width: 6.5rem; }
 .tags-wrapper .taglist .tagitem{ margin:0 0.2rem 0.12rem 0; display: inline-block; width: 2.02rem; height: 0.94rem; }
 .tags-wrapper .taglist .tagitem:nth-child(3n){ margin-right: 0; }
-.tags-wrapper .taglist .tagitem .tagitem-inner{ width: 100%; height: 100%; text-align: center; font-size: 0.34rem; line-height: 0.94rem; border: 2px solid #E2E2E2; border-radius: 0.16rem; }
+.tags-wrapper .taglist .tagitem .tagitem-inner{ width: 100%; height: 100%; text-align: center; font-size: 0.36rem; line-height: 0.9rem; border: 2px solid #E2E2E2; border-radius: 0.16rem; }
 
-.footer .btn-wrapper{ margin: 0.15rem auto; width: 6.5rem; height: 1.0rem; font-size: 0.44rem; line-height: 1.0rem; text-align: center; color:white; font-weight: bold; }
-.footer .btn-wrapper .btn-normal{ border-radius: 1.2rem; }
+.footer .btn-wrapper{ margin: 0.15rem auto; width: 6.5rem; height: 1.0rem; font-size: 0.44rem; line-height: 0.9rem; text-align: center; color:white; font-weight: bold; }
+.footer .btn-wrapper .btn-normal{ border-radius: 0.08rem; }
 .footer .btn-wrapper .btn-normal-pay{ float: left; width: 3.0rem; height: 1.0rem; border-radius: 8px; }
 .footer .btn-wrapper .btn-apple-pay{ float: right; width: 3.0rem; height: 1.0rem; border-radius:8px; border: 1px #000000 solid; background: url(https://i3.yongche.name/media/g2/M04/08/04/rBEBJVe1HtiIQ9vXAAAP_4yh0LQAADJcwDTrFwAABAX865.png); background-size:100% 100%; }
 .footer .statement{ margin-top: 0.28rem; font-size: 0.2rem; text-align: center; color: #8F8F8F; }
@@ -94,7 +94,6 @@ p{ text-indent:0;}
 .mask-confirm .mask-inner .confirm-content{ background-color: white; padding: 0.44rem 0.3rem; text-align: center; font-size: 0.32rem; line-height: 0.5rem; border-top: solid #c9c9c9 1px; border-bottom: solid #c9c9c9 1px; }
 .mask-confirm .mask-inner .confirm-footer{ background-color: white; line-height: 1.0rem; text-align: center; font-size: 0.32rem; color: red; }
 /*确认弹窗--end*/
-
 /*活动规则和我的奖励入口--start--现已隐藏*/
 .info-area{ position: relative; width: 90%; margin:0.2rem 5% ; height: 1.0rem; }
 .info-area .divide-line{ float: left; height:0.4rem; width: 1px; background:#D4D4D4; margin-top: 0.3rem; }
@@ -124,10 +123,10 @@ p{ text-indent:0;}
 					<section class="price-wrapper" v-if="tag.recharge!=0">
 						<div v-if="tag.percent>0">   <!--充值有返现-->
 							<div class="formula">    <!--计算公式-->
-								<span>{{tag.recharge}}+{{tag.extra}}=</span><span class="total-price">{{tag.total}}</span><span class="symbol">元</span>
+								<span class="jiashu">{{tag.recharge}}</span><span class="plus">+</span><span class="jiashu2">{{tag.extra}}</span><span class="plus">=</span><span class="total-price">{{tag.total}}</span><span class="symbol">元</span>
 							</div>
 							<div class="explain">
-								<span>购买</span><span>赠送</span><span>总计</span>
+								<span class="jiashu">购买</span><span class="plus">+</span><span class="jiashu2">赠送</span><span class="plus">=</span><span class="total-price">总计</span>
 							</div>
 						</div>
 						<div v-if="tag.percent==0">  <!--充值无返现-->
@@ -136,8 +135,9 @@ p{ text-indent:0;}
 					</section>	
 					<!--其他金额输入框-->
 					<section class="price-wrapper" v-if="tag.recharge==0">
-						<input type="tel" :class="{'ok-white':ok_white}" v-model="input_price" @input="watchInput" @propertychange="watchInput" @keyup="watchInput" maxlength="5" placeholder="请输入面值"/>
-						<span class="symbol">元</span>
+						<!--<input type="tel" :class="{'ok-white':ok_white}" v-model="input_price" @input="watchInput" @propertychange="watchInput" @keyup="watchInput" maxlength="5" placeholder="请输入面值"/>-->
+						<input type="tel" v-model="input_price" @input="watchInput" @propertychange="watchInput" @keyup="watchInput" maxlength="5" placeholder="请输入面值"/>
+						<span class="symbol">&nbsp;&nbsp;元</span>
 					</section>	
 				</li>
 			</ul>
@@ -159,10 +159,11 @@ p{ text-indent:0;}
 		<section class="footer">
 			<div class="btn-wrapper">
 				<div class="btn-normal" :style="btn_style" v-if="!support_applepay" @click="payFn(false)">购卡并绑定</div>
-				<div class="btn-apple" v-if="support_applepay">   <!--支持Apple pay------该功能已下线-->
+				 <!--支持Apple pay------该功能已下线-->
+				<!--<div class="btn-apple" v-if="support_applepay">  
 					<div class="btn-normal-pay" :style="btn_style" @click="payFn(false)">购卡并绑定</div>
 					<div class="btn-apple-pay"  @click="payFn(true)"></div>
-				</div>
+				</div>-->
 			</div>
 			<p class="statement">点击购卡并绑定，即表示您已经同意易到用车<span class="protocol-btn" @click="showProtocal">《出行卡购买协议》</span></p>
 			<!--活动规则与购买协议合并，我的奖品暂不展示-->
@@ -193,26 +194,19 @@ p{ text-indent:0;}
 	    </div>
 	</div>
 	
-	<div class="mask mask-confirm" v-show="show_confirm">
+	<div class="mask mask-confirm" v-show="show_confirm">  <!--可输入金额上下限提示-->
 		<div class="mask-inner">
 			<div class="confirm-title"></div>
 			<div class="confirm-content" v-text="confirm_text">输入的金额必须小于1000元</div>
 			<div class="confirm-footer" @click="closeMask">确定</div>
 		</div>
 	</div>
-	
-	<transition name="slide-up-fade">
-		<div class="toastmsg" v-if="showToast">
-			<div class="toasttext" v-html="toastMsg"></div>
-		</div>
-	</transition>
 </div>
 		
-
-<script src='https://cdn.bootcss.com/vue/2.5.16/vue.min.js'></script>	
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>	
-<script src="https://i3.yongche.name/js/jquery.plugins/jquery.lazyLoad/jquery.lazyload.1.9.3.js"></script>
-<!--<script src="js/index.js"></script>-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js'></script>	
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->	
+<!--<script src="https://i3.yongche.name/js/jquery.plugins/jquery.lazyLoad/jquery.lazyload.1.9.3.js"></script>-->
+<script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
 <script type="text/javascript">
 var rebate = new Vue({
   	el: '#app',
@@ -231,7 +225,7 @@ var rebate = new Vue({
 		show_confirm:false, //是否展示确认弹窗
 		confirm_text:'', //确认弹窗-提示文案
 		support_applepay:false, //是否支持apple pay---该功能已下线
-		ok_white:false, //控制input的字体颜色
+		ok_white:true, //控制input的字体颜色
 		input_price:'',  //其他金额--输入的金额
 		cur_tag_idx:0, //当前选中的金额等级标签，对应“tag_order”
 		minRebateCharge:'',  //享有返现的最小充值额度  目前没有使用
@@ -245,24 +239,22 @@ var rebate = new Vue({
 		popup:{},
 		levels:[],
 		
-		color:'#FF5252',  
-		tagbg:'https://i2.yongche.name/media/g2/M01/0B/00/rBEBJVfXq2GIWfNLAAAFuwniE4cAAESpADva9QAAAXT299.png',
-		
-		showToast:false,  //吐司提示框的展示与否  false-不展示，true-展示
-	  	toastMsg:'' //吐司提示信息
+		border_font: "#FF5252",  //档位边框颜色
+		btn_background: "#FF5252" , //购卡按钮背景色
+		tagbg:'https://i2.yongche.name/media/g2/M01/0B/00/rBEBJVfXq2GIWfNLAAAFuwniE4cAAESpADva9QAAAXT299.png'
 	},
 	computed:{
-		tag_style:function(){
+		tag_style:function(){  //档位的边框颜色、字体颜色、选中角标
 			var obj = {
-				color: this.color,
-    				border: '2px solid '+this.color,
+				color: this.border_font,
+    				border: '2px solid '+this.border_font,
     				background:'url('+ this.tagbg +') 101% 103% /18px 20px no-repeat'
 			}
 			return obj;
 		},
-		btn_style:function(){
+		btn_style:function(){ //购卡按钮的背景色
 			var obj = {
-				backgroundColor: this.color
+				backgroundColor: this.btn_background
 			}
 			return obj;
 		},
@@ -303,33 +295,32 @@ var rebate = new Vue({
         },
         checkLogin:function(){ //检测登录状态
         		var vm = this;
-        		$.ajax({
-		        method:'get',
-		        url: '/ajax/Rechargerebate/getRebateIndex?time='+new Date().getTime(),
-		        success:function(data){
-			        if(data.code==200){  //登录，请求充返信息
-		        			var result = data.result;
-	                    	vm.version_show_subdesc = result.version_show_subdesc;  //当前版本是否支持设置 “需支付*元”
-	                		vm.webHost = result.webHost;
-	                		//vm.checkUserAgent(); //根据移动终端浏览器版本信息，检测是否支持apple pay---该功能已下线
-						vm.getActiveInfo();  //获取充返活动信息
-						vm.getUserAmout();   //获取账户余额
-	              	}else{  //未登录，跳转登录页面
-	                    window.location.href = 'yongche://login?done=' + encodeURIComponent(window.location.href);
-	                }
-			    },
-			    error:function(e){
-			        //alert('服务器异常，请稍后重试');   
-			    }
-		    });
+		    axios.get('/ajax/Rechargerebate/getRebateIndex?time='+new Date().getTime())
+			.then(function (response) {
+				var data = response.data;
+				console.log(data);
+				if(data.code==200){  //登录，请求充返信息
+	        			var result = data.result;
+                    	vm.version_show_subdesc = result.version_show_subdesc;  //当前版本是否支持设置 “需支付*元”
+                		vm.webHost = result.webHost;
+                		//vm.checkUserAgent(); //根据移动终端浏览器版本信息，检测是否支持apple pay---该功能已下线
+					vm.getActiveInfo();  //获取充返活动信息
+					vm.getUserAmout();   //获取账户余额
+              	}else{  //未登录，跳转登录页面
+                    window.location.href = 'yongche://login?done=' + encodeURIComponent(window.location.href);
+                }
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
         },
         getActiveInfo:function(){ //获取充返活动信息
         		var vm = this;
-        		$.ajax({
-                method:'get',
-                url: '/Ajax/Rechargerebate/getActiveInfo?time='+new Date().getTime(),
-                success:function(data){
-	                if(data && data.code==200 && data.result){
+			axios.get( '/Ajax/Rechargerebate/getActiveInfo?time='+new Date().getTime())
+			.then(function (response) {
+				var data = response.data;
+				if(data && data.code==200 && data.result){
+					vm.loading = false;
 		        			var result = data.result;
 		        			vm.is_black = result.is_black;  //是否黑名单用户
 		                vm.risk = result.risk;  //风控类型
@@ -340,40 +331,39 @@ var rebate = new Vue({
 		        				vm.setPriceRange(result.project_tags);  //设置可充值的金额的最大最小值
 		        			}
 		        		}
-	            },
-            		error:function(e){
-	                //alert('服务器异常，请稍后重试');
-	            }
-           });
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
         },
         getUserAmout:function(){  //获取账户余额
         		var vm = this;
-        		$.ajax({
-                method:'get',
-                url: '/Ajax/Rechargerebate/getUserAmout?time='+new Date().getTime(),
-                success:function(data){
-	                if(data.code==200&&data.result){
+            axios.get('/Ajax/Rechargerebate/getUserAmout?time='+new Date().getTime())
+			.then(function (response) {
+				var data = response.data;
+				if(data && data.code==200 && data.result){
 	                    vm.balance = data.result.amount; //账户余额
 	                }
-	            },
-	            error:function(e){
-	                //alert('服务器异常，请稍后重试');
-	            }
-            });
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
         },
         getDocument:function(){ //获取协议、规则、弹窗提示的文案 //按钮配色   //tag按钮选中的背景角标
         		var vm = this;
-        		$.ajax({
-                method:'get',
-                url: '/ajax/Rechargerebate/getDocument?project_id='+this.project_id+'&time='+new Date().getTime(),
-                success:function (data) {
-	                if(data.code=200 && data.result){
+            axios.get('/ajax/Rechargerebate/getDocument?project_id='+this.project_id+'&time='+new Date().getTime())
+			.then(function (response) {
+				var data = response.data;
+				if(data && data.code==200 && data.result){
 		        			var result = data.result;
-	                    if(result.color_plan){
-	                    		vm.color = result.color_plan  ;  //按钮配色
-	                    }
+                    		if( result.color_plan.border_font){
+                    			vm.border_font =  result.color_plan.border_font
+                    		}
+	                    	if( result.color_plan.btn_background){
+                    			vm.btn_background =  result.color_plan.btn_background
+                    		}	
 	                    if(result.angle_mark){
-	                    		vm.angle_mark = result.angle_mark;  //tag按钮选中的背景角标
+	                    		vm.tagbg = result.angle_mark;  //tag按钮选中的背景角标
 	                    }
 	                    if(result.project_document){  //协议、规则、弹窗提示的文案
 	                        var project_doc = result.project_document;
@@ -389,12 +379,11 @@ var rebate = new Vue({
 	                    }
 	                    
 	                }
-	                vm.loading = false;
-	            },
-	            error:function (e) {
-	                //alert('服务器异常，请稍后重试');
-	            }
-           });
+//	                vm.loading = false;
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
         },
         sortProjectTags:function(tags){   //充值金额按tag_order排序，并设置默认选中项的index
 			tags.sort(function(x,y){  //按照tag_order排序
@@ -415,15 +404,21 @@ var rebate = new Vue({
             this.project_tags = tags;  //充值等级标签--数组
         },
         setPriceRange:function(data){ //设置可充值的金额的最大最小值
-        		var levels = $.map(data,function(e,i){
-                return e.levels;
+            var levels = [];
+            data.forEach(function(e,i){
+            		if(e.levels){
+            			levels = e.levels;
+            		}
             });
+            if(levels.length==0){
+            		return
+            }
             levels = levels.sort(function(a,b){ //排序
             		a.min_price-b.min_price;
             })
             var maxPrice = levels[0].max_price;
             var minPrice = levels[0].min_price;
-            $.each(levels,function(i,e){
+            levels.forEach(function(e,i){
                 if(e.max_price>maxPrice) maxPrice = e.max_price;
                 if(e.min_price<minPrice) minPrice = e.min_price;
             });
@@ -451,20 +446,23 @@ var rebate = new Vue({
         			percent = levelObj.percent;
         			otherReward = levelObj.otherReward;
         		}
-        		var extra= amount*percent*0.01;
+        		var extra = amount*percent*0.01;  //返现金额
+        		var color = this.btn_background; //按钮配色
+        		var project_id = this.project_id
         		var params = {
-        			amount: amount*0.0001,   //为测试使用，金额除了10000,仅白名单账号可用，其他账号返回参数错误 //TODO
+        			amount: amount,  
         			percent: percent,
         			extra: extra,
+        			color: color,
         			total: amount+extra,
-        			otherReward:otherReward,
+        			otherReward: otherReward,
         			tag_id: curTagObj.tag_id,
         			activity_id: curTagObj.activity_id,
-        			tag_picture: curTagObj.tag_picture
+        			tag_picture: curTagObj.tag_picture,
+        			project_id: project_id
         		}
         		this.params = params;
         		var url = this.setPayUrl(params,isApplePay);
-        		console.log(url);
         		this.setLocalStorage(params);  //设置本地存储，为结果页留存所需信息
         		window.location.href = url;   
         },
@@ -492,14 +490,17 @@ var rebate = new Vue({
             if (this.version_show_subdesc) { //当前版本是否支持设置 “需支付*元”
                 accountDesc+=encodeURIComponent("需支付" + params.amount + "元");
             }
+            
+            var amount =  params.amount;   //为测试使用，金额除了10000,仅白名单账号可用，其他账号返回参数错误 //TODO
+            
             if (this.is_black) {//是黑名单用户
-                url += "activity_id=&amount=" + params.amount + "&pay_type=3&callback=rebate_result&activity_token="
+                url += "activity_id=&amount=" + amount + "&pay_type=3&callback=rebate_result&activity_token="
             }else {
                 var activity_token = this.project_id +'|'+ params.tag_id +'|1';    //例子：  "255|684|1"
                 activity_token =  encodeURIComponent(activity_token);
                 var data = {order_id:0};
                 data = encodeURIComponent(JSON.stringify(data));
-                url += "from=2&activity_id=" + params.activity_id + "&amount=" + params.amount + "&amount_desc=" + accountDesc + "&pay_type=3&callback=rebate.rebate_result&activity_token=" + activity_token + "&data=" + data;
+                url += "from=2&activity_id=" + params.activity_id + "&amount=" + amount + "&amount_desc=" + accountDesc + "&pay_type=3&callback=rebate.rebate_result&activity_token=" + activity_token + "&data=" + data;
             }
             return url;
         },
@@ -519,7 +520,7 @@ var rebate = new Vue({
 	            if(temp.indexOf('?')>0){
 	                flag = '&';
 	            }
-	            var str = window.location.href.replace('index','complete') + flag +"transaction_id=" + transactionId + "&activity_id=" + params.activity_id+"&other_rewards="+encodeURIComponent(params.otherReward)+"&total_money=" +totalMoney+ "&project_id="+params.project_id;
+	            var str = window.location.href.replace('index','complete') + flag +"transaction_id=" + transactionId + "&activity_id=" + params.activity_id+"&total_money=" +totalMoney+ "&project_id="+params.project_id +"&other_rewards="+ encodeURIComponent(params.otherReward);
 	            console.log(str);
 	            window.location.href = str;
 	        },1000)
@@ -572,23 +573,6 @@ var rebate = new Vue({
 		//appPay_callback:function (status) {//验证是否支持apple pay的回调函数
 		//  this.support_applepay = status == 1 ? true : false;  //根据是否支持Apple Pay，设置对应的购买按钮
 		//},
-		showToastFn:function(msg,cb){  //toast提示
-			var vm = this;
-			vm.showToast = true;
-     		vm.toastMsg = msg;
-     		setTimeout(function(){
-     			vm.showToast = false;
-     			if(cb){ cb(); }
-     		},2000)
-		},
-		getCookie:function (name){//读取cookie
-			var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-			if(arr=document.cookie.match(reg)){
-				return unescape(arr[2]);
-			}else{
-				return null;
-			}
-		},
 		setLocalStorage:function(params){     //设置本地存储，为结果页留存所需信息
 			var str = JSON.stringify(params);
 			var storage = window.localStorage;
@@ -597,6 +581,16 @@ var rebate = new Vue({
   	}
 })	
 </script>
+<!-- GA: -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+    ga('create', 'UA-18761483-4', 'auto');
+    ga('send', 'pageview');
+
+</script>
 </body>
 </html>
