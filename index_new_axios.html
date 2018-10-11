@@ -10,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
 	<title>出行卡</title>
-	<script src="https://i3.yongche.name/media/g4/M04/00/21/rBEDBVsaXZOIZtJ1AAAPg6xQb3EAAAM_gBNCnkAAA-b7128.js"></script>
 	<style>
 [v-cloak] {display: none;}
 html, body { position: relative; height: 100%;}
@@ -202,11 +201,9 @@ p{ text-indent:0;}
 		</div>
 	</div>
 </div>
-		
-<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js'></script>	
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->	
-<!--<script src="https://i3.yongche.name/js/jquery.plugins/jquery.lazyLoad/jquery.lazyload.1.9.3.js"></script>-->
-<script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
+<script src="https://i1.yongche.name/js/flexible/flexible7.5.js"></script>
+<script src="https://i1.yongche.name/js/axios/axios0.18.0.min.js"></script>
+<script src="https://i1.yongche.name/js/vue/vue2.5.16.min.js"></script>		
 <script type="text/javascript">
 var rebate = new Vue({
   	el: '#app',
@@ -437,7 +434,7 @@ var rebate = new Vue({
 	    				this.show_confirm = true;
 					this.confirm_text = "单次至少购买"+ this.price_range.min +"元的出行卡呦~";
 					return
-	    			}else if( amount> this.price_range.max && curTagObj.activity_id!=1070){   //输入的金额 > 允许购买的最大值
+	    			}else if( amount> 1000 && curTagObj.activity_id!=1070){   //输入的金额 > 允许购买的最大值
 	    				this.show_confirm = true; 
 					this.confirm_text = "根据国家有关部门要求，单次购卡金额不得超过1000元，若您想购买总面值超过1000元的出行卡，可以分为多次进行操作，为您造成的不便敬请谅解。";
 					return
